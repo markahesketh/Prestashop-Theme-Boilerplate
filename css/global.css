@@ -8,6 +8,10 @@
  * https://github.com/heskethm/Prestashop-Theme-Boilerplate
  ======================================================================================*/
 
+/* Basic styling to give the markup some structure, and highlight hooks.
+ * Remove this file as required. */
+ @import url('scaffolding.css');
+
 /* Normalize.css - Advanced CSS Reset
  * By Nicolas Gallagher
  * http://necolas.github.com/normalize.css/
