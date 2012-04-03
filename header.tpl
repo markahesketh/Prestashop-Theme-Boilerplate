@@ -52,8 +52,8 @@
 		 *
 		 * Remove the following 2 lines when finished developing
 		 *}
-		 <link rel="stylesheet/less" type="text/css" href="css/bootstrap/bootstrap.less" />
-		 <script src="less.js" type="text/javascript"></script>
+		 <link rel="stylesheet/less" type="text/css" href="{$css_dir}global.less" />
+		 <script src="{$js_dir}less-1.3.0.min.js" type="text/javascript"></script>
 
 		{* Include CSS files set in Controllers using setMedia() *}
 		{if isset($css_files)}
