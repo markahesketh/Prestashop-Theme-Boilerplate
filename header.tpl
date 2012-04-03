@@ -1,9 +1,10 @@
 {*
 * header.tpl - Theme Header
 * ===================================================================
-* <head> and upper section of the <body>. This tpl file is included on every page.
+* <head> content and upper portion of the <body>. 
+* This tpl file is included on every page.
 * 
-* Use to modify your theme's header' and 'left sidebar'.
+* Use this file to modify your theme's header' and 'left sidebar'.
 * ===================================================================
 *}
 
