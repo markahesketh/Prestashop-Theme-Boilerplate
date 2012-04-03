@@ -1,42 +1,36 @@
 {*
-* 2007-2011 PrestaShop 
-*
-* NOTICE OF LICENSE
-*
-* This source file is subject to the Academic Free License (AFL 3.0)
-* that is bundled with this package in the file LICENSE.txt.
-* It is also available through the world-wide-web at this URL:
-* http://opensource.org/licenses/afl-3.0.php
-* If you did not receive a copy of the license and are unable to
-* obtain it through the world-wide-web, please send an email
-* to license@prestashop.com so we can send you a copy immediately.
-*
-* DISCLAIMER
-*
-* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
-* versions in the future. If you wish to customize PrestaShop for your
-* needs please refer to http://www.prestashop.com for more information.
-*
-*  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
-*  @version  Release: $Revision: 9140 $
-*  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
-*  International Registered Trademark & Property of PrestaShop SA
+* header.tpl - Theme Header
+* ===================================================================
+* <head> and upper section of the <body>. This tpl file is included on every page.
+* 
+* Use to modify your theme's header' and 'left sidebar'.
+* ===================================================================
 *}
-<!doctype html>
+
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html lang="{$lang_iso}">
 <html >
 	<head>
 		<meta charset="utf-8">
+
+		{* Title set in Back Office > SEO & Titles *}
 		<title>{$meta_title|escape:'htmlall':'UTF-8'}</title>
+
+		{* Meta description for SERPs*}
 		{if isset($meta_description) AND $meta_description}
 			<meta name="description" content="{$meta_description|escape:html:'UTF-8'}" />
 		{/if}
+
+		{* Keywords now mostly useless, but some clients may require them *}
 		{if isset($meta_keywords) AND $meta_keywords}
-				<meta name="keywords" content="{$meta_keywords|escape:html:'UTF-8'}" />
+			<meta name="keywords" content="{$meta_keywords|escape:html:'UTF-8'}" />
 		{/if}
+
+		{* Favicon is displayed in address bar and bookmark bars in visitor's browser *}
 		<link rel="icon" href="{$img_ps_dir}favicon.ico?{$img_update_time}">
+
+		{* Homescreen icon to be used on iOS devices such as iPhone and iPads *}
 		<link rel="apple-touch-icon" href="{$img_ps_dir}apple-touch-icon.png?{$img_update_time}">
 		<script type="text/javascript">
 			var baseDir = '{$content_dir}';
@@ -46,17 +40,37 @@
 			var priceDisplayMethod = {$priceDisplay};
 			var roundMode = {$roundMode};
 		</script>
+
+		{*
+		 * For Development purposes only, if using Bootstrap.
+		 * Include Bootstrap LESS files and less.js
+		 *
+		 * Once finished, turn .less files into .css files using tools such as:
+		 * LESS.app <http://incident57.com/less/>
+		 * SimpLESS <http://wearekiss.com/simpless>
+		 *
+		 * Remove the following 2 lines when finished developing
+		 *}
+		 <link rel="stylesheet/less" type="text/css" href="css/bootstrap/bootstrap.less" />
+		 <script src="less.js" type="text/javascript"></script>
+
+		{* Include CSS files set in Controllers using setMedia() *}
 		{if isset($css_files)}
 			{foreach from=$css_files key=css_uri item=media}
 				<link href="{$css_uri}" rel="stylesheet" media="{$media}" />
 			{/foreach}
 		{/if}
+
+		{* Include JS files set in Controllers using setMedia() *}
 		{if isset($js_files)}
 			{foreach from=$js_files item=js_uri}
 				<script src="{$js_uri}"></script>
 			{/foreach}
 		{/if}
+
+		{* Make HTML5 markup work correctly in older versions of IE *}
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
 		{$HOOK_HEADER}
 	</head>
 	
