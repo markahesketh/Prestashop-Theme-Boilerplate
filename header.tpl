@@ -24,12 +24,8 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 <!doctype html>
-<!--[if lt IE 7 ]><html class="ie6" lang="{$lang_iso}"><![endif]-->
-<!--[if IE 7 ]><html class="ie7" lang="{$lang_iso}"><![endif]-->
-<!--[if IE 8 ]><html class="ie8" lang="{$lang_iso}"><![endif]-->
-<!--[if IE 9 ]><html class="ie9" lang="{$lang_iso}"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html class="" lang="{$lang_iso}"><!--<![endif]-->
 <!--[if IE]><![endif]-->
+<html lang="{$lang_iso}">
 <html >
 	<head>
 		<meta charset="utf-8">
