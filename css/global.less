@@ -1,4 +1,4 @@
-/* ======================================================================================
+/* =========================================================================================
  * PRESTASHOP THEME BOILERPLATE
  * A boilerplate theme to be used as a starting point for Prestashop Theme development.
  * Change this text to anything you like, describe your theme, or remove it completely.
@@ -6,9 +6,79 @@
  * Version 0.1
  * By Mark Hesketh (http://www.markhesketh.co.uk/)
  * https://github.com/heskethm/Prestashop-Theme-Boilerplate
- ======================================================================================*/
+ =========================================================================================*/
 
-// ==|== Import Bootstrap Styles =======================================================
-@import "bootstrap/bootstrap.less";
+// == Import Styles ========================================================================
 
-// ==|== Basic Structure ===============================================================
+@import "less/normalize.less";    // CSS reset that makes browsers render more consistently.
+@import "less/grid.less";         // Simple grid mixins
+@import "less/typography.less";   // General typography and block element settings
+@import "less/common.less";       // Common CSS techniques eg. clearfix
+@import "less/print.less";        // Print Styles
+
+
+/* == Theme Structure ======================================================================
+ * This CSS provides basic structure for your theme.
+ * Delete / Edit as appropriate
+ =========================================================================================*/
+body {
+  width: e("@{maxwidth}px"); // Set in grid.less
+  margin: 20px auto;
+  padding: 0 20px;
+  font: normal 62.5%/1.6em @sans-serif;
+  color: @body;
+  .clearfix;
+}
+
+// == Header ==============================================================================
+#container > header {
+  
+  #logo {
+    .grid(224, @maxwidth);
+  }
+
+  // HOOK_TOP modules 
+  #hook_top {
+    .grid(716, @maxwidth, 0);
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0; 
+    }
+
+    #currencies_block_top {
+      float: left;
+      margin-right: 20px;
+
+      li {
+        float: left;
+
+        &.selected a {background-color: #000; color: #fff;}
+        a {padding: 5px;} 
+
+      }
+      p {text-align: center;}
+    }
+
+    #languages_block_top {
+      float: left;
+      margin-right: 20px;
+    }
+
+    #header_links {
+      float: left;
+      margin-right: 20px;
+      li {
+        float: left;
+        margin-right: 10px;
+      }
+    }
+
+    #search_block_top {
+      float: right;
+
+    }
+  }
+
+}
