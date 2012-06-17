@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop 
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,26 +18,26 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
+*  @copyright  2007-2012 PrestaShop SA
 *  @version  Release: $Revision: 6594 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-{capture name=path}{l s='Forgot your password'}{/capture}
+{capture name=path}{l s='Forgot your password?'}{/capture}
 {include file="$tpl_dir./breadcrumb.tpl"}
 
-<h1>{l s='Forgot your password'}</h1>
+<h1>{l s='Forgot your password?'}</h1>
 
 {include file="$tpl_dir./errors.tpl"}
 
 {if isset($confirmation) && $confirmation == 1}
-<p class="success">{l s='Your password has been successfully reset and has been sent to your e-mail address:'} {$email|escape:'htmlall':'UTF-8'}</p>
+<p class="success">{l s='Your password has been successfully reset and a confirmation has been sent to your e-mail address:'} {$email|escape:'htmlall':'UTF-8'}</p>
 {elseif isset($confirmation) && $confirmation == 2}
 <p class="success">{l s='A confirmation e-mail has been sent to your address:'} {$email|escape:'htmlall':'UTF-8'}</p>
 {else}
-<p>{l s='Please enter the e-mail address used to register. We will e-mail you your new password.'}</p>
-<form action="{$request_uri|escape:'htmlall':'UTF-8'}" method="post" class="std">
+<p>{l s='Please enter the e-mail address used to register. We will send your new password to that address.'}</p>
+<form action="{$request_uri|escape:'htmlall':'UTF-8'}" method="post" class="std" id="form_forgotpassword">
 	<fieldset>
 		<p class="text">
 			<label for="email">{l s='E-mail:'}</label>
@@ -50,5 +50,5 @@
 </form>
 {/if}
 <p class="clear">
-	<a href="{$link->getPageLink('authentication.php', true)}" title="{l s='Return to Login'}"><img src="{$img_dir}icon/my-account.gif" alt="{l s='Return to Login'}" class="icon" /></a><a href="{$link->getPageLink('authentication.php')}" title="{l s='Back to Login'}">{l s='Back to Login'}</a>
+	<a href="{$link->getPageLink('authentication', true)}" title="{l s='Return to Login'}"><img src="{$img_dir}icon/my-account.gif" alt="{l s='Return to Login'}" class="icon" /></a><a href="{$link->getPageLink('authentication')}" title="{l s='Back to Login'}">{l s='Back to Login'}</a>
 </p>

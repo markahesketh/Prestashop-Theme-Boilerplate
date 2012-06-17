@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop 
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,7 +18,7 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
+*  @copyright  2007-2012 PrestaShop SA
 *  @version  Release: $Revision: 6594 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
@@ -27,6 +27,14 @@
 <!-- Breadcrumb -->
 {if isset($smarty.capture.path)}{assign var='path' value=$smarty.capture.path}{/if}
 <div class="breadcrumb">
-	<a href="{$base_dir}" title="{l s='return to'} {l s='Home'}">{l s='Home'}</a>{if isset($path) AND $path}<span class="navigation-pipe">{$navigationPipe|escape:html:'UTF-8'}</span>{if !$path|strpos:'span'}<span class="navigation_page">{$path}</span>{else}{$path}{/if}{/if}
+	<a href="{$base_dir}" title="{l s='return to Home'}"><img src="{$img_dir}icon/home.gif" height="26" width="26" alt="{l s='Home'}" /></a>
+	{if isset($path) AND $path}
+		<span class="navigation-pipe" {if isset($category) && $category->id_category == 1}style="display:none;"{/if}>{$navigationPipe|escape:html:'UTF-8'}</span>
+		{if !$path|strpos:'span'}
+			<span class="navigation_page">{$path}</span>
+		{else}
+			{$path}
+		{/if}
+	{/if}
 </div>
 <!-- /Breadcrumb -->

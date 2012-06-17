@@ -1,5 +1,5 @@
 /*
-* 2007-2011 PrestaShop
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,8 +18,8 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
-*  @version  Release: $Revision: 8140 $
+*  @copyright  2007-2012 PrestaShop SA
+*  @version  Release: $Revision: 6844 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 */
@@ -30,34 +30,34 @@ $('document').ready(function(){
 
 reloadProductComparison = function() {
 	$('a.cmp_remove').click(function(){
-	
+
 		var idProduct = $(this).attr('rel').replace('ajax_id_product_', '');
-		
+
 		$.ajax({
-  			url: 'products-comparison.php?ajax=1&action=remove&id_product=' + idProduct,
+  			url: 'index.php?controller=products-comparison&ajax=1&action=remove&id_product=' + idProduct,
  			async: false,
   			success: function(){
-  				return true;
-    		}
+	return true;
+}
 		});	
 	});
-	
+
 	$('input:checkbox.comparator').click(function(){
 	
 		var idProduct = $(this).attr('value').replace('comparator_item_', '');
 		var checkbox = $(this);
 		
 		if(checkbox.is(':checked'))
-		{
+{
 			$.ajax({
-	  			url: 'products-comparison.php?ajax=1&action=add&id_product=' + idProduct,
+	  			url: 'index.php?controller=products-comparison&ajax=1&action=add&id_product=' + idProduct,
 	 			async: true,
 	  			success: function(data){
 	  				if (data == '0')
 	  				{
 	  					checkbox.attr('checked', false);
-		    			alert(max_item);
-	  				}
+		alert(max_item);
+}
 	  			},
 	    		error: function(){
 	    			checkbox.attr('checked', false);
@@ -67,7 +67,7 @@ reloadProductComparison = function() {
 		else
 		{
 			$.ajax({
-	  			url: 'products-comparison.php?ajax=1&action=remove&id_product=' + idProduct,
+	  			url: 'index.php?controller=products-comparison&ajax=1&action=remove&id_product=' + idProduct,
 	 			async: true,
 	  			success: function(data){
 	  				if (data == '0')

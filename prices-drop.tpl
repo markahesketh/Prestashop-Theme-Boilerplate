@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop 
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,21 +18,23 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
+*  @copyright  2007-2012 PrestaShop SA
 *  @version  Release: $Revision: 6594 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
 {capture name=path}{l s='Price drop'}{/capture}
-{include file="$tpl_dir./breadcrumb.tpl"}
+{include file="./breadcrumb.tpl"}
 
 <h1>{l s='Price drop'}</h1>
 
 {if $products}
-	{include file="$tpl_dir./product-sort.tpl"}
-	{include file="$tpl_dir./product-list.tpl" products=$products}
-	{include file="$tpl_dir./pagination.tpl"}
+	<div class="sortPagiBar clearfix">
+	{include file="./product-sort.tpl"}
+	</div>
+	{include file="./product-list.tpl" products=$products}
+	{include file="./pagination.tpl"}
 {else}
 	<p class="warning">{l s='No price drop.'}</p>
 {/if}

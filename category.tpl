@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,8 +18,8 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
-*  @version  Release: $Revision: 8544 $
+*  @copyright  2007-2012 PrestaShop SA
+*  @version  Release: $Revision: 6844 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
@@ -29,31 +29,40 @@
 
 {if isset($category)}
 	{if $category->id AND $category->active}
-
 		<h1>
 			{strip}
 				{$category->name|escape:'htmlall':'UTF-8'}
-				{$categoryNameComplement|escape:'htmlall':'UTF-8'}
-				<span class="category-product-count">
-					{include file="$tpl_dir./category-count.tpl"}
-				</span>
+				{if isset($categoryNameComplement)}
+					{$categoryNameComplement|escape:'htmlall':'UTF-8'}
+				{/if}
 			{/strip}
 		</h1>
-
-		{if $scenes}
-			<!-- Scenes -->
-			{include file="$tpl_dir./scenes.tpl" scenes=$scenes}
-		{else}
-			<!-- Category image -->
-			{if $category->id_image}
-			<div class="align_center">
-				<img src="{$link->getCatImageLink($category->link_rewrite, $category->id_image, 'category')}" alt="{$category->name|escape:'htmlall':'UTF-8'}" title="{$category->name|escape:'htmlall':'UTF-8'}" id="categoryImage" width="{$categorySize.width}" height="{$categorySize.height}" />
-			</div>
+		
+		<div class="resumecat category-product-count">
+			{include file="$tpl_dir./category-count.tpl"}
+		</div>
+		
+		{if $scenes || $category->description || $category->id_image}
+		<div class="content_scene_cat">
+			{if $scenes}
+				<!-- Scenes -->
+				{include file="$tpl_dir./scenes.tpl" scenes=$scenes}
+			{else}
+				<!-- Category image -->
+				{if $category->id_image}
+				<div class="align_center">
+					<img src="{$link->getCatImageLink($category->link_rewrite, $category->id_image, 'category')}" alt="{$category->name|escape:'htmlall':'UTF-8'}" title="{$category->name|escape:'htmlall':'UTF-8'}" id="categoryImage" width="{$categorySize.width}" height="{$categorySize.height}" />
+				</div>
+				{/if}
 			{/if}
-		{/if}
 
-		{if $category->description}
-			<div class="cat_desc">{$category->description}</div>
+			{if $category->description}
+				<div class="cat_desc">
+					<p>{$category->description}</p>
+					<a href="#" class="lnk_more">{l s='More'}</a>
+				</div>
+			{/if}
+		</div>
 		{/if}
 		{if isset($subcategories)}
 		<!-- Subcategories -->
@@ -61,15 +70,18 @@
 			<h3>{l s='Subcategories'}</h3>
 			<ul class="inline_list">
 			{foreach from=$subcategories item=subcategory}
-				<li>
-					<a href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'htmlall':'UTF-8'}" title="{$subcategory.name|escape:'htmlall':'UTF-8'}">
+				<li class="clearfix">
+					<a href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'htmlall':'UTF-8'}" title="{$subcategory.name|escape:'htmlall':'UTF-8'}" class="img">
 						{if $subcategory.id_image}
 							<img src="{$link->getCatImageLink($subcategory.link_rewrite, $subcategory.id_image, 'medium')}" alt="" width="{$mediumSize.width}" height="{$mediumSize.height}" />
 						{else}
 							<img src="{$img_cat_dir}default-medium.jpg" alt="" width="{$mediumSize.width}" height="{$mediumSize.height}" />
 						{/if}
-					</a><br />
-					<a href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'htmlall':'UTF-8'}">{$subcategory.name|escape:'htmlall':'UTF-8'}</a>
+					</a>
+					<a href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'htmlall':'UTF-8'}" class="cat_name">{$subcategory.name|escape:'htmlall':'UTF-8'}</a>
+					{if $subcategory.description}
+						<p class="cat_desc">{$subcategory.description}</p>
+					{/if}
 				</li>
 			{/foreach}
 			</ul>
@@ -78,14 +90,28 @@
 		{/if}
 
 		{if $products}
-				{include file="$tpl_dir./product-compare.tpl"}
-				{include file="$tpl_dir./product-sort.tpl"}
-				{include file="$tpl_dir./product-list.tpl" products=$products}
-				{include file="$tpl_dir./product-compare.tpl"}
+			<div class="content_sortPagiBar">
 				{include file="$tpl_dir./pagination.tpl"}
-			{elseif !isset($subcategories)}
-				<p class="warning">{l s='There are no products in this category.'}</p>
-			{/if}
+				<div class="sortPagiBar clearfix">
+					{include file="./product-sort.tpl"}
+					{include file="./product-compare.tpl"}
+					{include file="./nbr-product-page.tpl"}
+				</div>
+			</div>
+			
+			{include file="./product-list.tpl" products=$products}
+			
+			<div class="content_sortPagiBar">
+				<div class="sortPagiBar clearfix">
+					{include file="./product-sort.tpl"}
+					{include file="./product-compare.tpl"}
+					{include file="./nbr-product-page.tpl"}
+				</div>
+				{include file="./pagination.tpl"}
+			</div>
+		{elseif !isset($subcategories)}
+			<p class="warning">{l s='There are no products in this category.'}</p>
+		{/if}
 	{elseif $category->id}
 		<p class="warning">{l s='This category is currently unavailable.'}</p>
 	{/if}

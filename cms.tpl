@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop 
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,12 +18,12 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
-*  @version  Release: $Revision: 8193 $
+*  @copyright  2007-2012 PrestaShop SA
+*  @version  Release: $Revision: 6594 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
-{if isset($cms) && $cms->id != $cgv_id}
+{if isset($cms) && ($content_only == 0)}
 	{include file="$tpl_dir./breadcrumb.tpl"}
 {/if}
 {if isset($cms) && !isset($category)}
@@ -47,7 +47,7 @@
 	<div class="block-cms">
 		<h1><a href="{if $category->id eq 1}{$base_dir}{else}{$link->getCategoryLink($category->id, $category->link_rewrite)}{/if}">{$category->name|escape:'htmlall':'UTF-8'}</a></h1>
 		{if isset($sub_category) & !empty($sub_category)}	
-			<h4>{l s='List of sub categories in '}{$category->name}{l s=':'}</h4>
+			<h4>{l s='List of sub categories in %s:' sprintf=$category->name}</h4>
 			<ul class="bullet">
 				{foreach from=$sub_category item=subcategory}
 					<li>
@@ -57,7 +57,7 @@
 			</ul>
 		{/if}
 		{if isset($cms_pages) & !empty($cms_pages)}
-		<h4>{l s='List of pages in '}{$category->name}{l s=':'}</h4>
+		<h4>{l s='List of pages in %s:' sprintf=$category->name}</h4>
 			<ul class="bullet">
 				{foreach from=$cms_pages item=cmspages}
 					<li>

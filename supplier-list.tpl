@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop 
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,7 +18,7 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
+*  @copyright  2007-2012 PrestaShop SA
 *  @version  Release: $Revision: 6594 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
@@ -33,21 +33,22 @@
 	{include file="$tpl_dir./errors.tpl"}
 {else}
 
-	<p>{strip}
+	<p class="nbrmanufacturer">{strip}
 		<span class="bold">
 			{if $nbSuppliers == 0}{l s='There are no suppliers.'}
 			{else}
-				{if $nbSuppliers == 1}{l s='There is'}{else}{l s='There are'}{/if}&#160;
-				{$nbSuppliers}&#160;
-				{if $nbSuppliers == 1}{l s='supplier.'}{else}{l s='suppliers.'}{/if}
+				{if $nbSuppliers == 1}
+					{l s='There is %d supplier.' sprintf=$nbSuppliers}
+				{else}
+					{l s='There are %d suppliers.' sprintf=$nbSuppliers}
+				{/if}
 			{/if}
 		</span>{/strip}
 	</p>
-
 {if $nbSuppliers > 0}
 	<ul id="suppliers_list">
-	{foreach from=$suppliers item=supplier name=suppliers}
-		<li class="{if $smarty.foreach.suppliers.first}first_item{elseif $smarty.foreach.suppliers.last}last_item{else}item{/if}"> 
+	{foreach $suppliers_list as $supplier}
+		<li class="clearfix {if $supplier@first}first_item{elseif $supplier@last}last_item{else}item{/if}">
 			<div class="left_side">
 				<!-- logo -->
 				<div class="logo">
@@ -74,30 +75,27 @@
 				{if $supplier.nb_products > 0}
 					<a href="{$link->getsupplierLink($supplier.id_supplier, $supplier.link_rewrite)|escape:'htmlall':'UTF-8'}">
 				{/if}
-				{$supplier.description|escape:'htmlall':'UTF-8'}
+						{$supplier.description|escape:'htmlall':'UTF-8'}
 				{if $supplier.nb_products > 0}
 				</a>
+				{/if}
+			
+				{if $supplier.nb_products > 0}
+					<a href="{$link->getsupplierLink($supplier.id_supplier, $supplier.link_rewrite)|escape:'htmlall':'UTF-8'}">
+				{/if}
+					<span>{if $supplier.nb_products == 1}{l s='%d product' sprintf=$supplier.nb_products|intval}{else}{l s='%d products' sprintf=$supplier.nb_products|intval}{/if}</span>
+				{if $supplier.nb_products > 0}
+					</a>
 				{/if}
 				</p>
 
 			</div>
 
 			<div class="right_side">
-			
-			{if $supplier.nb_products > 0}
-				<a href="{$link->getsupplierLink($supplier.id_supplier, $supplier.link_rewrite)|escape:'htmlall':'UTF-8'}">
-			{/if}
-				<span>{$supplier.nb_products|intval} {if $supplier.nb_products == 1}{l s='product'}{else}{l s='products'}{/if}</span>
-			{if $supplier.nb_products > 0}
-				</a>
-			{/if}
-
 			{if $supplier.nb_products > 0}
 				<a class="button" href="{$link->getsupplierLink($supplier.id_supplier, $supplier.link_rewrite)|escape:'htmlall':'UTF-8'}">{l s='view products'}</a>
 			{/if}
-
 			</div>
-			<br class="clear"/>
 		</li>
 	{/foreach}
 	</ul>

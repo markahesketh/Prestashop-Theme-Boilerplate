@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,7 +18,7 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
+*  @copyright  2007-2012 PrestaShop SA
 *  @version  Release: $Revision: 6594 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
@@ -66,7 +66,7 @@
 			<p id="desc_contact0" class="desc_contact">&nbsp;</p>
 				{foreach from=$contacts item=contact}
 					<p id="desc_contact{$contact.id_contact|intval}" class="desc_contact" style="display:none;">
-						<label>&nbsp;</label>{$contact.description|escape:'htmlall':'UTF-8'}
+						{$contact.description|escape:'htmlall':'UTF-8'}
 					</p>
 				{/foreach}
 			{/if}
@@ -80,7 +80,7 @@
 			</p>
 		{if !$PS_CATALOG_MODE}
 			{if (!isset($customerThread.id_order) || $customerThread.id_order > 0)}
-			<p class="text">
+			<p class="text select">
 				<label for="id_order">{l s='Order ID'}</label>
 				{if !isset($customerThread.id_order) && isset($isLogged) && $isLogged == 1}
 					<select name="id_order" ><option value="0">{l s='-- Choose --'}</option>{$orderList}</select>
@@ -92,7 +92,7 @@
 			</p>
 			{/if}
 			{if isset($isLogged) && $isLogged}
-			<p class="text">
+			<p class="text select">
 			<label for="id_product">{l s='Product'}</label>
 				{if !isset($customerThread.id_product)}
 					<select name="id_product" style="width:300px;"><option value="0">{l s='-- Choose --'}</option>{$orderedProductList}</select>
@@ -111,7 +111,7 @@
 		{/if}
 		<p class="textarea">
 			<label for="message">{l s='Message'}</label>
-			 <textarea id="message" name="message" rows="15" cols="20" style="width:340px;height:220px">{if isset($message)}{$message|escape:'htmlall':'UTF-8'|stripslashes}{/if}</textarea>
+			 <textarea id="message" name="message" rows="15" cols="10">{if isset($message)}{$message|escape:'htmlall':'UTF-8'|stripslashes}{/if}</textarea>
 		</p>
 		<p class="submit">
 			<input type="submit" name="submitMessage" id="submitMessage" value="{l s='Send'}" class="button_large" onclick="$(this).hide();" />

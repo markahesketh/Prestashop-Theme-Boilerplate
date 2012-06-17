@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,8 +18,8 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
-*  @version  Release: $Revision: 9939 $
+*  @copyright  2007-2012 PrestaShop SA
+*  @version  Release: $Revision: 6844 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
@@ -33,7 +33,7 @@
 {if isset($p) AND $p}
 	{if isset($smarty.get.id_category) && $smarty.get.id_category && isset($category)}
 		{if !isset($current_url)}
-			{assign var='requestPage' value=$link->getPaginationLink('category', $category, false, false, true, false)}
+		{assign var='requestPage' value=$link->getPaginationLink('category', $category, false, false, true, false)}
 		{else}
 			{assign var='requestPage' value=$current_url}
 		{/if}
@@ -58,6 +58,13 @@
 		{else}
 			<li id="pagination_previous" class="disabled"><span>&laquo;&nbsp;{l s='Previous'}</span></li>
 		{/if}
+		{if $start==3}
+			<li><a {$no_follow_text}  href="{$link->goPage($requestPage, 1)}">1</a></li>
+			<li><a {$no_follow_text}  href="{$link->goPage($requestPage, 2)}">2</a></li>
+		{/if}
+		{if $start==2}
+			<li><a {$no_follow_text}  href="{$link->goPage($requestPage, 1)}">1</a></li>
+		{/if}
 		{if $start>3}
 			<li><a {$no_follow_text}  href="{$link->goPage($requestPage, 1)}">1</a></li>
 			<li class="truncate">...</li>
@@ -71,6 +78,13 @@
 		{/section}
 		{if $pages_nb>$stop+2}
 			<li class="truncate">...</li>
+			<li><a href="{$link->goPage($requestPage, $pages_nb)}">{$pages_nb|intval}</a></li>
+		{/if}
+		{if $pages_nb==$stop+1}
+			<li><a href="{$link->goPage($requestPage, $pages_nb)}">{$pages_nb|intval}</a></li>
+		{/if}
+		{if $pages_nb==$stop+2}
+			<li><a href="{$link->goPage($requestPage, $pages_nb-1)}">{$pages_nb-1|intval}</a></li>
 			<li><a href="{$link->goPage($requestPage, $pages_nb)}">{$pages_nb|intval}</a></li>
 		{/if}
 		{if $pages_nb > 1 AND $p != $pages_nb}

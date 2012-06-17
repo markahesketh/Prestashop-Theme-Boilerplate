@@ -1,5 +1,5 @@
 /*
-* 2007-2011 PrestaShop 
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,16 +18,16 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
-*  @version  Release: $Revision: 6826 $
+*  @copyright  2007-2012 PrestaShop SA
+*  @version  Release: $Revision: 6752 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
 function initMarkers()
 {
-	var localSearchUrl = searchUrl + '?ajax=1&all=1';
-	downloadUrl(localSearchUrl, function(data) {
+	searchUrl += '?ajax=1&all=1';
+	downloadUrl(searchUrl, function(data) {
 		var xml = parseXml(data);
 		var markerNodes = xml.documentElement.getElementsByTagName('marker');
 		var bounds = new google.maps.LatLngBounds();
@@ -35,14 +35,14 @@ function initMarkers()
 		{
 			var name = markerNodes[i].getAttribute('name');
 			var address = markerNodes[i].getAttribute('address');
-			var addressNoHtml = markerNodes[i].getAttribute('addressNoHtml');				
+			var addressNoHtml = markerNodes[i].getAttribute('addressNoHtml');
 			var other = markerNodes[i].getAttribute('other');
 			var id_store = markerNodes[i].getAttribute('id_store');
 			var has_store_picture = markerNodes[i].getAttribute('has_store_picture');
 			var latlng = new google.maps.LatLng(
 			parseFloat(markerNodes[i].getAttribute('lat')),
 			parseFloat(markerNodes[i].getAttribute('lng')));
-			createMarker(latlng, name, address, addressNoHtml, other, id_store, has_store_picture);
+			createMarker(latlng, name, address, other, id_store, has_store_picture);
 			bounds.extend(latlng);
 		}
 	});
@@ -90,8 +90,8 @@ function clearLocations(n)
 function searchLocationsNear(center)
 {
 	var radius = document.getElementById('radiusSelect').value;
-	var localSearchUrl = searchUrl + '?ajax=1&latitude=' + center.lat() + '&longitude=' + center.lng() + '&radius=' + radius;
-	downloadUrl(localSearchUrl, function(data) {
+	var searchUrl = baseDir+'stores.php?ajax=1&latitude=' + center.lat() + '&longitude=' + center.lng() + '&radius=' + radius;
+	downloadUrl(searchUrl, function(data) {
 		var xml = parseXml(data);
 		var markerNodes = xml.documentElement.getElementsByTagName('marker');
 		var bounds = new google.maps.LatLngBounds();
@@ -135,7 +135,7 @@ function searchLocationsNear(center)
 	});
 }
 
-function createMarker(latlng, name, address, addressNoHtml, other, id_store, has_store_picture)
+function createMarker(latlng, name, address, other, id_store, has_store_picture)
 {
 	var html = '<b>'+name+'</b><br/>'+address+(has_store_picture == 1 ? '<br /><br /><img src="'+img_store_dir+parseInt(id_store)+'-medium.jpg" alt="" />' : '')+other+'<br /><a href="http://maps.google.com/maps?saddr=&daddr='+latlng+'" target="_blank">'+translation_5+'<\/a>';
 	var image = new google.maps.MarkerImage(img_ps_dir+'logo_stores.gif');

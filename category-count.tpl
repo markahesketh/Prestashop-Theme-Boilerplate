@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop 
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,14 +18,17 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
-*  @version  Release: $Revision: 8544 $
+*  @copyright  2007-2012 PrestaShop SA
+*  @version  Release: $Revision: 15230 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
-{if $category->id == 1 OR $nb_products == 0}{l s='There are no products.'}
+{if $category->id == 1 OR $nb_products == 0}
+	{l s='There are no products.'}
 {else}
-	{if $nb_products == 1}{l s='There is'}{else}{l s='There are'}{/if}
-	{$nb_products}
-	{if $nb_products == 1}{l s='product.'}{else}{l s='products.'}{/if}
+	{if $nb_products == 1}
+		{l s='There is %d product.' sprintf=$nb_products}
+	{else}
+		{l s='There are %d products.' sprintf=$nb_products}
+	{/if}
 {/if}

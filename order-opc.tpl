@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,26 +18,32 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
-*  @version  Release: $Revision: 9020 $
+*  @copyright  2007-2012 PrestaShop SA
+*  @version  Release: $Revision: 6594 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
+
+{if $opc}
+	{assign var="back_order_page" value="order-opc.php"}
+	{else}
+	{assign var="back_order_page" value="order.php"}
+{/if}
 
 {if $PS_CATALOG_MODE}
 	{capture name=path}{l s='Your shopping cart'}{/capture}
 	{include file="$tpl_dir./breadcrumb.tpl"}
 	<h2 id="cart_title">{l s='Your shopping cart'}</h2>
-	<p class="warning">{l s='This store has not accepted your new order.'}</p>
+	<p class="warning">{l s='Your new order was not accepted.'}</p>
 {else}
 <script type="text/javascript">
 	// <![CDATA[
 	var imgDir = '{$img_dir}';
-	var authenticationUrl = '{$link->getPageLink("authentication.php", true)}';
-	var orderOpcUrl = '{$link->getPageLink("order-opc.php", true)}';
-	var historyUrl = '{$link->getPageLink("history.php", true)}';
-	var guestTrackingUrl = '{$link->getPageLink("guest-tracking.php", true)}';
-	var addressUrl = '{$link->getPageLink("address.php", true)}';
+	var authenticationUrl = '{$link->getPageLink("authentication", true)}';
+	var orderOpcUrl = '{$link->getPageLink("order-opc", true)}';
+	var historyUrl = '{$link->getPageLink("history", true)}';
+	var guestTrackingUrl = '{$link->getPageLink("guest-tracking", true)}';
+	var addressUrl = '{$link->getPageLink("address", true, NULL, "back={$back_order_page}")}';
 	var orderProcess = 'order-opc';
 	var guestCheckoutEnabled = {$PS_GUEST_CHECKOUT_ENABLED|intval};
 	var currencySign = '{$currencySign|html_entity_decode:2:"UTF-8"}';
@@ -51,14 +57,14 @@
 	var countriesNeedIDNumber = new Array();
 	var countriesNeedZipCode = new Array();
 	var vat_management = {$vat_management|intval};
-
+	
 	var txtWithTax = "{l s='(tax incl.)'}";
 	var txtWithoutTax = "{l s='(tax excl.)'}";
 	var txtHasBeenSelected = "{l s='has been selected'}";
 	var txtNoCarrierIsSelected = "{l s='No carrier has been selected'}";
 	var txtNoCarrierIsNeeded = "{l s='No carrier is needed for this order'}";
 	var txtConditionsIsNotNeeded = "{l s='No terms of service must be accepted'}";
-	var txtTOSIsAccepted = "{l s='Terms of service is accepted'}";
+	var txtTOSIsAccepted = "{l s='Terms of service have been accepted'}";
 	var txtTOSIsNotAccepted = "{l s='Terms of service have not been accepted'}";
 	var txtThereis = "{l s='There is'}";
 	var txtErrors = "{l s='error(s)'}";
@@ -91,7 +97,7 @@
 		<!-- Carrier -->
 		{include file="$tpl_dir./order-carrier.tpl"}
 		<!-- END Carrier -->
-
+	
 		<!-- Payment -->
 		{include file="$tpl_dir./order-payment.tpl"}
 		<!-- END Payment -->

@@ -1,5 +1,5 @@
 {*
-* 2007-2011 PrestaShop 
+* 2007-2012 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,13 +18,13 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2011 PrestaShop SA
-*  @version  Release: $Revision: 8088 $
+*  @copyright  2007-2012 PrestaShop SA
+*  @version  Release: $Revision: 6599 $
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-{capture name=path}<a href="{$link->getPageLink('my-account.php', true)}">{l s='My account'}</a><span class="navigation-pipe">{$navigationPipe}</span>{l s='Your personal information'}{/capture}
+{capture name=path}<a href="{$link->getPageLink('my-account', true)}">{l s='My account'}</a><span class="navigation-pipe">{$navigationPipe}</span>{l s='Your personal information'}{/capture}
 {include file="$tpl_dir./breadcrumb.tpl"}
 
 <h1>{l s='Your personal information'}</h1>
@@ -37,32 +37,32 @@
 		{if isset($pwd_changed)}<br />{l s='Your password has been sent to your e-mail:'} {$email|escape:'htmlall':'UTF-8'}{/if}
 	</p>
 {else}
-	<h3>{l s='Please do not hesitate to update your personal information if it has changed.'}</h3>
+	<h3>{l s='Please be sure to update your personal information if it has changed.'}</h3>
 	<p class="required"><sup>*</sup>{l s='Required field'}</p>
-	<form action="{$link->getPageLink('identity.php', true)}" method="post" class="std">
+	<form action="{$link->getPageLink('identity', true)}" method="post" class="std">
 		<fieldset>
 			<p class="radio">
 				<span>{l s='Title'}</span>
-				<input type="radio" id="id_gender1" name="id_gender" value="1" {if $smarty.post.id_gender == 1 OR !$smarty.post.id_gender}checked="checked"{/if} />
-				<label for="id_gender1">{l s='Mr.'}</label>
-				<input type="radio" id="id_gender2" name="id_gender" value="2" {if $smarty.post.id_gender == 2}checked="checked"{/if} />
-				<label for="id_gender2">{l s='Ms.'}</label>
+				{foreach from=$genders key=k item=gender}
+					<input type="radio" name="id_gender" id="id_gender{$gender->id}" value="{$gender->id}" {if isset($smarty.post.id_gender) && $smarty.post.id_gender == $gender->id}checked="checked"{/if} />
+					<label for="id_gender{$gender->id}" class="top">{$gender->name}</label>
+				{/foreach}
 			</p>
 			<p class="required text">
-				<label for="firstname">{l s='First name'}</label>
-				<input type="text" id="firstname" name="firstname" value="{$smarty.post.firstname}" /> <sup>*</sup>
+				<label for="firstname">{l s='First name'} <sup>*</sup></label>
+				<input type="text" id="firstname" name="firstname" value="{$smarty.post.firstname}" />
 			</p>
 			<p class="required text">
-				<label for="lastname">{l s='Last name'}</label>
-				<input type="text" name="lastname" id="lastname" value="{$smarty.post.lastname}" /> <sup>*</sup>
+				<label for="lastname">{l s='Last name'} <sup>*</sup></label>
+				<input type="text" name="lastname" id="lastname" value="{$smarty.post.lastname}" />
 			</p>
 			<p class="required text">
-				<label for="email">{l s='E-mail'}</label>
-				<input type="text" name="email" id="email" value="{$smarty.post.email}" /> <sup>*</sup>
+				<label for="email">{l s='E-mail'} <sup>*</sup></label>
+				<input type="text" name="email" id="email" value="{$smarty.post.email}" />
 			</p>
 			<p class="required text">
-				<label for="old_passwd">{l s='Current Password'}</label>
-				<input type="password" name="old_passwd" id="old_passwd" /> <sup>*</sup>
+				<label for="old_passwd">{l s='Current Password'} <sup>*</sup></label>
+				<input type="password" name="old_passwd" id="old_passwd" />
 			</p>
 			<p class="password">
 				<label for="passwd">{l s='New Password'}</label>
@@ -97,7 +97,7 @@
 				<select id="months" name="months">
 					<option value="">-</option>
 					{foreach from=$months key=k item=v}
-						<option value="{$k|escape:'htmlall':'UTF-8'}" {if ($sl_month == $k)}selected="selected"{/if}>{l s="$v"}&nbsp;</option>
+						<option value="{$k|escape:'htmlall':'UTF-8'}" {if ($sl_month == $k)}selected="selected"{/if}>{l s=$v}&nbsp;</option>
 					{/foreach}
 				</select>
 				<select id="years" name="years">
@@ -120,14 +120,14 @@
 			<p class="submit">
 				<input type="submit" class="button" name="submitIdentity" value="{l s='Save'}" />
 			</p>
+			<p id="security_informations">
+				{l s='[Insert customer data privacy clause or law here, if applicable]'}
+			</p>
 		</fieldset>
 	</form>
-	<p id="security_informations">
-		{l s='[Insert customer data privacy clause or law here, if applicable]'}
-	</p>
 {/if}
 
 <ul class="footer_links">
-	<li><a href="{$link->getPageLink('my-account.php', true)}"><img src="{$img_dir}icon/my-account.gif" alt="" class="icon" /></a><a href="{$link->getPageLink('my-account.php', true)}">{l s='Back to Your Account'}</a></li>
-	<li><a href="{$base_dir}"><img src="{$img_dir}icon/home.gif" alt="" class="icon" /></a><a href="{$base_dir}">{l s='Home'}</a></li>
+	<li><a href="{$link->getPageLink('my-account', true)}"><img src="{$img_dir}icon/my-account.gif" alt="" class="icon" /></a><a href="{$link->getPageLink('my-account', true)}">{l s='Back to your account'}</a></li>
+	<li class="f_right"><a href="{$base_dir}"><img src="{$img_dir}icon/home.gif" alt="" class="icon" /> {l s='Home'}</a></li>
 </ul>
