@@ -24,22 +24,40 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$lang_iso}">
+ <!DOCTYPE html>
+ <!--[if IE]><![endif]-->
+ <html lang="{$meta_language}">
 	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		{* Title set in Back Office > SEO & Titles. *}
 		<title>{$meta_title|escape:'htmlall':'UTF-8'}</title>
-{if isset($meta_description) AND $meta_description}
-		<meta name="description" content="{$meta_description|escape:html:'UTF-8'}" />
-{/if}
-{if isset($meta_keywords) AND $meta_keywords}
-		<meta name="keywords" content="{$meta_keywords|escape:html:'UTF-8'}" />
-{/if}
-		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
-		<meta http-equiv="content-language" content="{$meta_language}" />
-		<meta name="generator" content="PrestaShop" />
+
+		{* Meta description for SERPs. *}
+		{if isset($meta_description) AND $meta_description}
+				<meta name="description" content="{$meta_description|escape:html:'UTF-8'}" />
+		{/if}
+
+		{* Keywords are nearly useless these days, but PrestaShop has the functionality and some clients may require them (Ref: http://bit.ly/P4FuYL). *}
+		{if isset($meta_keywords) AND $meta_keywords}
+				<meta name="keywords" content="{$meta_keywords|escape:html:'UTF-8'}" />
+		{/if}
+
+		{* Set robots based upon Back Office config. Don't forget to generate a robots.txt too. *}
 		<meta name="robots" content="{if isset($nobots)}no{/if}index,{if isset($nofollow) && $nofollow}no{/if}follow" />
-		<link rel="icon" type="image/vnd.microsoft.icon" href="{$favicon_url}?{$img_update_time}" />
-		<link rel="shortcut icon" type="image/x-icon" href="{$favicon_url}?{$img_update_time}" />
+		
+		{* Favicon is displayed in address bar and bookmark bars in visitor's browser (Ref: http://bit.ly/P4F7xg). *}
+  		<link rel="icon" href="{$favicon_url}?{$img_update_time}">
+
+		{* Include all CSS files from page controller's SetMedia() *}
+		{if isset($css_files)}
+			{foreach from=$css_files key=css_uri item=media}
+			<link href="{$css_uri}" rel="stylesheet" type="text/css" media="{$media}" />
+			{/foreach}
+		{/if}
+
+		{* Required Prestashop JavaScript configuration. *}
 		<script type="text/javascript">
 			var baseDir = '{$content_dir}';
 			var static_token = '{$static_token}';
@@ -48,16 +66,15 @@
 			var priceDisplayMethod = {$priceDisplay};
 			var roundMode = {$roundMode};
 		</script>
-{if isset($css_files)}
-	{foreach from=$css_files key=css_uri item=media}
-	<link href="{$css_uri}" rel="stylesheet" type="text/css" media="{$media}" />
-	{/foreach}
-{/if}
-{if isset($js_files)}
-	{foreach from=$js_files item=js_uri}
-	<script type="text/javascript" src="{$js_uri}"></script>
-	{/foreach}
-{/if}
+
+		{* Include all JavaScript files from page controller's SetMedia() *}
+		{if isset($js_files)}
+			{foreach from=$js_files item=js_uri}
+			<script type="text/javascript" src="{$js_uri}"></script>
+			{/foreach}
+		{/if}
+
+		{* Header modules hook *}
 		{$HOOK_HEADER}
 	</head>
 	
