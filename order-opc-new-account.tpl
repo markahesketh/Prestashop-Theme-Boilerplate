@@ -1,3 +1,10 @@
+{*
+ * =|= Checkout (OPC) - New Account / Login =====================
+ *
+ * Product rows to select in multi-shipping table.
+ * ==============================================================
+ *}
+ 
 <div id="opc_new_account" class="opc-main-block">
 	<div id="opc_new_account-overlay" class="opc-overlay" style="display: none;"></div>
 	<h2><span>1</span> {l s='Account'}</h2>
