@@ -38,6 +38,12 @@
 			<link href="{$css_uri}" rel="stylesheet" type="text/css" media="{$media}" />
 			{/foreach}
 		{/if}
+
+		{* IE9.js makes older versions of Internet Explorer behave like a standards-compliant browser. (Ref: http://bit.ly/LX9ox0) *}
+		<!--[if lt IE 9]><script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script><![endif]-->
+
+		{* HTML5Shiv enables HTML5 elements in older versions of Internet Explorer (Ref: http://bit.ly/LX9S6f) *}
+		<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
 	<body>
 		<div id="maintenance">
