@@ -1,0 +1,56 @@
+// == Imported Styles / Frameworks etc ======================================
+@import "includes/normalize.less";
+@import "includes/grid.less";
+@import "includes/typography.less";
+@import "includes/mixins.less";
+
+@column-width: 60;
+@gutter-width: 20;
+@columns: 12;
+@total-width: 100%;
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	margin: 0 auto;
+	max-width: 1105px;
+}
+
+// == Sidebars ==============================================================
+#left_column,
+#right_column {
+	.column(3);
+	.font-size(12);
+
+	// Module Titles
+	h1 {
+		.font-size(14);
+		border-bottom: 1px solid #999;
+		padding-bottom: 0.3em;
+		margin-bottom: 0.3em;
+	}
+
+	// Module Blocks
+	.block {
+		margin-bottom: 30px;
+
+		// Lists such as categories, suppliers and manufacturers
+		ol, ul {.nobullets}
+		ul li {
+			border-bottom: 1px dotted #CCC;
+
+			a {
+				display:block;
+				padding:7px 11px;
+				&:hover {background: #fafafa;}
+			}
+		}
+	}
+}
+
+// == Center content ========================================================
+#center_column {
+	.column(6);
+}

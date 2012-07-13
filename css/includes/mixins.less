@@ -1,0 +1,36 @@
+// == Common Mixins ========================================================
+
+// Image replacement - http://bit.ly/MlDc6p
+.ir {
+	font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+}
+
+// The micro clearfix - http://bit.ly/MlCNAW
+.clearfix() {
+	*zoom:1;
+	
+	&:before,
+	&:after {
+	    content:"";
+	    display:table;
+	}
+	&:after {
+	    clear:both;
+	}
+}
+
+// em font sizing relative to the root (Html) element - http://bit.ly/NwjdmM 
+.font-size(@sizeValue){
+  @remValue: (@sizeValue / 10);
+  @pxValue: @sizeValue;
+  font-size: ~"@{pxValue}px"; 
+  font-size: ~"@{remValue}rem";
+}
+
+.nobullets() {
+	list-style-type: none;
+	padding-left: 0;
+	margin: 0;
+}

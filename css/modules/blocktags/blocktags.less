@@ -1,0 +1,17 @@
+// == Imported Styles / Frameworks etc ======================================
+@import "../../includes/mixins.less";
+
+.tags_block {
+	ol {
+		li {
+			display: inline;
+			margin-right: 1em;
+		}
+		a {
+			display: inline;
+			&.tag_level1 {.font-size(18);}
+			&.tag_level2 {.font-size(14);}
+			&.tag_level3 {.font-size(11);}
+		}
+	}
+}

@@ -1,0 +1,24 @@
+.ir {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}
+.tags_block ol li {
+  display: inline;
+  margin-right: 1em;
+}
+.tags_block ol a {
+  display: inline;
+}
+.tags_block ol a.tag_level1 {
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+.tags_block ol a.tag_level2 {
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+.tags_block ol a.tag_level3 {
+  font-size: 11px;
+  font-size: 1.1rem;
+}

@@ -6,18 +6,22 @@
  * ==============================================================
  *}
 
-		{if !$content_only}
-				</div>
-
-<!-- Right -->
-				<div id="right_column" class="column grid_2 omega">
-					{$HOOK_RIGHT_COLUMN}
-				</div>
-			</div>
-
-<!-- Footer -->
-			<div id="footer" class="grid_9 alpha omega clearfix">{$HOOK_FOOTER}</div>
+{if !$content_only}
+		{* End of center content *}
 		</div>
-	{/if}
-	</body>
+
+		{* Right sidebar *}
+		<aside id="right_column">
+			{$HOOK_RIGHT_COLUMN}
+		</aside>
+
+		{* Footer *}
+		<footer>
+			{$HOOK_FOOTER}
+		</footer>
+
+	{* End of #page *}
+	</div>
+{/if}
+</body>
 </html>

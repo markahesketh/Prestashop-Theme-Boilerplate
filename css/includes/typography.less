@@ -1,0 +1,122 @@
+// == Import Fonts =========================================================
+// eg @import "http://fonts.googleapis.com/css?family=Open+Sans:300,400";
+
+// == Font Stacks ==========================================================
+@header: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@serif: Georgia, Garamond, Times, serif;
+
+// == Colours ==============================================================
+@body: #4a4a4a;
+@heading: #2a2a2a; 
+@subheading: #6a6a6a;
+
+@darkgrey: #9a9a9a;
+@grey: #cacaca;
+@lightgrey: #eaeaea;
+
+@link: #08C;
+
+// == Headings =============================================================
+h1, h2, h3, h4, h5, h6 {
+	font: normal normal 1rem/1.2rem @header;
+	margin: 0;
+	color: @heading;
+	a, a:visited {text-decoration: none; border: none; color: @heading;}
+	a:hover {color: @link;}
+}
+
+h1 {font-size: 4.2em; font-weight: 300;}
+h2 {font-size: 3em;} 
+h3 {font-size: 2.3em;}
+h4 {font-size: 1.8em;} 
+h5 {font-size: 1.6em;}
+h6 {font-size: 1.4em;}
+
+// == Body =================================================================
+a {
+  color: @heading;
+  transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  -webkit-transition: color 0.3s;
+
+  &:hover {color: @link;}
+}
+p a, ul a {}
+
+.content {
+  p,ul,ol {
+    font: normal 1.4em/1.7em @sans-serif;
+  }
+  article .single {
+    p:first-child{margin-top: 0;}
+    h1,h2,h3,h4,h5 {
+      margin-top: 1.5em;
+      margin-bottom: 0.3em;
+    }
+    h2 {border-bottom: @grey dashed 1px; padding-bottom: 0.2em;}
+    h4 {font-size: 1.4em;font-weight: bold;text-transform: uppercase;}
+    h5 {font-size: 1.4em;font-weight: bold;}
+  }
+
+  img {
+    -webkit-box-shadow: 0 1px 2px #999;
+    -moz-box-shadow: 0 1px 2px #999;
+    box-shadow: 0 1px 2px #999;
+    display: block;
+    margin: 0 auto;
+  }
+
+  blockquote {
+  border-left: 3px solid #EEE; 
+  margin-left: 2em;
+  padding-left: 2em;
+  p {
+    font-style: italic;
+    font-family: @serif;
+    font-size: 1.5em;
+  }
+}
+}
+
+// == Block Elements ======================================================
+p, ul, ol, pre code, img, blockquote {
+	margin: 1em 0 1.5em 0;
+}
+
+code, pre {
+  padding: 0 3px 2px;
+  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-size: 12px;
+  color: #333;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+p > code {
+  padding: 2px 4px;
+  color: @link;
+  background-color: #F7F7F9;
+  border: 1px solid #E1E1E8;
+}
+
+pre {
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 9px;
+  font-size: 12.025px;
+  line-height: 18px;
+  background-color: whiteSmoke;
+  border: 1px solid #CCC;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+} 
