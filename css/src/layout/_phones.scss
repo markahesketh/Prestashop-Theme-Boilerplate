@@ -1,0 +1,9 @@
+@import "defines";
+/* Only Phones */
+@media (max-width: 767px) {}
+
+/* Only Phones (Landscape) */
+@media (min-width: 480px) and (max-width: 767px) {}
+
+/* Only Phones (Portrait) */
+@media (max-width: 479px) {}
