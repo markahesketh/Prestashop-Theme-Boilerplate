@@ -25,35 +25,35 @@ footer,
 #sidebar-a,
 #sidebar-b { 
 	@include width(2);
-	margin-left: 1.5em;}
+	margin-left: $gutter-em;}
 
 .sidebar-a-left {
 	#sidebar-a {
 		left:-$cols8;
-		margin-right:1.5em;
+		margin-right: $gutter-em;
 		margin-left: 0;}
 	
 	#sidebar-b {
-		margin-left: 1.5em;} }
+		margin-left: $gutter-em;} }
 
 .sidebar-b-left {
 	#sidebar-b {
 		left:-$cols8;
-		margin-right:1.5em;}
+		margin-right: $gutter-em;}
 		
 	#sidebar-a {
-		margin-left: 1.5em;} }
+		margin-left: $gutter-em;} }
 		
 	
 .sidebar-a-left #content,
 .sidebar-b-left #content {
-	left:$cols2 + 1.5em; }
+	left:$cols2 + $gutter-em; }
 	
 .sidebar-a-left.sidebar-b-left {
 	#sidebar-a, #sidebar-b {
 		left:-$cols8;
-		margin-right:1.5em;
+		margin-right: $gutter-em;
 		margin-left: 0; }
 		
 	#content {
-		left:$cols4 + 1.5em; } }
+		left:$cols4 + $gutter-em; } }

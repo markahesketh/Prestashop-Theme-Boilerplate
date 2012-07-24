@@ -7,7 +7,7 @@
 	Margin, padding, and border resets
 	except for form elements
 */
-/* line 59, src/includes/_frameless.scss */
+/* line 60, src/includes/_frameless.scss */
 body, div,
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre, dl, dt, dd, ol, ul, li,
@@ -22,26 +22,26 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 	Consistency fixes
 	adopted from http://necolas.github.com/normalize.css/
 */
-/* line 72, src/includes/_frameless.scss */
+/* line 73, src/includes/_frameless.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, nav, section, audio, canvas, video {
   display: block;
 }
 
-/* line 76, src/includes/_frameless.scss */
+/* line 77, src/includes/_frameless.scss */
 html {
   height: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 
-/* line 82, src/includes/_frameless.scss */
+/* line 83, src/includes/_frameless.scss */
 body {
   min-height: 100%;
   font-size: 100%;
 }
 
-/* line 84, src/includes/_frameless.scss */
+/* line 85, src/includes/_frameless.scss */
 sub, sup {
   font-size: 75%;
   line-height: 0;
@@ -49,46 +49,46 @@ sub, sup {
   vertical-align: baseline;
 }
 
-/* line 91, src/includes/_frameless.scss */
+/* line 92, src/includes/_frameless.scss */
 sup {
   top: -0.5em;
 }
 
-/* line 92, src/includes/_frameless.scss */
+/* line 93, src/includes/_frameless.scss */
 sub {
   bottom: -0.25em;
 }
 
-/* line 94, src/includes/_frameless.scss */
+/* line 95, src/includes/_frameless.scss */
 pre {
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-/* line 100, src/includes/_frameless.scss */
+/* line 101, src/includes/_frameless.scss */
 b, strong {
   font-weight: bold;
 }
 
-/* line 101, src/includes/_frameless.scss */
+/* line 102, src/includes/_frameless.scss */
 abbr[title] {
   border-bottom: 1px dotted;
 }
 
-/* line 103, src/includes/_frameless.scss */
+/* line 104, src/includes/_frameless.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 108, src/includes/_frameless.scss */
+/* line 109, src/includes/_frameless.scss */
 a img, img {
   -ms-interpolation-mode: bicubic;
   border: 0;
 }
 
-/* line 113, src/includes/_frameless.scss */
+/* line 114, src/includes/_frameless.scss */
 input, textarea, button, select {
   margin: 0;
   font-size: 100%;
@@ -96,7 +96,7 @@ input, textarea, button, select {
   vertical-align: baseline;
 }
 
-/* line 123, src/includes/_frameless.scss */
+/* line 124, src/includes/_frameless.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -105,7 +105,7 @@ input[type="submit"] {
   -webkit-appearance: button;
 }
 
-/* line 129, src/includes/_frameless.scss */
+/* line 130, src/includes/_frameless.scss */
 input[type="checkbox"],
 input[type="radio"] {
   -webkit-box-sizing: border-box;
@@ -115,7 +115,7 @@ input[type="radio"] {
   box-sizing: border-box;
 }
 
-/* line 137, src/includes/_frameless.scss */
+/* line 138, src/includes/_frameless.scss */
 textarea {
   overflow: auto;
 }
@@ -123,29 +123,29 @@ textarea {
 /*
 	These are easy to forget
 */
-/* line 144, src/includes/_frameless.scss */
+/* line 145, src/includes/_frameless.scss */
 ::selection {
   background: red;
   color: white;
 }
 
-/* line 148, src/includes/_frameless.scss */
+/* line 149, src/includes/_frameless.scss */
 ::-moz-selection {
   background: red;
   color: white;
 }
 
-/* line 153, src/includes/_frameless.scss */
+/* line 154, src/includes/_frameless.scss */
 img::selection {
   background: transparent;
 }
 
-/* line 156, src/includes/_frameless.scss */
+/* line 157, src/includes/_frameless.scss */
 img::-moz-selection {
   background: transparent;
 }
 
-/* line 160, src/includes/_frameless.scss */
+/* line 161, src/includes/_frameless.scss */
 body {
   -webkit-tap-highlight-color: rgba(255, 0, 0, 0.62);
 }
@@ -162,13 +162,13 @@ body {
 	- the second one zooms in by a factor of (16+2)/16 = 1.125  
 */
 @media screen and (max-width: 1px) {
-  /* line 184, src/includes/_frameless.scss */
+  /* line 185, src/includes/_frameless.scss */
   body {
     font-size: 0.875em;
   }
 }
 @media screen and (max-width: 1px) {
-  /* line 190, src/includes/_frameless.scss */
+  /* line 191, src/includes/_frameless.scss */
   body {
     font-size: 1.125em;
   }
@@ -312,51 +312,51 @@ footer,
     width: 34.5em;
   }
 
-  /* line 9, src/layout/_tablet.scss */
+  /* line 10, src/layout/_tablet.scss */
   #content {
     width: 34.5em;
   }
 
-  /* line 12, src/layout/_tablet.scss */
+  /* line 13, src/layout/_tablet.scss */
   #sidebar-a,
   #sidebar-b {
     width: 16.5em;
     margin-left: 0;
   }
 
-  /* line 17, src/layout/_tablet.scss */
+  /* line 18, src/layout/_tablet.scss */
   .sidebar-a-left #sidebar-a {
     left: 0;
     margin-right: 0;
     margin-left: 0;
   }
-  /* line 22, src/layout/_tablet.scss */
+  /* line 23, src/layout/_tablet.scss */
   .sidebar-a-left #sidebar-b {
     margin-left: 0;
   }
 
-  /* line 26, src/layout/_tablet.scss */
+  /* line 27, src/layout/_tablet.scss */
   .sidebar-b-left #sidebar-b {
     margin-right: 0;
   }
-  /* line 29, src/layout/_tablet.scss */
+  /* line 30, src/layout/_tablet.scss */
   .sidebar-b-left #sidebar-a {
     margin-left: 0;
   }
 
-  /* line 34, src/layout/_tablet.scss */
+  /* line 35, src/layout/_tablet.scss */
   .sidebar-a-left #content,
   .sidebar-b-left #content {
     left: 0;
   }
 
-  /* line 38, src/layout/_tablet.scss */
+  /* line 39, src/layout/_tablet.scss */
   .sidebar-a-left.sidebar-b-left #sidebar-a, .sidebar-a-left.sidebar-b-left #sidebar-b {
     left: 0;
     margin-right: 0;
     margin-left: 0;
   }
-  /* line 43, src/layout/_tablet.scss */
+  /* line 44, src/layout/_tablet.scss */
   .sidebar-a-left.sidebar-b-left #content {
     left: 0;
   }

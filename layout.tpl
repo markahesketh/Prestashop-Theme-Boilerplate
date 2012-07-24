@@ -9,7 +9,13 @@
 <!DOCTYPE html>
 {* Stop conditional comments blocking downloads. (http://bit.ly/LXcukK) *}
 <!--[if IE]><![endif]-->
-<html lang="{$meta_language}">
+<!-- Paul Irish´s conditional classes: http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]>  <html lang="{$meta_language}" class="ie ie6 lte9 lte8 lte7"> <![endif]-->
+<!--[if IE 7]>     <html lang="{$meta_language}" class="ie ie7 lte9 lte8 lte7"> <![endif]-->
+<!--[if IE 8]>     <html lang="{$meta_language}" class="ie ie8 lte9 lte8"> <![endif]-->
+<!--[if IE 9]>     <html lang="{$meta_language}" class="ie ie9 lte9"> <![endif]-->
+<!--[if gt IE 9]>  <html lang="{$meta_language}"> <![endif]-->
+<!--[if !IE]><!--> <html lang="{$meta_language}">             <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
