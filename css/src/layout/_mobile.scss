@@ -1,0 +1,89 @@
+@import "includes/defines";
+/* Only Phones */
+@media (max-width: 767px) {}
+
+/* Only Phones (Landscape) */
+@media (min-width: 480px) and (max-width: 767px) {
+	#wrapper {
+		@include width(6); }
+	
+	#content { @include width(6);}
+
+	#sidebar-a,
+	#sidebar-b { 
+		@include width(3);
+		margin-left: 0;}
+	
+	.sidebar-a-left {
+		#sidebar-a {
+			left:0;
+			margin-right:0;
+			margin-left: 0;}
+		
+		#sidebar-b {
+			margin-left: 0;} }
+	
+	.sidebar-b-left {
+		#sidebar-b {
+			margin-right:0;}
+			
+		#sidebar-a {
+			margin-left: 0;} }
+			
+		
+	.sidebar-a-left #content,
+	.sidebar-b-left #content {
+		left:0; }
+		
+	.sidebar-a-left.sidebar-b-left {
+		#sidebar-a, #sidebar-b {
+			left:0;
+			margin-right:0;
+			margin-left: 0; }
+			
+		#content {
+			left:0; } }
+}
+
+/* Only Phones (Portrait) */
+@media (max-width: 479px) {
+	#wrapper {
+		@include width(4); }
+
+	#content { @include width(4);}
+
+	#sidebar-a,
+	#sidebar-b { 
+		@include width(4);
+		margin-left: 0;}
+	
+	.sidebar-a-left {
+		#sidebar-a {
+			left:0;
+			margin-right:0;
+			margin-left: 0;}
+		
+		#sidebar-b {
+			margin-left: 0;} }
+	
+	.sidebar-b-left {
+		#sidebar-b {
+			margin-right:0;}
+			
+		#sidebar-a {
+			margin-left: 0;} }
+			
+		
+	.sidebar-a-left #content,
+	.sidebar-b-left #content {
+		left:0; }
+		
+	.sidebar-a-left.sidebar-b-left {
+		#sidebar-a, #sidebar-b {
+			left:0;
+			margin-right:0;
+			margin-left: 0; }
+			
+		#content {
+			left:0; } }
+}

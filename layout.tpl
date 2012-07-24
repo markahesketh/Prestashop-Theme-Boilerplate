@@ -67,17 +67,17 @@
 	{$HOOK_HEADER}
 </head>
 
-<body {if isset($page_name)}id="{$page_name|escape:'htmlall':'UTF-8'}"{/if}>
+<body {if isset($page_name)}id="{$page_name|escape:'htmlall':'UTF-8'}"{/if} class="light sidebar-a-left">
 	{if !$content_only}
 		{if isset($restricted_country_mode) && $restricted_country_mode}
 		<div id="restricted-country">
 			<p>{l s='You cannot place a new order from your country.'} <span class="bold">{$geolocation_country}</span></p>
 		</div>
 		{/if}
-		<div id="page" class="clearfix">
+		<div id="wrapper">
 
 			{* Header *}
-			<div id="header" class="">
+			<header id="header">
 				<a id="header_logo" href="{$base_dir}" title="{$shop_name|escape:'htmlall':'UTF-8'}">
 					<img class="logo" src="{$logo_url}" alt="{$shop_name|escape:'htmlall':'UTF-8'}" {if $logo_image_width}width="{$logo_image_width}"{/if} {if $logo_image_height}height="{$logo_image_height}" {/if} />
 				</a>
@@ -87,13 +87,13 @@
 					{$HOOK_TOP}
 				</div>
 			{/if}
-			</div>
+			</header>
 
-			<div id="columns" class="clearfix">
+			<div id="contentwrapper">
 				
 
 				{* Center content *}
-				<div id="center_column" class="">
+				<div id="content">
 	{/if}
 
 	{if !empty($template)}
@@ -105,25 +105,25 @@
 				
 			{* Left sidebar *}
 			{if $HOOK_LEFT_COLUMN}
-				<div id="left_column" class="">
+				<aside id="sidebar-a">
 					{$HOOK_LEFT_COLUMN}
-				</div>
+				</aside>
 			{/if}
 				
 				
 			{* Right sidebar *}
 			{if $HOOK_RIGHT_COLUMN}
-				<div id="right_column" class="">
+				<aside id="sidebar-b">
 					{$HOOK_RIGHT_COLUMN}
-				</div>
+				</aside>
 			{/if}
 			</div>
 
 			
 		{if $HOOK_FOOTER}
-			<div id="footer" class="clearfix">
+			<footer id="footer" >
 				{$HOOK_FOOTER}
-			</div>
+			</footer>
 		{/if}
 		</div>
 	{/if}

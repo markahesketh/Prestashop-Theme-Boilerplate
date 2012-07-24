@@ -1,0 +1,147 @@
+/* line 1, src/addresses.scss */
+div.addresses {
+  position: relative;
+  padding: 15px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  background: #f8f8f8;
+}
+
+/* line 9, src/addresses.scss */
+ul.address {
+  list-style-type: none;
+  float: left;
+  position: relative;
+  width: 345px !important;
+}
+
+/* line 15, src/addresses.scss */
+#address_delivery {
+  margin-right: 35px;
+}
+
+/* line 16, src/addresses.scss */
+#address_invoice {
+  margin-right: 0;
+}
+
+/* line 17, src/addresses.scss */
+#delivery_address {
+  margin-right: 65px;
+}
+
+/* line 19, src/addresses.scss */
+ul.address li {
+  padding: 0 15px;
+  font-weight: bold;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+/* line 26, src/addresses.scss */
+ul.address li.address_title {
+  height: 29px;
+  font-weight: bold;
+  line-height: 29px;
+  color: #fff;
+  text-shadow: 0 1px 0 #666;
+  background: url(../img/bg_table_th.png) repeat-x 0 -10px #999999;
+}
+
+/* line 36, src/addresses.scss */
+ul.address li.address_firstname,
+ul.address li.address_company {
+  margin-top: 8px;
+}
+
+/* line 40, src/addresses.scss */
+ul.address li.address_update {
+  margin-top: 20px;
+}
+
+/* line 44, src/addresses.scss */
+ul.address li.address_update,
+ul.address li.address_delete {
+  font-size: 11px;
+  text-transform: none;
+}
+
+/* line 49, src/addresses.scss */
+.address_add {
+  padding: 20px 0;
+}
+
+/* line 53, src/addresses.scss */
+.address_select {
+  border: 1px solid #ccc;
+  width: 200px;
+  margin-left: 10px;
+}
+
+/* line 58, src/addresses.scss */
+label[for=id_address_delivery], label[for=id_address_invoice] {
+  float: left;
+  width: 225px;
+}
+
+/* line 62, src/addresses.scss */
+.addressesAreEquals label {
+  margin-left: 5px;
+}
+
+/* line 65, src/addresses.scss */
+.addressesAreEquals input {
+  float: left;
+}
+
+/* line 68, src/addresses.scss */
+p.address_delivery, p.addressesAreEquals {
+  padding-bottom: 14px;
+}
+
+/* PAGE ADRESSES ******************************************************************************* */
+/* line 73, src/addresses.scss */
+.addresses ul.address {
+  list-style-type: none;
+  float: left;
+  position: relative;
+  margin: 30px 30px 0 0;
+  width: 345px !important;
+}
+
+/* line 81, src/addresses.scss */
+.addresses ul.address.alternate_item,
+.addresses ul.address.last_item {
+  margin-right: 0;
+}
+
+/* line 82, src/addresses.scss */
+.addresses ul.address li {
+  padding: 0 15px;
+  font-weight: bold;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+/* line 88, src/addresses.scss */
+.addresses ul.address .address_title {
+  margin-bottom: 5px;
+  height: 29px;
+  font-weight: bold;
+  line-height: 29px;
+  color: #fff;
+  text-shadow: 0 1px 0 #666;
+  background: url(../img/bg_table_th.png) repeat-x 0 -10px #999999;
+}
+
+/* line 97, src/addresses.scss */
+.addresses ul.address .address_update {
+  margin-top: 20px;
+}
+
+/* line 99, src/addresses.scss */
+.addresses ul.address .address_update,
+.addresses ul.address .address_delete {
+  font-size: 11px;
+  text-transform: none;
+}

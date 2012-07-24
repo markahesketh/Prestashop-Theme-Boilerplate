@@ -1,0 +1,59 @@
+@import "includes/defines";
+#wrapper {
+	@include width(12);
+	margin: 0 auto;
+	text-align: left; }
+	
+header,
+footer,
+#contentwrapper {
+	@include clearfix;}
+	
+#sidebar-a,
+#sidebar-b,
+#content {
+	position: relative;
+	display: inline-block;
+	float: left;
+}
+
+/* -------------------------------------------------- *
+	Sitebar function
+ * -------------------------------------------------- */
+#content { @include width(8);}
+
+#sidebar-a,
+#sidebar-b { 
+	@include width(2);
+	margin-left: 1.5em;}
+
+.sidebar-a-left {
+	#sidebar-a {
+		left:-$cols8;
+		margin-right:1.5em;
+		margin-left: 0;}
+	
+	#sidebar-b {
+		margin-left: 1.5em;} }
+
+.sidebar-b-left {
+	#sidebar-b {
+		left:-$cols8;
+		margin-right:1.5em;}
+		
+	#sidebar-a {
+		margin-left: 1.5em;} }
+		
+	
+.sidebar-a-left #content,
+.sidebar-b-left #content {
+	left:$cols2 + 1.5em; }
+	
+.sidebar-a-left.sidebar-b-left {
+	#sidebar-a, #sidebar-b {
+		left:-$cols8;
+		margin-right:1.5em;
+		margin-left: 0; }
+		
+	#content {
+		left:$cols4 + 1.5em; } }
