@@ -6,7 +6,7 @@
 *}
 
 {if $tags}
-	<section id="tags_block_left" class="block tags_block">
+	<section class="block blocktags">
 		<h1>{l s='Tags' mod='blocktags'}</h1>
 			<ol>	
 				{foreach from=$tags item=tag name=myLoop}
