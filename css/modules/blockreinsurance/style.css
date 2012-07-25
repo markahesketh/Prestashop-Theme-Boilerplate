@@ -1,0 +1,41 @@
+.blockreinsurance {
+  *zoom: 1;
+  font-size: 14px;
+}
+.blockreinsurance:before,
+.blockreinsurance:after {
+  content: "";
+  display: table;
+}
+.blockreinsurance:after {
+  clear: both;
+}
+.blockreinsurance ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+.blockreinsurance ul li {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px 10px 10px 60px;
+  height: 50px;
+  float: left;
+}
+.blockreinsurance .width1 li {
+  width: 100%;
+}
+.blockreinsurance .width2 li {
+  width: 50%;
+}
+.blockreinsurance .width3 li {
+  width: 33%;
+}
+.blockreinsurance .width4 li {
+  width: 25%;
+}
+.blockreinsurance .width5 li {
+  width: 20%;
+}
