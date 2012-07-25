@@ -1,4 +1,10 @@
-<section id="categories_block_left" class="block">
+{*
+* =|= Block Categories =========================================
+* Display tree of store categories in sidebar.
+* ==============================================================
+*}
+
+<section class="block blockcategories">
 	<h1>{l s='Categories' mod='blockcategories'}</h1>
 	<ul class="tree {if $isDhtml}dhtml{/if}">
 	{foreach from=$blockCategTree.children item=child name=blockCategTree}
