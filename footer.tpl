@@ -11,7 +11,7 @@
 		</div>
 
 		{* Right sidebar *}
-		<aside id="right_column">
+		<aside id="right_column" class="sidebar">
 			{$HOOK_RIGHT_COLUMN}
 		</aside>
 
