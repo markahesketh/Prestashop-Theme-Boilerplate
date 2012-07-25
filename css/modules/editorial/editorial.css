@@ -1,6 +1,8 @@
 .editorial img {
   border: 1px solid #eaeaea;
   max-width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 .editorial #editorial_image_legend {
   font-style: italic;
