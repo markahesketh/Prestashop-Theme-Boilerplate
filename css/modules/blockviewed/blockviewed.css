@@ -1,0 +1,22 @@
+.blockviewed {
+  *zoom: 1;
+}
+.blockviewed:before,
+.blockviewed:after {
+  content: "";
+  display: table;
+}
+.blockviewed:after {
+  clear: both;
+}
+.blockviewed img {
+  float: left;
+  max-width: 35%;
+}
+.blockviewed h2 {
+  margin: 1em 0;
+}
+.blockviewed h2,
+.blockviewed p {
+  padding-left: 40%;
+}
