@@ -1,0 +1,115 @@
+@import "includes/defines";
+/* Base style and Desktops */
+#wrapper {
+	@include width(16);
+	margin: 0 auto;
+	text-align: left; }
+	
+header,
+footer,
+#contentwrapper {
+	@include clearfix;}
+	
+#sidebar-a,
+#sidebar-b,
+#content {
+	position: relative;
+	display: inline-block;
+	float: left;
+}
+
+/* -------------------------------------------------- *
+	Sitebar function
+ * -------------------------------------------------- */
+#content { @include width(10);}
+
+#sidebar-a,
+#sidebar-b { 
+	@include width(3);
+	margin-left: $gutter-em;}
+
+.sidebar-a-left {
+	#sidebar-a {
+		left:-$cols10;
+		margin-right: $gutter-em;
+		margin-left: 0;}
+	
+	#sidebar-b {
+		margin-left: $gutter-em;} }
+
+.sidebar-b-left {
+	#sidebar-b {
+		left:-$cols10;
+		margin-right: $gutter-em;}
+		
+	#sidebar-a {
+		margin-left: $gutter-em;} }
+		
+	
+.sidebar-a-left #content,
+.sidebar-b-left #content {
+	left:$cols3 + $gutter-em; }
+	
+.sidebar-a-left.sidebar-b-left {
+	#sidebar-a, #sidebar-b {
+		left:-$cols10;
+		margin-right: $gutter-em;
+		margin-left: 0; }
+		
+	#content {
+		left:$cols6 + $gutter-em; } }
+
+
+
+/* -------------------------------------------------- *
+	Adapting the layout for smaller resolutions
+ * -------------------------------------------------- */
+ /* --- 1024x768 ----------  */
+@media (max-width: 1024px) {
+	#wrapper {@include width(12);}
+	#content{@include width(8);}
+	#sidebar-a,
+	#sidebar-b {@include width(2);}
+	
+	.sidebar-a-left {
+		#sidebar-a {
+			left:-$cols8;
+			margin-right: $gutter-em;
+			margin-left: 0;}
+		
+		#sidebar-b {
+			margin-left: $gutter-em;} }
+	
+	.sidebar-b-left {
+		#sidebar-b {
+			left:-$cols8;
+			margin-right: $gutter-em;}
+			
+		#sidebar-a {
+			margin-left: $gutter-em;} }
+			
+		
+	.sidebar-a-left #content,
+	.sidebar-b-left #content {
+		left:$cols2 + $gutter-em; }
+		
+	.sidebar-a-left.sidebar-b-left {
+		#sidebar-a, #sidebar-b {
+			left:-$cols8;
+			margin-right: $gutter-em;
+			margin-left: 0; }
+			
+		#content {
+			left:$cols4 + $gutter-em; } } 
+}
+/* --- END 1024x768 ------  */
+
+/* -------------------------------------------------- *
+	Adapting the layout for bigger resolutions
+ * -------------------------------------------------- */
+ 
+/* Frameless lets us extend the layout indefinetly.
+   For instance, we might want to add support for 
+   21" or 27" iMacs and displays with 1920x1080 and
+   2560x1440. As displays tend to get bigger and better
+   PPI (Retina), it should be easy to adapt the layout.  */
