@@ -1,0 +1,7 @@
+.blockmanufacturer form {
+  margin-top: 10px;
+  text-align: center;
+}
+.blockmanufacturer form select {
+  width: 80%;
+}

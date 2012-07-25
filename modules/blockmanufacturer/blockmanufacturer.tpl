@@ -1,8 +1,8 @@
 {if $manufacturers}
-	<section id="manufacturers_block_left" class="block blockmanufacturer">
+	<section class="block blockmanufacturer">
 		<h1>{if $display_link_manufacturer}<a href="{$link->getPageLink('manufacturer')}" title="{l s='Manufacturers' mod='blockmanufacturer'}">{/if}{l s='Manufacturers' mod='blockmanufacturer'}{if $display_link_manufacturer}</a>{/if}</h1>
 		{if $text_list}
-			<ul class="bullet">
+			<ul>
 				{foreach from=$manufacturers item=manufacturer name=manufacturer_list}
 					{if $smarty.foreach.manufacturer_list.iteration <= $text_list_nb}
 					<li>
