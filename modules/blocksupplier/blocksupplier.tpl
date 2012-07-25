@@ -1,5 +1,5 @@
 {if $suppliers}
-	<section id="suppliers_block_left" class="block blocksupplier">
+	<section class="block blocksupplier">
 		<h1>{if $display_link_supplier}<a href="{$link->getPageLink('supplier')}" title="{l s='Suppliers' mod='blocksupplier'}">{/if}{l s='Suppliers' mod='blocksupplier'}{if $display_link_supplier}</a>{/if}</h1>
 		{if $text_list}
 			<ul>
