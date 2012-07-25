@@ -1,4 +1,4 @@
-<section id="newsletter_block_left" class="block">
+<section class="block blocknewsletter">
 	<h1>{l s='Newsletter' mod='blocknewsletter'}</h1>
 	{if isset($msg) && $msg}
 		<p class="{if $nw_error}warning_inline{else}success_inline{/if}">{$msg}</p>
