@@ -1,39 +1,28 @@
-// == Import Fonts =========================================================
+// =|= Import Fonts =========================================================
 // eg @import "http://fonts.googleapis.com/css?family=Open+Sans:300,400";
 
-// == Font Stacks ==========================================================
+// =|= Font Stacks ==========================================================
 @header: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 @sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 @serif: Georgia, Garamond, Times, serif;
 
-// == Colours ==============================================================
-@body: #4a4a4a;
-@heading: #2a2a2a; 
-@subheading: #6a6a6a;
-
-@darkgrey: #9a9a9a;
-@grey: #cacaca;
-@lightgrey: #eaeaea;
-
-@link: #08C;
-
-// == Headings =============================================================
+// =|= Headings =============================================================
 h1, h2, h3, h4, h5, h6 {
-	font: normal normal 1rem/1.2rem @header;
+	font: normal 300 1rem/1.2rem @header;
 	margin: 0;
 	color: @heading;
 	a, a:visited {text-decoration: none; border: none; color: @heading;}
 	a:hover {color: @link;}
 }
 
-h1 {font-size: 4.2em; font-weight: 300;}
+h1 {font-size: 4.2em;}
 h2 {font-size: 3em;} 
 h3 {font-size: 2.3em;}
 h4 {font-size: 1.8em;} 
 h5 {font-size: 1.6em;}
 h6 {font-size: 1.4em;}
 
-// == Body =================================================================
+// =|= Body =================================================================
 a {
   color: @heading;
   transition: color 0.3s;
@@ -81,8 +70,8 @@ p a, ul a {}
 }
 }
 
-// == Block Elements ======================================================
-p, ul, ol, pre code, img, blockquote {
+// =|= Block Elements ======================================================
+p, ul, ol, pre code, blockquote {
 	margin: 1em 0 1.5em 0;
 }
 
@@ -119,4 +108,14 @@ pre {
   white-space: pre-wrap;
   word-break: break-all;
   word-wrap: break-word;
-} 
+}
+
+// =|= Typography classes ==================================================
+.price {
+  font-weight: bold;
+  color: #900;
+}
+.price-discount {
+  text-decoration: line-through;
+  font-style: italic;
+}

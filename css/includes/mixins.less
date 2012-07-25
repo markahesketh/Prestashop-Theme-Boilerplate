@@ -1,16 +1,14 @@
-// == Common Mixins ========================================================
-
-// Image replacement - http://bit.ly/MlDc6p
-.ir {
+// =|= Mixins to make your life easier ======================================
+// -|- Image replacement - http://bit.ly/MlDc6p ---------------------
+.ir() {
 	font: 0/0 a;
     text-shadow: none;
     color: transparent;
 }
 
-// The micro clearfix - http://bit.ly/MlCNAW
+// -|- The micro clearfix - http://bit.ly/MlCNAW --------------------
 .clearfix() {
-	*zoom:1;
-	
+	*zoom:1;	
 	&:before,
 	&:after {
 	    content:"";
@@ -21,16 +19,142 @@
 	}
 }
 
-// em font sizing relative to the root (Html) element - http://bit.ly/NwjdmM 
+// -|- Relative EM font sizing - http://bit.ly/NwjdmM ---------------
 .font-size(@sizeValue){
-  @remValue: (@sizeValue / 10);
-  @pxValue: @sizeValue;
-  font-size: ~"@{pxValue}px"; 
-  font-size: ~"@{remValue}rem";
+	@remValue: (@sizeValue / 10);
+	@pxValue: @sizeValue;
+	font-size: ~"@{pxValue}px"; 
+	font-size: ~"@{remValue}rem";
 }
 
-.nobullets() {
+// -|- Remove bullet points and default spacing fron lists ----------
+.no-bullets() {
 	list-style-type: none;
 	padding-left: 0;
 	margin: 0;
+}
+
+// =|= CSS Mixins including browser prefixes ===============================
+// -|- CSS3 Gradient ------------------------------------------------
+.gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
+	background: @color;
+	background: -webkit-gradient(linear,
+	                           left bottom,
+	                           left top,
+	                           color-stop(0, @start),
+	                           color-stop(1, @stop));
+	background: -ms-linear-gradient(bottom,
+	                              @start,
+	                              @stop);
+	background: -moz-linear-gradient(center bottom,
+	                               @start 0%,
+	                               @stop 100%);
+}
+
+// -|- CSS3 Black and White Gradient --------------------------------
+.bw-gradient(@color: #F5F5F5, @start: 0, @stop: 255) {
+	background: @color;
+	background: -webkit-gradient(linear,
+	                           left bottom,
+	                           left top,
+	                           color-stop(0, rgb(@start,@start,@start)),
+	                           color-stop(1, rgb(@stop,@stop,@stop)));
+	background: -ms-linear-gradient(bottom,
+	                              rgb(@start,@start,@start) 0%,
+	                              rgb(@start,@start,@start) 100%);
+	background: -moz-linear-gradient(center bottom,
+	                               rgb(@start,@start,@start) 0%,
+	                               rgb(@stop,@stop,@stop) 100%);
+}
+
+// -|- CSS3 Black and White Gradient --------------------------------
+.bordered(@top-color: #EEE, @right-color: #EEE, @bottom-color: #EEE, @left-color: #EEE) {
+	border-top: solid 1px @top-color;
+	border-left: solid 1px @left-color;
+	border-right: solid 1px @right-color;
+	border-bottom: solid 1px @bottom-color;
+}
+
+// -|- CSS3 Drop Shaddow (Box Shadow) -------------------------------
+.drop-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: 0.1) {
+	-webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+	-moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+	box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+}
+
+// -|- CSS3 Inner Shaddow (Box Shadow) ------------------------------
+.inner-shadow(@horizontal:0, @vertical:1px, @blur:2px, @alpha: 0.4) {
+	-webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+  	-moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+	box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+}
+
+// -|- Box Shadow ---------------------------------------------------
+.box-shadow(@arguments) {
+	-webkit-box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	box-shadow: @arguments;
+}
+
+// -|- Rounded corners (CSS Border Radius) --------------------------
+.rounded(@radius: 2px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+}
+
+// -|- CSS3 Border Radius -------------------------------------------
+.border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+	-webkit-border-top-right-radius: @topright;
+	-webkit-border-bottom-right-radius: @bottomright;
+	-webkit-border-bottom-left-radius: @bottomleft;
+	-webkit-border-top-left-radius: @topleft;
+	-moz-border-radius-topright: @topright;
+	-moz-border-radius-bottomright: @bottomright;
+	-moz-border-radius-bottomleft: @bottomleft;
+	-moz-border-radius-topleft: @topleft;
+	border-top-right-radius: @topright;
+	border-bottom-right-radius: @bottomright;
+	border-bottom-left-radius: @bottomleft;
+	border-top-left-radius: @topleft;
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+}
+
+// -|- Opacity ------------------------------------------------------
+.opacity(@opacity: 0.5) {
+	-moz-opacity: @opacity;
+	-khtml-opacity: @opacity;
+	-webkit-opacity: @opacity;
+	opacity: @opacity;
+}
+
+// -|- CSS3 Rotate --------------------------------------------------
+.rotation(@deg:5deg){
+	-webkit-transform: rotate(@deg);
+	-moz-transform: rotate(@deg);
+	transform: rotate(@deg);
+}
+
+// -|- CSS3 Scale ---------------------------------------------------
+.scale(@ratio:1.5){
+	-webkit-transform:scale(@ratio);
+	-moz-transform:scale(@ratio);
+	transform:scale(@ratio);
+}
+
+// -|- CSS3 Transition ----------------------------------------------
+.transition(@duration:0.2s, @ease:ease-out) {
+	-webkit-transition: all @duration @ease;
+	-moz-transition: all @duration @ease;
+	transition: all @duration @ease;
+}
+
+// -|- CSS3 Translate -----------------------------------------------
+.translate(@x:0, @y:0) {
+	-moz-transform: translate(@x, @y);
+	-webkit-transform: translate(@x, @y);
+	-o-transform: translate(@x, @y);
+	-ms-transform: translate(@x, @y);
+	transform: translate(@x, @y);
 }

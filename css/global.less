@@ -1,56 +1,59 @@
-// == Imported Styles / Frameworks etc ======================================
+// =|= Imported Styles / Frameworks etc =====================================
 @import "includes/normalize.less";
 @import "includes/grid.less";
 @import "includes/typography.less";
-@import "includes/mixins.less";
+@import "includes/settings.less";
 
-@column-width: 60;
-@gutter-width: 20;
-@columns: 12;
-@total-width: 100%;
-
+// =|= Structure ============================================================
 html {
 	font-size: 62.5%;
 }
 
 body {
 	margin: 0 auto;
-	max-width: 1105px;
+	max-width: 1170px;
 }
 
-// == Sidebars ==============================================================
-#left_column,
-#right_column {
-	.column(3);
+// =|= Center content =======================================================
+#center_column {
+	.column(8);
+}
+
+// -|- Side bars ----------------------------------------------------
+.sidebar {
+	.column(2);
 	.font-size(12);
+}
 
-	// Module Titles
-	h1 {
-		.font-size(14);
-		border-bottom: 1px solid #999;
-		padding-bottom: 0.3em;
-		margin-bottom: 0.3em;
-	}
+// =|= Sidebar Block Modules ================================================
+.sidebar .block {
+	// -|- Lists such as categories and manufacturers -------------------
+	ol, ul {.no-bullets}
+	ul li {
+		border-bottom: 1px dotted #CCC;
 
-	// Module Blocks
-	.block {
-		margin-bottom: 30px;
-
-		// Lists such as categories, suppliers and manufacturers
-		ol, ul {.nobullets}
-		ul li {
-			border-bottom: 1px dotted #CCC;
-
-			a {
-				display:block;
-				padding:7px 11px;
-				&:hover {background: #fafafa;}
-			}
+		a {
+			display:block;
+			padding:7px 11px;
+			&:hover {background: #fafafa;}
 		}
 	}
+	ul.products li a {
+		padding: 0;
+	}
 }
+// -|- Block Module Titles ------------------------------------------
+.block  {
+	margin-bottom: 40px;
 
-// == Center content ========================================================
-#center_column {
-	.column(6);
+	h1, > h4 {
+		.font-size(16);
+		border-bottom: 1px solid #999;
+		padding-bottom: 0.5em;
+		margin-bottom: 0.3em;
+	}
+	h2 {
+		font-weight: bold;
+		.font-size(14);
+	}
 }
