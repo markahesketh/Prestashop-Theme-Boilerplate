@@ -5,13 +5,13 @@
 /* Only Tablets (Portrait) */
 @media (min-width: 768px) and (max-width: 959px) {
 	#wrapper {
-		@include width(8); }
+		@include width(10); }
 	
-	#content { @include width(8);}
+	#content { @include width(10);}
 
 	#sidebar-a,
 	#sidebar-b { 
-		@include width(4);
+		@include width(5);
 		margin-left: 0;}
 	
 	.sidebar-a-left {

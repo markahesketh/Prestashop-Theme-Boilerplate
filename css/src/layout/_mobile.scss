@@ -48,13 +48,13 @@
 /* Only Phones (Portrait) */
 @media (max-width: 479px) {
 	#wrapper {
-		@include width(4); }
+		@include width(5); }
 
-	#content { @include width(4);}
+	#content { @include width(5);}
 
 	#sidebar-a,
 	#sidebar-b { 
-		@include width(4);
+		@include width(5);
 		margin-left: 0;}
 	
 	.sidebar-a-left {
