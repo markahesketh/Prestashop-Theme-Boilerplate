@@ -13,14 +13,16 @@
 		var homeslider_pause = {$homeslider.pause};
 	</script>
 	{if isset($homeslider_slides)}
-		<ul id="homeslider">
-			{foreach from=$homeslider_slides item=slide}
-				{if $slide.active}
-					<li>
-						<a href="{$slide.url}" title="{$slide.description}"><img src="{$smarty.const._MODULE_DIR_}/homeslider/images/{$slide.image}" alt="{$slide.legend}" title="{$slide.description}" height="{$homeslider.height}" width="{$homeslider.width}" /></a>
-					</li>
-				{/if}
-			{/foreach}
-		</ul>
+		<div class="flexslider">
+			<ul class="slides">
+				{foreach from=$homeslider_slides item=slide}
+					{if $slide.active}
+						<li>
+							<a href="{$slide.url}" title="{$slide.description}"><img src="{$smarty.const._MODULE_DIR_}/homeslider/images/{$slide.image}" alt="{$slide.legend}" title="{$slide.description}" /></a>
+						</li>
+					{/if}
+				{/foreach}
+			</ul>
+		</div>
 	{/if}
 {/if}
