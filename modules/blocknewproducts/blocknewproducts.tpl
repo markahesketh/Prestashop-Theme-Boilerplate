@@ -1,5 +1,5 @@
 {if $new_products !== false}
-	<section id="new-products_block_right" class="block products_block">
+	<section class="block blocknewproducts">
 		<h1><a href="{$link->getPageLink('new-products')}" title="{l s='New products' mod='blocknewproducts'}">{l s='New products' mod='blocknewproducts'}</a></h1>
 
 		<ul class="product_images clearfix">
