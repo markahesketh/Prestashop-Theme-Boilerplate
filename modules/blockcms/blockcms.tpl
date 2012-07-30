@@ -6,7 +6,7 @@
 
 {if $block == 1}
 	{foreach from=$cms_titles key=cms_key item=cms_title}
-		<section class="block informations_block_left">
+		<section class="block blockcms">
 			<h1><a href="{$cms_title.category_link}">{if !empty($cms_title.name)}{$cms_title.name}{else}{$cms_title.category_name}{/if}</a></h1>
 			<ul>
 				{foreach from=$cms_title.categories item=cms_page}
@@ -22,7 +22,7 @@
 		</section>
 	{/foreach}
 {else}
-	<section class="block_various_links">
+	<section class="block blockcms_footer">
 		<h1>{l s='Information' mod='blockcms'}</h1>
 		<ul>
 			{if !$PS_CATALOG_MODE}<li class="first_item"><a href="{$link->getPageLink('prices-drop')}" title="{l s='Specials' mod='blockcms'}">{l s='Specials' mod='blockcms'}</a></li>{/if}
