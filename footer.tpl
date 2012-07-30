@@ -17,7 +17,9 @@
 
 		{* Footer *}
 		<footer>
-			{$HOOK_FOOTER}
+			<div class="modules">
+				{$HOOK_FOOTER}
+			</div>
 		</footer>
 
 	{* End of #page *}
