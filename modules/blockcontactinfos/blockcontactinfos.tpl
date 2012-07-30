@@ -1,3 +1,9 @@
+{*
+* =|= BLOCK CONTACT INFOS ======================================
+* Display store contact details in footer.
+* ==============================================================
+*}
+
 <section class="block blockcontactinfos">
 	<h1>{l s='Contact us' mod='blockcontactinfos'}</h1>
 	<ul>

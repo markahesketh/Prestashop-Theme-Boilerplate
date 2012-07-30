@@ -1,3 +1,9 @@
+{*
+* =|= BLOCK NEWSLETTER =========================================
+* Display newsletter sign up from in sidebar.
+* ==============================================================
+*}
+
 <section class="block blocknewsletter">
 	<h1>{l s='Newsletter' mod='blocknewsletter'}</h1>
 	{if isset($msg) && $msg}

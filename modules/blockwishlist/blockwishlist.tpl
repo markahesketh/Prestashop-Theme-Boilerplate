@@ -1,3 +1,9 @@
+{*
+* =|= BLOCK WISHLIST ===========================================
+* Show customers saved wishlists in sidebar
+* ==============================================================
+*}
+
 {if $wishlist_products}
 	<section class="block blockwishlist">
 		<h1><a href="{$wishlist_link}">{l s='Wishlist' mod='blockwishlist'}</a></h1>

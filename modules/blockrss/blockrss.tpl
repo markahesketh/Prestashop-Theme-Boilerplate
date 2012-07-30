@@ -1,3 +1,9 @@
+{*
+* =|= BLOCK RSS ================================================
+* Display custom RSS links in the sidebar
+* ==============================================================
+*}
+
 {if $rss_links}
 	<section class="block blockrss">
 		<h1>{$title}</h1>
