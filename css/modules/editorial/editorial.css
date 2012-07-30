@@ -1,3 +1,15 @@
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
 .editorial img {
   border: 1px solid #eaeaea;
   max-width: 100%;
@@ -9,9 +21,4 @@
   text-align: center;
   font-size: 12px;
   font-size: 1.2rem;
-}
-.editorial h1 {
-  font-size: 24px;
-  font-size: 2.4rem;
-  margin-top: 1em;
 }
