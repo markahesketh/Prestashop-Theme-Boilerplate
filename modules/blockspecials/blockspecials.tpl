@@ -1,3 +1,9 @@
+{*
+* =|= BLOCK SPECIALS ===========================================
+* Display products on offer in the sidebar.
+* ==============================================================
+*}
+
 {if $special}
 	<section class="block blockspecials">
 		<h1><a href="{$link->getPageLink('prices-drop')}" title="{l s='Specials' mod='blockspecials'}">{l s='Specials' mod='blockspecials'}</a></h1>

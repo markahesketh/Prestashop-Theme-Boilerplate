@@ -1,3 +1,9 @@
+{*
+* =|= BLOCK VIEWED =============================================
+* Display viewed products in the sidebar.
+* ==============================================================
+*}
+
 <section class="block blockviewed">
 	<h1>{l s='Viewed products' mod='blockviewed'}</h1>
 	<ul class="products">
