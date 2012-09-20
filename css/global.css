@@ -30,8 +30,6 @@ html {
   /* 1 */
 
   -webkit-text-size-adjust: 100%;
-  /* 2 */
-
   -ms-text-size-adjust: 100%;
   /* 2 */
 
@@ -197,8 +195,6 @@ textarea {
   /* 2 */
 
   vertical-align: baseline;
-  /* 3 */
-
   *vertical-align: middle;
   /* 3 */
 
@@ -236,8 +232,6 @@ input[type="radio"] {
   /* 2 */
 
   *height: 13px;
-  /* 3 */
-
   *width: 13px;
   /* 3 */
 
@@ -291,7 +285,7 @@ h3,
 h4,
 h5,
 h6 {
-  font: normal 300 1rem/1.2rem 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font: normal 300 1rem/1.4rem 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin: 0;
   color: #2a2a2a;
 }
@@ -398,10 +392,13 @@ blockquote p {
 }
 .sidebar h2 {
   font-weight: bold;
-  font-size: 15px;
-  font-size: 1.5rem;
+  font-size: 12px;
+  font-size: 1.2rem;
 }
-.sidebar p,
+.sidebar p {
+  font-size: 11px;
+  font-size: 1.1rem;
+}
 .sidebar ul,
 .sidebar ol {
   font-size: 12px;
@@ -532,12 +529,6 @@ body > header .block {
 }
 .sidebar .block {
   margin-bottom: 40px;
-}
-.sidebar .block p,
-.sidebar .block ul,
-.sidebar .block ol {
-  font-size: 12px;
-  font-size: 1.2rem;
 }
 body > footer {
   clear: both;

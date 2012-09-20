@@ -8,10 +8,10 @@
 
 // =|= Headings =============================================================
 h1, h2, h3, h4, h5, h6 {
-	font: normal 300 1rem/1.2rem @header;
+	font: normal 300 1rem/1.4rem @header;
 	margin: 0;
 	color: @heading;
-	
+
   a, a:visited {
     text-decoration: none;
     border: none;
@@ -26,9 +26,9 @@ h1 {
   padding-bottom: 0.5em;
   margin-bottom: 0.3em;
 }
-h2 {.font-size(24);} 
+h2 {.font-size(24);}
 h3 {.font-size(20);}
-h4 {.font-size(18);} 
+h4 {.font-size(18);}
 h5 {.font-size(16);}
 h6 {.font-size(14);}
 
@@ -55,10 +55,10 @@ img {
 }
 
 blockquote {
-  border-left: 3px solid #EEE; 
+  border-left: 3px solid #EEE;
   margin-left: 2em;
   padding-left: 2em;
-  
+
   p {
     font-style: italic;
     font-family: @serif;
@@ -69,7 +69,7 @@ blockquote {
 #center_column {
 
   // -|- Center modules -----------------------------------------------
-  .block {    
+  .block {
     h1 {
       .font-size(22);
       margin: 1em 0 0.8em 0;
@@ -93,11 +93,14 @@ blockquote {
   }
   h2 {
     font-weight: bold;
-    .font-size(15);
+    .font-size(12);
   }
 
   // -|- Lists content such as categories and manufacturers -----------
-  p,ul,ol {
+  p {
+    .font-size(11);
+  }
+  ul,ol {
     .font-size(12);
   }
   ol, ul {.no-bullets}
