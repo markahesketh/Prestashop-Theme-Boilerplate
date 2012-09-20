@@ -7,7 +7,7 @@
 		{if $special.specific_prices}
 			{assign var='specific_prices' value=$special.specific_prices}
 			{if $specific_prices.reduction_type == 'percentage' && ($specific_prices.from == $specific_prices.to OR ($smarty.now|date_format:'%Y-%m-%d %H:%M:%S' <= $specific_prices.to && $smarty.now|date_format:'%Y-%m-%d %H:%M:%S' >= $specific_prices.from))}
-				<span class="reduction">-{$specific_prices.reduction*100|floatval}%</span>
+				<span class="label">-{$specific_prices.reduction*100|floatval}%</span>
 			{/if}
 		{/if}
 

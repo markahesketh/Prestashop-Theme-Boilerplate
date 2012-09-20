@@ -36,19 +36,7 @@ body:after {
   font-size: 14px;
   font-size: 1.4rem;
 }
-.blockspecials span.reduction {
-  background: #990000;
-  display: inline;
-  padding: 3px 5px;
-  color: #fff;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  position: absolute;
-  left: 0;
+.blockspecials span.label {
   top: 60%;
 }
 .blockspecials h2,

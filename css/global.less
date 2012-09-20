@@ -81,7 +81,7 @@ body > footer {
 			.no-bullets;
 
 			li {
-				padding: 0.5em 0 0.5em 0.4em;
+				padding: 0.5em 0 0.5em 0;
 			}
 		}
 	}
@@ -91,3 +91,20 @@ body > footer {
 .hidden,
 .collapsed {display: none; visibility: hidden;}
 .expanded {display: block; visibility: visible;}
+
+// -|- Labels -----------------------------------------
+.label {
+	.font-size(11);
+	background: @primary;
+	display: inline;
+	padding: 3px 5px;
+	color: #fff;
+	.rounded(5px);
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-weight: bold;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	white-space: nowrap;
+	vertical-align: baseline;
+}
