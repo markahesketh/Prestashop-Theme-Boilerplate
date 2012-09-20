@@ -1,21 +1,9 @@
-body {
-  width: 100%;
-  *zoom: 1;
-}
-body:before,
-body:after {
-  content: "";
-  display: table;
-}
-body:after {
-  clear: both;
-}
 .blockreinsurance {
   *zoom: 1;
   display: inline;
   float: left;
-  width: 97.22222222222221%;
-  margin: 0 1.3888888888888888%;
+  width: 1050px;
+  margin: 0 15px;
   font-size: 14px;
   font-size: 1.4rem;
   margin-bottom: 50px;

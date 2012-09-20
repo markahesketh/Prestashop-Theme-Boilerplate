@@ -1,12 +1,40 @@
-// =|= Mixins to make your life easier ======================================
-// -|- Image replacement - http://bit.ly/MlDc6p ---------------------
+// =|= Editable settings used across the theme =================================
+// -|- Grid Setup --------------------------------------------------------------
+@column-width: 60;
+@gutter-width: 30;
+@columns: 12;
+@total-width: 100%; // Comment out for a fix-widthed layout.
+
+// -|- Font Stacks -------------------------------------------------------------
+@header: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@serif: Georgia, Garamond, Times, serif;
+
+// -|- Colours -----------------------------------------------------------------
+@body: #4a4a4a;
+@heading: #2a2a2a;
+@subheading: #6a6a6a;
+
+@darkgrey: #9a9a9a;
+@grey: #cacaca;
+@lightgrey: #eaeaea;
+
+@primary: #900;
+@secondary: #900;
+@tertiary: #900;
+
+@link: #08C;
+
+
+// =|= Reusable mixins to make your life easier ================================
+// -|- Image replacement - http://bit.ly/MlDc6p --------------------------------
 .ir() {
 	font: 0/0 a;
     text-shadow: none;
     color: transparent;
 }
 
-// -|- The micro clearfix - http://bit.ly/MlCNAW --------------------
+// -|- The micro clearfix - http://bit.ly/MlCNAW -------------------------------
 .clearfix() {
 	*zoom:1;
 	&:before,
@@ -19,7 +47,7 @@
 	}
 }
 
-// -|- Relative EM font sizing - http://bit.ly/NwjdmM ---------------
+// -|- Relative EM font sizing - http://bit.ly/NwjdmM --------------------------
 .font-size(@sizeValue){
 	@remValue: (@sizeValue / 10);
 	@pxValue: @sizeValue;
@@ -27,15 +55,15 @@
 	font-size: ~"@{remValue}rem";
 }
 
-// -|- Remove bullet points and default spacing fron lists ----------
+// -|- Remove bullet points and default spacing fron lists ---------------------
 .no-bullets() {
 	list-style-type: none;
 	padding-left: 0;
 	margin: 0;
 }
 
-// =|= CSS Mixins including browser prefixes ===============================
-// -|- CSS3 Gradient ------------------------------------------------
+// =|= CSS Mixins including browser prefixes ===================================
+// -|- CSS3 Gradient -----------------------------------------------------------
 .gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
 	background: @color;
 	background: -webkit-gradient(linear,
@@ -51,7 +79,7 @@
 	                               @stop 100%);
 }
 
-// -|- CSS3 Black and White Gradient --------------------------------
+// -|- CSS3 Black and White Gradient -------------------------------------------
 .bw-gradient(@color: #F5F5F5, @start: 0, @stop: 255) {
 	background: @color;
 	background: -webkit-gradient(linear,
@@ -67,7 +95,7 @@
 	                               rgb(@stop,@stop,@stop) 100%);
 }
 
-// -|- CSS3 Black and White Gradient --------------------------------
+// -|- CSS3 Black and White Gradient -------------------------------------------
 .bordered(@top-color: #EEE, @right-color: #EEE, @bottom-color: #EEE, @left-color: #EEE) {
 	border-top: solid 1px @top-color;
 	border-left: solid 1px @left-color;
@@ -75,28 +103,28 @@
 	border-bottom: solid 1px @bottom-color;
 }
 
-// -|- CSS3 Drop Shaddow (Box Shadow) -------------------------------
+// -|- CSS3 Drop Shaddow (Box Shadow) ------------------------------------------
 .drop-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: 0.1) {
 	-webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
 	-moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
 	box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
 }
 
-// -|- CSS3 Inner Shaddow (Box Shadow) ------------------------------
+// -|- CSS3 Inner Shaddow (Box Shadow) -----------------------------------------
 .inner-shadow(@horizontal:0, @vertical:1px, @blur:2px, @alpha: 0.4) {
 	-webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
   	-moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
 	box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
 }
 
-// -|- Box Shadow ---------------------------------------------------
+// -|- Box Shadow --------------------------------------------------------------
 .box-shadow(@arguments) {
 	-webkit-box-shadow: @arguments;
 	-moz-box-shadow: @arguments;
 	box-shadow: @arguments;
 }
 
-// -|- Rounded corners (CSS Border Radius) --------------------------
+// -|- Rounded corners (CSS Border Radius) -------------------------------------
 .rounded(@radius: 2px) {
 	-webkit-border-radius: @radius;
 	-moz-border-radius: @radius;
@@ -104,7 +132,7 @@
 	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
-// -|- CSS3 Border Radius -------------------------------------------
+// -|- CSS3 Border Radius ------------------------------------------------------
 .border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
 	-webkit-border-top-right-radius: @topright;
 	-webkit-border-bottom-right-radius: @bottomright;
@@ -121,7 +149,7 @@
 	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
-// -|- Opacity ------------------------------------------------------
+// -|- Opacity -----------------------------------------------------------------
 .opacity(@opacity: 0.5) {
 	-moz-opacity: @opacity;
 	-khtml-opacity: @opacity;
@@ -129,32 +157,61 @@
 	opacity: @opacity;
 }
 
-// -|- CSS3 Rotate --------------------------------------------------
+// -|- CSS3 Rotate -------------------------------------------------------------
 .rotation(@deg:5deg){
 	-webkit-transform: rotate(@deg);
 	-moz-transform: rotate(@deg);
 	transform: rotate(@deg);
 }
 
-// -|- CSS3 Scale ---------------------------------------------------
+// -|- CSS3 Scale --------------------------------------------------------------
 .scale(@ratio:1.5){
 	-webkit-transform:scale(@ratio);
 	-moz-transform:scale(@ratio);
 	transform:scale(@ratio);
 }
 
-// -|- CSS3 Transition ----------------------------------------------
+// -|- CSS3 Transition ---------------------------------------------------------
 .transition(@duration:0.2s, @ease:ease-out) {
 	-webkit-transition: all @duration @ease;
 	-moz-transition: all @duration @ease;
 	transition: all @duration @ease;
 }
 
-// -|- CSS3 Translate -----------------------------------------------
+// -|- CSS3 Translate ----------------------------------------------------------
 .translate(@x:0, @y:0) {
 	-moz-transform: translate(@x, @y);
 	-webkit-transform: translate(@x, @y);
 	-o-transform: translate(@x, @y);
 	-ms-transform: translate(@x, @y);
 	transform: translate(@x, @y);
+}
+
+
+// =|===========================================================================
+// =|= Grid system by semantic.gs
+// =|= You should not need to edit beyond this point.
+// =|===========================================================================
+
+@gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
+@total-width: @gridsystem-width;
+
+.row(@columns:@columns) {
+	display: block;
+	width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width);
+	margin: 0 @total-width*(((@gutter-width*.5)/@gridsystem-width)*-1);
+	.clearfix;
+}
+.column(@x,@columns:@columns) {
+	display: inline;
+	float: left;
+	width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
+	margin: 0 @total-width*((@gutter-width*.5)/@gridsystem-width);
+}
+
+.push(@offset:1) {
+	margin-left: @total-width*(((@gutter-width+@column-width)*@offset) / @gridsystem-width) + @total-width*((@gutter-width*.5)/@gridsystem-width);
+}
+.pull(@offset:1) {
+	margin-right: @total-width*(((@gutter-width+@column-width)*@offset) / @gridsystem-width) + @total-width*((@gutter-width*.5)/@gridsystem-width);
 }

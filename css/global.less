@@ -1,39 +1,41 @@
-// =|= Imported Styles / Frameworks etc =====================================
+// =|= Imported Styles / Frameworks etc ========================================
+// -|- CSS Reset - http://necolas.github.com/normalize.css/ --------------------
 @import "includes/normalize.less";
-@import "includes/grid.less";
-@import "includes/typography.less";
-@import "includes/settings.less";
 
-// =|= Structure ============================================================
+// -|- Useful LESS mixins (Settings, Grid, Reusable styles) --------------------
+@import "includes/mixins.less";
+
+// -|- Base CSS (Typography, General spacing, Block elements, CSS Objects etc) -
+@import "includes/base.less";
+
+// =|= Structure ===============================================================
 html {font-size: 62.5%;}
 
 body {
 	margin: 0 auto;
 	max-width: 1170px;
+	.clearfix;
 }
 
-// =|= Block Elements ======================================================
-p, ul, ol, pre code, blockquote {
-  margin: 1em 0 1.5em 0;
-}
-
-// =|= Header ===============================================================
+// =|= Header ==================================================================
 body > header {
 	.clearfix;
 
-	// -|- HOOK_TOP Modules ---------------------------------------------
+	// -|- Modules -------------------------------------------------------------
 	.modules {
 		position: relative;
 		.column(9);
 		margin-top: 10px;
 	}
 
-		.block {
-			float: right;
-			margin-left: 10px;
-		}
+	.block {
+		float: right;
+		margin-left: 10px;
+	}
 
 }
+
+// -|- Logo --------------------------------------------------------------------
 
 #logo {
 	.column(3);
@@ -42,38 +44,106 @@ body > header {
 	}
 }
 
-// =|= Center content =======================================================
+// =|= Center content ==========================================================
 #center_column {
 	.column(8);
 
-	// -|- Center Block Modules -----------------------------------------
+	// -|- Center modules ------------------------------------------------------
 	.block {
 		margin-bottom: 40px;
+		h1 {
+		  .font-size(22);
+		  margin: 1em 0 0.8em 0;
+		}
+		h2 {
+		  font-weight: bold;
+		  .font-size(16);
+		}
 	}
 }
 
-// =|= Sidebars =============================================================
+// =|= Sidebars ================================================================
 .sidebar {
 	.column(2);
 
-	// -|- Sidebar Block Modules ----------------------------------------
+	// -|- Sidebar headers -----------------------------------------------------
+	h1,
+	> h4 {
+		.font-size(16);
+		border-bottom: 1px solid #999;
+		padding-bottom: 0.5em;
+		margin-bottom: 0.3em;
+	}
+	h2 {
+		font-weight: bold;
+		.font-size(12);
+	}
+
+	// -|- Sidebar copy --------------------------------------------------------
+	p {
+		.font-size(11);
+	}
+	a {
+		text-decoration: none;
+	}
+
+	// -|- Sidebar lists content such as categories and manufacturers ----------
+	ul,
+	ol {
+		.font-size(12);
+		.no-bullets
+	}
+	ul li {
+		border-bottom: 1px dotted #CCC;
+
+		a {
+		  display:block;
+		  padding:7px 5px;
+		  &:hover {background: #fafafa;}
+		}
+	}
+	ul.products li a {
+		padding: 0;
+	}
+
+	// -|- Sidebar Block Modules -----------------------------------------------
 	.block {
 		margin-bottom: 40px;
 	}
 }
 
-// =|= Footer ===============================================================
+// =|= Footer ==================================================================
 body > footer {
 	clear: both;
 	border-top: 1px solid #999;
 	padding: 20px 0;
 	.column(12);
 
+	// -|- Footer headers ------------------------------------------------------
+	h1,
+	> h4 {
+		.font-size(16);
+		border-bottom: 1px solid #999;
+		padding-bottom: 0.5em;
+		margin-bottom: 0.3em;
+	}
+	h2 {
+		font-weight: bold;
+		.font-size(15);
+	}
+
+	// -|- Footer copy ---------------------------------------------------------
+	p,
+	ul,
+	ol {
+	    .font-size(12);
+	}
+
+	// -|- Footer block modules ------------------------------------------------
 	.modules{
 		.row(12);
 	}
 
-	// -|- Footer Block Modules -----------------------------------------
 	.block {
 		.column(2,12);
 
@@ -85,26 +155,4 @@ body > footer {
 			}
 		}
 	}
-}
-
-// =|= Objects ==============================================================
-.hidden,
-.collapsed {display: none; visibility: hidden;}
-.expanded {display: block; visibility: visible;}
-
-// -|- Labels -----------------------------------------
-.label {
-	.font-size(11);
-	background: @primary;
-	display: inline;
-	padding: 3px 5px;
-	color: #fff;
-	.rounded(5px);
-	position: absolute;
-	left: 0;
-	top: 0;
-	font-weight: bold;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	white-space: nowrap;
-	vertical-align: baseline;
 }
