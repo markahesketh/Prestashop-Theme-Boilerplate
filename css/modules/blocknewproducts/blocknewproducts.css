@@ -1,0 +1,34 @@
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+.blocknewproducts {
+  *zoom: 1;
+}
+.blocknewproducts:before,
+.blocknewproducts:after {
+  content: "";
+  display: table;
+}
+.blocknewproducts:after {
+  clear: both;
+}
+.blocknewproducts img {
+  float: left;
+  max-width: 35%;
+}
+.blocknewproducts h2 {
+  margin: 1em 0;
+}
+.blocknewproducts h2,
+.blocknewproducts p {
+  padding-left: 40%;
+}
