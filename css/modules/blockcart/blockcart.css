@@ -1,0 +1,68 @@
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+.blockcart ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  border-top: 1px solid #9a9a9a;
+}
+.blockcart ul li {
+  padding: 7px 0;
+}
+.blockcart .quantity-formated {
+  display: inline-block;
+  width: 15px;
+}
+.blockcart dt {
+  border-top: 1px dotted #cacaca;
+  margin-top: 7px;
+  padding-top: 7px;
+}
+.blockcart dt.first_item {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+.blockcart dd {
+  margin-left: 17px;
+  padding: 3px 0;
+  font-style: italic;
+  font-size: 9px;
+  font-size: 0.9rem;
+}
+.blockcart .price,
+.blockcart .remove_link {
+  float: right;
+  margin-left: 5%;
+}
+.blockcart .price a,
+.blockcart .remove_link a {
+  text-decoration: none;
+}
+header .blockcart {
+  position: absolute;
+  right: 0;
+  top: 75px;
+  width: 185px;
+  background: #eaeaea;
+  z-index: 100;
+  border-top: 1px solid #fff;
+  height: auto;
+  display: none;
+}
+header .blockcart h1 {
+  display: none;
+}
+header .blockcart #cart_block_list {
+  padding: 0 20px;
+}
