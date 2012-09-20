@@ -119,13 +119,13 @@
 				{/if}
 				</td>
 			</tr>
-			{if $use_taxes}
-				{if $total_shipping_tax_exc <= 0 && !isset($virtualCart)}
-					<tr class="cart_total_delivery">
-						<td colspan="5">{l s='Shipping:'}</td>
-						<td colspan="2" class="price" id="total_shipping">{l s='Free Shipping!'}</td>
-					</tr>
-				{else}
+			{if $total_shipping_tax_exc <= 0 && !isset($virtualCart)}
+				<tr class="cart_total_delivery">
+					<td colspan="5">{l s='Shipping:'}</td>
+					<td colspan="2" class="price" id="total_shipping">{l s='Free Shipping!'}</td>
+				</tr>
+			{else}
+				{if $use_taxes}
 					{if $priceDisplay}
 						<tr class="cart_total_delivery" {if $total_shipping_tax_exc <= 0} style="display:none;"{/if}>
 							<td colspan="5">{if $display_tax_label}{l s='Total shipping (tax excl.):'}{else}{l s='Total shipping:'}{/if}</td>
@@ -137,12 +137,12 @@
 							<td colspan="2" class="price" id="total_shipping" >{displayPrice price=$total_shipping}</td>
 						</tr>
 					{/if}
+				{else}
+					<tr class="cart_total_delivery"{if $total_shipping_tax_exc <= 0} style="display:none;"{/if}>
+						<td colspan="5">{l s='Total shipping:'}</td>
+						<td colspan="2" class="price" id="total_shipping" >{displayPrice price=$total_shipping_tax_exc}</td>
+					</tr>
 				{/if}
-			{else}
-				<tr class="cart_total_delivery"{if $total_shipping_tax_exc <= 0} style="display:none;"{/if}>
-					<td colspan="5">{l s='Total shipping:'}</td>
-					<td colspan="2" class="price" id="total_shipping" >{displayPrice price=$total_shipping_tax_exc}</td>
-				</tr>
 			{/if}
 
 			<tr class="cart_total_price">
@@ -231,7 +231,7 @@
 												{l s=':'} {$textField.value}
 											</li>
 										{/foreach}
-										
+
 									</ul>
 								{/if}
 
@@ -254,7 +254,7 @@
 								{/if}
 								</div>
 								<input type="hidden" value="{$customization.quantity}" name="quantity_{$product.id_product}_{$product.id_product_attribute}_{$id_customization}_hidden"/>
-								<input size="2" type="text" value="{$customization.quantity}" class="cart_quantity_input" name="quantity_{$product.id_product}_{$product.id_product_attribute}_{$id_customization}_0"/>
+								<input size="2" type="text" value="{$customization.quantity}" class="cart_quantity_input" name="quantity_{$product.id_product}_{$product.id_product_attribute}_{$id_customization}_{$product.id_address_delivery|intval}"/>
 							{/if}
 						</td>
 						<td class="cart_delete">
@@ -306,7 +306,7 @@
 	</table>
 </div>
 
-{if $show_option_allow_sparate_package}
+{if $show_option_allow_separate_package}
 <p>
 	<input type="checkbox" name="allow_seperated_package" id="allow_seperated_package" {if $cart->allow_seperated_package}checked="checked"{/if} />
 	<label for="allow_seperated_package">{l s='Send the available products first'}</label>
@@ -393,12 +393,13 @@
 			<a href="{if $back}{$link->getPageLink('order', true, NULL, 'step=1&amp;back={$back}')}{else}{$link->getPageLink('order', true, NULL, 'step=1')}{/if}&amp;multi-shipping=1" class="multishipping-button multishipping-checkout exclusive" title="{l s='Next'}">{l s='Next'} &raquo;</a>
 		{/if}
 	{/if}
-	<a href="{if (isset($smarty.server.HTTP_REFERER) && strstr($smarty.server.HTTP_REFERER, 'order.php')) || !isset($smarty.server.HTTP_REFERER)}{$link->getPageLink('index')}', {else}{$smarty.server.HTTP_REFERER|escape:'htmlall':'UTF-8'|secureReferrer}{/if}" class="button_large" title="{l s='Continue shopping'}">&laquo; {l s='Continue shopping'}</a>
+	<a href="{if (isset($smarty.server.HTTP_REFERER) && strstr($smarty.server.HTTP_REFERER, 'order.php')) || strstr($smarty.server.HTTP_REFERER, 'order-opc') || !isset($smarty.server.HTTP_REFERER)}{$link->getPageLink('index')}{else}{$smarty.server.HTTP_REFERER|escape:'htmlall':'UTF-8'|secureReferrer}{/if}" class="button_large" title="{l s='Continue shopping'}">&laquo; {l s='Continue shopping'}</a>
 </p>
-<p class="clear"><br /><br /></p>
-<div class="clear"></div>
-<p class="cart_navigation_extra">
-	<span id="HOOK_SHOPPING_CART_EXTRA">{$HOOK_SHOPPING_CART_EXTRA}</span>
-</p>
+	{if !empty($HOOK_SHOPPING_CART_EXTRA)}
+		<div class="clear"></div>
+		<div class="cart_navigation_extra">
+			<div id="HOOK_SHOPPING_CART_EXTRA">{$HOOK_SHOPPING_CART_EXTRA}</div>
+		</div>
+	{/if}
 {/if}
 

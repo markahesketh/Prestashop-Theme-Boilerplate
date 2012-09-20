@@ -39,7 +39,7 @@
 	</script>
 {/if}
 
-{if !$virtual_cart && $giftAllowed && $cart->gift == 1}
+{if isset($virtual_cart) && !$virtual_cart && $giftAllowed && $cart->gift == 1}
 <script type="text/javascript">
 {literal}
 // <![CDATA[
@@ -53,47 +53,55 @@
 {/if}
 
 {if !$opc}
-{capture name=path}{l s='Shipping'}{/capture}
-{include file="$tpl_dir./breadcrumb.tpl"}
+	{capture name=path}{l s='Shipping'}{/capture}
+	{include file="$tpl_dir./breadcrumb.tpl"}
 {/if}
 
-{if !$opc}<h1>{l s='Shipping'}</h1>{else}<h2><span>2</span> {l s='Delivery methods'}</h2>{/if}
+{if !$opc}
+	<h1>{l s='Shipping'}</h1>
+{else}
+	<h2><span>2</span> {l s='Delivery methods'}</h2>
+{/if}
 
 {if !$opc}
-{assign var='current_step' value='shipping'}
-{include file="$tpl_dir./order-steps.tpl"}
+	{assign var='current_step' value='shipping'}
+	{include file="$tpl_dir./order-steps.tpl"}
 
-{include file="$tpl_dir./errors.tpl"}
+	{include file="$tpl_dir./errors.tpl"}
 
-<form id="form" action="{$link->getPageLink('order', true, NULL, "multi-shipping={$multi_shipping}")}" method="post" onsubmit="return acceptCGV();">
+	<form id="form" action="{$link->getPageLink('order', true, NULL, "multi-shipping={$multi_shipping}")}" method="post" onsubmit="return acceptCGV();">
 {else}
-<div id="opc_delivery_methods" class="opc-main-block">
+	<div id="opc_delivery_methods" class="opc-main-block">
 	<div id="opc_delivery_methods-overlay" class="opc-overlay" style="display: none;"></div>
 {/if}
 
 <div class="order_carrier_content">
 
-{if $virtual_cart}
+{if isset($virtual_cart) && $virtual_cart}
 	<input id="input_virtual_carrier" class="hidden" type="hidden" name="id_carrier" value="0" />
 {else}
 	<h3 class="carrier_title">{l s='Choose your delivery method'}</h3>
-	
-	<div id="HOOK_BEFORECARRIER">{if isset($carriers) && isset($HOOK_BEFORECARRIER)}{$HOOK_BEFORECARRIER}{/if}</div>
+
+	<div id="HOOK_BEFORECARRIER">
+		{if isset($carriers) && isset($HOOK_BEFORECARRIER)}
+			{$HOOK_BEFORECARRIER}
+		{/if}
+	</div>
 	{if isset($isVirtualCart) && $isVirtualCart}
-	<p class="warning">{l s='No carrier needed for this order'}</p>
+		<p class="warning">{l s='No carrier needed for this order'}</p>
 	{else}
-	{if $recyclablePackAllowed}
-	<p class="checkbox">
-		<input type="checkbox" name="recyclable" id="recyclable" value="1" {if $recyclable == 1}checked="checked"{/if} />
-		<label for="recyclable">{l s='I agree to receive my order in recycled packaging'}.</label>
-	</p>
-	{/if}
+		{if $recyclablePackAllowed}
+			<p class="checkbox">
+				<input type="checkbox" name="recyclable" id="recyclable" value="1" {if $recyclable == 1}checked="checked"{/if} />
+				<label for="recyclable">{l s='I agree to receive my order in recycled packaging'}.</label>
+			</p>
+		{/if}
 	<div class="delivery_options_address">
 	{if isset($delivery_option_list)}
 		{foreach $delivery_option_list as $id_address => $option_list}
 			<h3>
 				{if isset($address_collection[$id_address])}
-					{l s='Choose a shipping option for the address:'} {$address_collection[$id_address]->alias}
+					{l s='Choose a shipping option for this address:'} {$address_collection[$id_address]->alias}
 				{else}
 					{l s='Choose a shipping option'}
 				{/if}
@@ -140,7 +148,7 @@
 								</td>
 								<td>
 								<div class="delivery_option_price">
-									{if $option.total_price_with_tax}
+									{if $option.total_price_with_tax && !$free_shipping}
 										{if $use_taxes == 1}
 											{convertPrice price=$option.total_price_with_tax} {l s='(tax incl.)'}
 										{else}
@@ -172,12 +180,13 @@
 									{if isset($carrier.instance->delay[$cookie->id_lang])}
 										{$carrier.instance->delay[$cookie->id_lang]}<br />
 										{if count($carrier.product_list) <= 1}
-											({l s="product concerned:"}
+											({l s='product concerned:'}
 										{else}
-											({l s="products concerned:"}
+											({l s='products concerned:'}
 										{/if}
 										{* This foreach is on one line, to avoid tabulation in the title attribute of the acronym *}
-										{foreach $carrier.product_list as $product}{if $product@index == 4}<acronym title="{/if}{if $product@index >= 4}{$product.name}{if !$product@last}, {else}">...</acronym>){/if}{else}{$product.name}{if !$product@last}, {else}){/if}{/if}{/foreach}
+										{foreach $carrier.product_list as $product}
+										{if $product@index == 4}<acronym title="{/if}{if $product@index >= 4}{$product.name}{if !$product@last}, {else}">...</acronym>){/if}{else}{$product.name}{if !$product@last}, {else}){/if}{/if}{/foreach}
 									{/if}
 								</td>
 							</tr>
@@ -203,10 +212,10 @@
 			</p>
 		{/foreach}
 	{/if}
-	
+
 	</div>
 	<div style="display: none;" id="extra_carrier"></div>
-	
+
 		{if $giftAllowed}
 		<h3 class="gift_title">{l s='Gift'}</h3>
 		<p class="checkbox">
@@ -234,7 +243,7 @@
 	<h3 class="condition_title">{l s='Terms of service'}</h3>
 	<p class="checkbox">
 		<input type="checkbox" name="cgv" id="cgv" value="1" {if $checkedTOS}checked="checked"{/if} />
-		<label for="cgv">{l s='I agree to the terms of service and will adhere to them unconditionally.'}</label> <a href="{$link_conditions}" class="iframe">{l s='(Read Terms of service)'}</a>
+		<label for="cgv">{l s='I agree to the Terms of Service and will adhere to them unconditionally.'}</label> <a href="{$link_conditions}" class="iframe">{l s='(Read Terms of Service)'}</a>
 	</p>
 	<script type="text/javascript">$('a.iframe').fancybox();</script>
 {/if}
@@ -253,7 +262,7 @@
 		{else}
 				<a href="{$link->getPageLink('order', true, NULL, "multi-shipping={$multi_shipping}")}" title="{l s='Previous'}" class="button">&laquo; {l s='Previous'}</a>
 		{/if}
-		{if $virtual_cart || (isset($delivery_option_list) && !empty($delivery_option_list))}
+		{if isset($virtual_cart) && $virtual_cart || (isset($delivery_option_list) && !empty($delivery_option_list))}
 			<input type="submit" name="processCarrier" value="{l s='Next'} &raquo;" class="exclusive" />
 		{/if}
 	</p>

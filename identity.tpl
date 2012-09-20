@@ -15,7 +15,7 @@
 {if isset($confirmation) && $confirmation}
 	<p class="success">
 		{l s='Your personal information has been successfully updated.'}
-		{if isset($pwd_changed)}<br />{l s='Your password has been sent to your e-mail:'} {$email|escape:'htmlall':'UTF-8'}{/if}
+		{if isset($pwd_changed)}<br />{l s='Your password has been sent to your e-mail:'} {$email}{/if}
 	</p>
 {else}
 	<h3>{l s='Please be sure to update your personal information if it has changed.'}</h3>
@@ -25,7 +25,7 @@
 			<p class="radio">
 				<span>{l s='Title'}</span>
 				{foreach from=$genders key=k item=gender}
-					<input type="radio" name="id_gender" id="id_gender{$gender->id}" value="{$gender->id}" {if isset($smarty.post.id_gender) && $smarty.post.id_gender == $gender->id}checked="checked"{/if} />
+					<input type="radio" name="id_gender" id="id_gender{$gender->id}" value="{$gender->id|intval}" {if isset($smarty.post.id_gender) && $smarty.post.id_gender == $gender->id}checked="checked"{/if} />
 					<label for="id_gender{$gender->id}" class="top">{$gender->name}</label>
 				{/foreach}
 			</p>
@@ -58,7 +58,7 @@
 				<select name="days" id="days">
 					<option value="">-</option>
 					{foreach from=$days item=v}
-						<option value="{$v|escape:'htmlall':'UTF-8'}" {if ($sl_day == $v)}selected="selected"{/if}>{$v|escape:'htmlall':'UTF-8'}&nbsp;&nbsp;</option>
+						<option value="{$v}" {if ($sl_day == $v)}selected="selected"{/if}>{$v}&nbsp;&nbsp;</option>
 					{/foreach}
 				</select>
 				{*
@@ -78,13 +78,13 @@
 				<select id="months" name="months">
 					<option value="">-</option>
 					{foreach from=$months key=k item=v}
-						<option value="{$k|escape:'htmlall':'UTF-8'}" {if ($sl_month == $k)}selected="selected"{/if}>{l s=$v}&nbsp;</option>
+						<option value="{$k}" {if ($sl_month == $k)}selected="selected"{/if}>{l s=$v}&nbsp;</option>
 					{/foreach}
 				</select>
 				<select id="years" name="years">
 					<option value="">-</option>
 					{foreach from=$years item=v}
-						<option value="{$v|escape:'htmlall':'UTF-8'}" {if ($sl_year == $v)}selected="selected"{/if}>{$v|escape:'htmlall':'UTF-8'}&nbsp;&nbsp;</option>
+						<option value="{$v}" {if ($sl_year == $v)}selected="selected"{/if}>{$v}&nbsp;&nbsp;</option>
 					{/foreach}
 				</select>
 			</p>

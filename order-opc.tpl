@@ -38,14 +38,14 @@
 	var countriesNeedIDNumber = new Array();
 	var countriesNeedZipCode = new Array();
 	var vat_management = {$vat_management|intval};
-	
+
 	var txtWithTax = "{l s='(tax incl.)'}";
 	var txtWithoutTax = "{l s='(tax excl.)'}";
 	var txtHasBeenSelected = "{l s='has been selected'}";
 	var txtNoCarrierIsSelected = "{l s='No carrier has been selected'}";
 	var txtNoCarrierIsNeeded = "{l s='No carrier is needed for this order'}";
 	var txtConditionsIsNotNeeded = "{l s='No terms of service must be accepted'}";
-	var txtTOSIsAccepted = "{l s='Terms of service have been accepted'}";
+	var txtTOSIsAccepted = "{l s='Terms of Service have been accepted'}";
 	var txtTOSIsNotAccepted = "{l s='Terms of service have not been accepted'}";
 	var txtThereis = "{l s='There is'}";
 	var txtErrors = "{l s='error(s)'}";
@@ -53,6 +53,7 @@
 	var txtInvoiceAddress = "{l s='Invoice address'}";
 	var txtModifyMyAddress = "{l s='Modify my address'}";
 	var txtInstantCheckout = "{l s='Instant checkout'}";
+	var txtSelectAnAddressFirst = "{l s='Please start by selecting an address'}";
 	var errorCarrier = "{$errorCarrier}";
 	var errorTOS = "{$errorTOS}";
 	var checkedCarrier = "{if isset($checked)}{$checked}{else}0{/if}";
@@ -78,7 +79,7 @@
 		<!-- Carrier -->
 		{include file="$tpl_dir./order-carrier.tpl"}
 		<!-- END Carrier -->
-	
+
 		<!-- Payment -->
 		{include file="$tpl_dir./order-payment.tpl"}
 		<!-- END Payment -->

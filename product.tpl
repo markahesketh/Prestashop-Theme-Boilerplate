@@ -50,12 +50,15 @@ var productAvailableForOrder = {if (isset($restricted_country_mode) AND $restric
 var productShowPrice = '{if !$PS_CATALOG_MODE}{$product->show_price}{else}0{/if}';
 var productUnitPriceRatio = '{$product->unit_price_ratio}';
 var idDefaultImage = {if isset($cover.id_image_only)}{$cover.id_image_only}{else}0{/if};
-
+var stock_management = {$stock_management|intval};
+{if !isset($priceDisplayPrecision)}
+	{assign var='priceDisplayPrecision' value=2}
+{/if}
 {if !$priceDisplay || $priceDisplay == 2}
-	{assign var='productPrice' value=$product->getPrice(true, $smarty.const.NULL, 2)}
+	{assign var='productPrice' value=$product->getPrice(true, $smarty.const.NULL, $priceDisplayPrecision)}
 	{assign var='productPriceWithoutRedution' value=$product->getPriceWithoutReduct(false, $smarty.const.NULL)}
 {elseif $priceDisplay == 1}
-	{assign var='productPrice' value=$product->getPrice(false, $smarty.const.NULL, 2)}
+	{assign var='productPrice' value=$product->getPrice(false, $smarty.const.NULL, $priceDisplayPrecision)}
 	{assign var='productPriceWithoutRedution' value=$product->getPriceWithoutReduct(true, $smarty.const.NULL)}
 {/if}
 
@@ -134,8 +137,8 @@ var fieldRequired = '{l s='Please fill in all required fields, then save the cus
 	<div id="admin-action">
 		<p>{l s='This product is not visible to your customers.'}
 		<input type="hidden" id="admin-action-product-id" value="{$product->id}" />
-		<input type="submit" value="{l s='Publish'}" class="exclusive" onclick="submitPublishProduct('{$base_dir}{$smarty.get.ad}', 0)"/>
-		<input type="submit" value="{l s='Back'}" class="exclusive" onclick="submitPublishProduct('{$base_dir}{$smarty.get.ad}', 1)"/>
+		<input type="submit" value="{l s='Publish'}" class="exclusive" onclick="submitPublishProduct('{$base_dir}{$smarty.get.ad|escape:'htmlall':'UTF-8'}', 0, '{$smarty.get.adtoken|escape:'htmlall':'UTF-8'}')"/>
+		<input type="submit" value="{l s='Back'}" class="exclusive" onclick="submitPublishProduct('{$base_dir}{$smarty.get.ad|escape:'htmlall':'UTF-8'}', 1, '{$smarty.get.adtoken|escape:'htmlall':'UTF-8'}')"/>
 		</p>
 		<p id="admin-action-result"></p>
 		</p>
@@ -280,7 +283,7 @@ var fieldRequired = '{l s='Please fill in all required fields, then save the cus
 									{/if}
 									{/foreach}
 								</ul>
-								<input type="hidden" id="color_pick_hidden" name="{$groupName}" value="{$default_colorpicker}" />
+								<input type="hidden" class="color_pick_hidden" name="{$groupName}" value="{$default_colorpicker}" />
 							{elseif ($group.group_type == 'radio')}
 								{foreach from=$group.attributes key=id_attribute item=group_attribute}
 									<input type="radio" class="attribute_radio" name="{$groupName}" value="{$id_attribute}" {if ($group.default == $id_attribute)} checked="checked"{/if} onclick="findCombination();getProductAttribute();{if $colors|@count > 0}$('#wrapResetImages').show('slow');{/if}">
@@ -349,10 +352,10 @@ var fieldRequired = '{l s='Please fill in all required fields, then save the cus
 
 			<div class="price">
 				{if !$priceDisplay || $priceDisplay == 2}
-					{assign var='productPrice' value=$product->getPrice(true, $smarty.const.NULL)}
+					{assign var='productPrice' value=$product->getPrice(true, $smarty.const.NULL, $priceDisplayPrecision)}
 					{assign var='productPriceWithoutRedution' value=$product->getPriceWithoutReduct(false, $smarty.const.NULL)}
 				{elseif $priceDisplay == 1}
-					{assign var='productPrice' value=$product->getPrice(false, $smarty.const.NULL)}
+					{assign var='productPrice' value=$product->getPrice(false, $smarty.const.NULL, $priceDisplayPrecision)}
 					{assign var='productPriceWithoutRedution' value=$product->getPriceWithoutReduct(true, $smarty.const.NULL)}
 				{/if}
 
@@ -376,12 +379,8 @@ var fieldRequired = '{l s='Please fill in all required fields, then save the cus
 					<span id="pretaxe_price"><span id="pretaxe_price_display">{convertPrice price=$product->getPrice(false, $smarty.const.NULL)}</span>&nbsp;{l s='tax excl.'}</span>
 				{/if}
 			</div>
-			{if $product->specificPrice AND $product->specificPrice.reduction_type == 'percentage'}
-				<p id="reduction_percent"><span id="reduction_percent_display">-{$product->specificPrice.reduction*100}%</span></p>
-			{elseif $product->specificPrice AND $product->specificPrice.reduction_type == 'amount' && $product->specificPrice.reduction|intval !=0}
-				<p id="reduction_amount"><span id="reduction_amount_display">-{convertPrice price=$product->specificPrice.reduction|floatval}</span></p>
-			{/if}
-
+			<p id="reduction_percent" {if !$product->specificPrice OR $product->specificPrice.reduction_type != 'percentage'} style="display:none;"{/if}><span id="reduction_percent_display">{if $product->specificPrice AND $product->specificPrice.reduction_type == 'percentage'}-{$product->specificPrice.reduction*100}%{/if}</span></p>
+			<p id="reduction_amount" {if !$product->specificPrice OR $product->specificPrice.reduction_type != 'amount' && $product->specificPrice.reduction|intval ==0} style="display:none"{/if}><span id="reduction_amount_display">{if $product->specificPrice AND $product->specificPrice.reduction_type == 'amount' && $product->specificPrice.reduction|intval !=0}-{convertPrice price=$product->specificPrice.reduction|floatval}{/if}</span></p>
 			{if $product->specificPrice AND $product->specificPrice.reduction}
 				<p id="old_price"><span class="bold">
 				{if $priceDisplay >= 0 && $priceDisplay <= 2}
@@ -448,9 +447,6 @@ var fieldRequired = '{l s='Please fill in all required fields, then save the cus
             </tr>
         </thead>
 		<tbody>
-            <tr id="noQuantityDiscount">
-                <td colspan='3'>{l s='There is not any quantity discount for this product.'}</td>
-            </tr>
             {foreach from=$quantity_discounts item='quantity_discount' name='quantity_discounts'}
             <tr id="quantityDiscount_{$quantity_discount.id_product_attribute}">
                 <td>
@@ -462,7 +458,7 @@ var fieldRequired = '{l s='Please fill in all required fields, then save the cus
                 </td>
                 <td>{$quantity_discount.quantity|intval}</td>
                 <td>
-                    {if $quantity_discount.price != 0 OR $quantity_discount.reduction_type == 'amount'}
+                    {if $quantity_discount.price >= 0 OR $quantity_discount.reduction_type == 'amount'}
                        -{convertPrice price=$quantity_discount.real_value|floatval}
                    {else}
                        -{$quantity_discount.real_value|floatval}%
@@ -477,7 +473,7 @@ var fieldRequired = '{l s='Please fill in all required fields, then save the cus
 {if isset($HOOK_PRODUCT_FOOTER) && $HOOK_PRODUCT_FOOTER}{$HOOK_PRODUCT_FOOTER}{/if}
 
 <!-- description and features -->
-{if (isset($product) && $product->description) || (isset($features) && $features) || (isset($accessories) && $accessories) || (isset($HOOK_PRODUCT_TAB) && $HOOK_PRODUCT_TAB) || (isset($attachments) && $attachments)}
+{if (isset($product) && $product->description) || (isset($features) && $features) || (isset($accessories) && $accessories) || (isset($HOOK_PRODUCT_TAB) && $HOOK_PRODUCT_TAB) || (isset($attachments) && $attachments) || isset($product) && $product->customizable}
 <div id="more_info_block" class="clear">
 	<ul id="more_info_tabs" class="idTabs idTabsShort clearfix">
 		{if $product->description}<li><a id="more_info_tab_more_info" href="#idTab1">{l s='More info'}</a></li>{/if}
@@ -516,25 +512,26 @@ var fieldRequired = '{l s='Please fill in all required fields, then save the cus
 				<div class="block_content">
 					<ul>
 					{foreach from=$accessories item=accessory name=accessories_list}
-						{assign var='accessoryLink' value=$link->getProductLink($accessory.id_product, $accessory.link_rewrite, $accessory.category)}
-						<li class="ajax_block_product {if $smarty.foreach.accessories_list.first}first_item{elseif $smarty.foreach.accessories_list.last}last_item{else}item{/if} product_accessories_description">
-							<h5><a href="{$accessoryLink|escape:'htmlall':'UTF-8'}">{$accessory.name|truncate:22:'...':true|escape:'htmlall':'UTF-8'}</a></h5>
-							<div class="product_desc">
-								<a href="{$accessoryLink|escape:'htmlall':'UTF-8'}" title="{$accessory.legend|escape:'htmlall':'UTF-8'}" class="product_image"><img src="{$link->getImageLink($accessory.link_rewrite, $accessory.id_image, 'medium')}" alt="{$accessory.legend|escape:'htmlall':'UTF-8'}" width="{$mediumSize.width}" height="{$mediumSize.height}" /></a>
-								<a href="{$accessoryLink|escape:'htmlall':'UTF-8'}" title="{l s='More'}" class="product_description">{$accessory.description_short|strip_tags|truncate:70:'...'}</a>
-							</div>
-							<p class="product_accessories_price">
-								{if $accessory.show_price AND !isset($restricted_country_mode) AND !$PS_CATALOG_MODE}<span class="price">{if $priceDisplay != 1}{displayWtPrice p=$accessory.price}{else}{displayWtPrice p=$accessory.price_tax_exc}{/if}</span>{/if}
-								<a class="button" href="{$accessoryLink|escape:'htmlall':'UTF-8'}" title="{l s='View'}">{l s='View'}</a>
-								{if ($accessory.allow_oosp || $accessory.quantity > 0) AND $accessory.available_for_order AND !isset($restricted_country_mode) AND !$PS_CATALOG_MODE}
-								<a class="exclusive button ajax_add_to_cart_button" href="{$link->getPageLink('cart', true, NULL, "qty=1&amp;id_product={$accessory.id_product|intval}&amp;token={$static_token}&amp;add")}" rel="ajax_id_product_{$accessory.id_product|intval}" title="{l s='Add to cart'}">{l s='Add to cart'}</a>
-								{else}
-								<span class="exclusive">{l s='Add to cart'}</span>
-								<span class="availability">{if (isset($accessory.quantity_all_versions) && $accessory.quantity_all_versions > 0)}{l s='Product available with different options'}{else}{l s='Out of stock'}{/if}</span>
-								{/if}
-							</p>
-						</li>
-
+						{if ($accessory.allow_oosp || $accessory.quantity > 0) AND $accessory.available_for_order AND !isset($restricted_country_mode) AND !$PS_CATALOG_MODE}
+							{assign var='accessoryLink' value=$link->getProductLink($accessory.id_product, $accessory.link_rewrite, $accessory.category)}
+							<li class="ajax_block_product {if $smarty.foreach.accessories_list.first}first_item{elseif $smarty.foreach.accessories_list.last}last_item{else}item{/if} product_accessories_description">
+								<h5>
+									<a href="{$accessoryLink|escape:'htmlall':'UTF-8'}">{$accessory.name|escape:'htmlall':'UTF-8'}</a>
+									{if $accessory.show_price AND !isset($restricted_country_mode) AND !$PS_CATALOG_MODE} - <span class="price">{if $priceDisplay != 1}{displayWtPrice p=$accessory.price}{else}{displayWtPrice p=$accessory.price_tax_exc}{/if}</span>{/if}
+								</h5>
+								<div class="product_desc" style="margin-top:5px">
+									<a style="float:left" href="{$accessoryLink|escape:'htmlall':'UTF-8'}" title="{$accessory.legend|escape:'htmlall':'UTF-8'}" class="product_image"><img src="{$link->getImageLink($accessory.link_rewrite, $accessory.id_image, 'medium')}" alt="{$accessory.legend|escape:'htmlall':'UTF-8'}" width="{$mediumSize.width}" height="{$mediumSize.height}" /></a>
+									<div style="float:left;margin-left:10px;width:420px">
+										<a href="{$accessoryLink|escape:'htmlall':'UTF-8'}" title="{l s='More'}" class="product_description">{$accessory.description_short|strip_tags|truncate:400:'...'}</a>
+									</div>
+									<div style="clear:both;height:0px;line-height:0px">&nbsp;</div>
+								</div>
+								<p class="clearfix" style="margin-top:5px">
+									<a class="button" href="{$accessoryLink|escape:'htmlall':'UTF-8'}" title="{l s='View'}">{l s='View'}</a>
+									<a class="exclusive button ajax_add_to_cart_button" href="{$link->getPageLink('cart', true, NULL, "qty=1&amp;id_product={$accessory.id_product|intval}&amp;token={$static_token}&amp;add")}" rel="ajax_id_product_{$accessory.id_product|intval}" title="{l s='Add to cart'}">{l s='Add to cart'}</a>
+								</p>
+							</li>
+						{/if}
 					{/foreach}
 					</ul>
 				</div>

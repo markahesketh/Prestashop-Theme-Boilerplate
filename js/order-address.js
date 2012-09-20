@@ -67,7 +67,7 @@ function updateAddressesDisplay(first_view)
 		{
 			$('ul#address_invoice').html($('ul#address_delivery').html());
 			$('ul#address_invoice li.address_title').html(txtInvoiceTitle);
-		}	
+		}
 	}
 
 	if(!first_view)
@@ -103,11 +103,20 @@ function updateAddresses()
 	var idAddress_invoice = $('input[type=checkbox]#addressesAreEquals:checked').length == 1 ? idAddress_delivery : $('#id_address_invoice').val();
 	$.ajax({
 		type: 'POST',
-		url: baseDir,
+		url: baseUri,
 		async: true,
 		cache: false,
 		dataType : "json",
-		data: 'processAddress=true&step=2&ajax=true&controller=order&id_address_delivery=' + idAddress_delivery + '&id_address_invoice=' + idAddress_invoice+ '&token=' + static_token ,
+		data: {
+			processAddress: true,
+			step: 2,
+			ajax: 'true',
+			controller: 'order',
+			'multi-shipping': $('#id_address_delivery:hidden').length,
+			id_address_delivery: idAddress_delivery,
+			id_address_invoice: idAddress_invoice,
+			token: static_token
+		},
 		success: function(jsonData)
 		{
 			if (jsonData.hasError)

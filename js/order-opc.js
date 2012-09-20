@@ -27,11 +27,11 @@
 function updateCarrierList(json)
 {
 	var html = json.carrier_block;
-	
+
 	// @todo  check with theme 1.4
 	//if ($('#HOOK_EXTRACARRIER').length == 0 && json.HOOK_EXTRACARRIER !== null && json.HOOK_EXTRACARRIER != undefined)
 	//	html += json.HOOK_EXTRACARRIER;
-	
+
 	$('#carrier_area').replaceWith(html);
 	bindInputs();
 	/* update hooks for carrier module */
@@ -48,11 +48,11 @@ function updateAddressSelection()
 {
 	var idAddress_delivery = ($('input#opc_id_address_delivery').length == 1 ? $('input#opc_id_address_delivery').val() : $('#id_address_delivery').val());
 	var idAddress_invoice = ($('input#opc_id_address_invoice').length == 1 ? $('input#opc_id_address_invoice').val() : ($('input[type=checkbox]#addressesAreEquals:checked').length == 1 ? idAddress_delivery : ($('#id_address_invoice').length == 1 ? $('select#id_address_invoice').val() : idAddress_delivery)));
-	
+
 	$('#opc_account-overlay').fadeIn('slow');
 	$('#opc_delivery_methods-overlay').fadeIn('slow');
 	$('#opc_payment_methods-overlay').fadeIn('slow');
-	
+
 	$.ajax({
 		type: 'POST',
 		url: orderOpcUrl,
@@ -78,7 +78,7 @@ function updateAddressSelection()
 					$(this)
 						.removeClass('address_'+deliveryAddress)
 						.addClass('address_'+idAddress_delivery);
-					
+
 					if ($(this).find('.cart_unit span').length > 0 && $(this).find('.cart_unit span').attr('id').length > 0)
 						$(this).find('.cart_unit span').attr('id', $(this).find('.cart_unit span').attr('id').replace(/_\d+$/, '_'+idAddress_delivery));
 
@@ -88,9 +88,9 @@ function updateAddressSelection()
 					if ($(this).find('.cart_quantity_input').length > 0 && $(this).find('.cart_quantity_input').attr('name').length > 0)
 					{
 						name = $(this).find('.cart_quantity_input').attr('name')+'_hidden';
-						
+
 						$(this).find('.cart_quantity_input').attr('name', $(this).find('.cart_quantity_input').attr('name').replace(/_\d+$/, '_'+idAddress_delivery));
-						
+
 						if ($(this).find('[name='+name+']')> 0)
 							$(this).find('[name='+name+']').attr('name', name.replace(/_\d+_hidden$/, '_'+idAddress_delivery+'_hidden'));
 					}
@@ -160,7 +160,7 @@ function updateCarrierSelectionAndGift()
 	var recyclablePackage = 0;
 	var gift = 0;
 	var giftMessage = '';
-	
+
 	var delivery_option_radio = $('.delivery_option_radio');
 	var delivery_option_params = '&';
 	$.each(delivery_option_radio, function(i) {
@@ -177,7 +177,7 @@ function updateCarrierSelectionAndGift()
 		gift = 1;
 		giftMessage = encodeURIComponent($('textarea#gift_message').val());
 	}
-	
+
 	$('#opc_payment_methods-overlay').fadeIn('slow');
 	$('#opc_delivery_methods-overlay').fadeIn('slow');
 	$.ajax({
@@ -256,7 +256,7 @@ function saveAddress(type)
 {
 	if (type != 'delivery' && type != 'invoice')
 		return false;
-	
+
 	var params = 'firstname='+encodeURIComponent($('#firstname'+(type == 'invoice' ? '_invoice' : '')).val())+'&lastname='+encodeURIComponent($('#lastname'+(type == 'invoice' ? '_invoice' : '')).val())+'&';
 	params += 'company='+encodeURIComponent($('#company'+(type == 'invoice' ? '_invoice' : '')).val())+'&';
 	params += 'vat_number='+encodeURIComponent($('#vat_number'+(type == 'invoice' ? '_invoice' : '')).val())+'&';
@@ -278,7 +278,7 @@ function saveAddress(type)
 	params = params.substr(0, params.length-1);
 
 	var result = false;
-	
+
 	$.ajax({
 		type: 'POST',
 		url: addressUrl,
@@ -345,7 +345,7 @@ function updateNewAccountToAddressBlock()
 			isLogged = 1;
 			if (json.no_address == 1)
 				document.location.href = addressUrl;
-			
+
 			$('#opc_new_account').fadeOut('fast', function() {
 				$('#opc_new_account').html(json.order_opc_adress);
 				// update block user info
@@ -357,6 +357,12 @@ function updateNewAccountToAddressBlock()
 					});
 				}
 				$('#opc_new_account').fadeIn('fast', function() {
+
+					//After login, the products are automatically associated to an address
+					$.each(json.summary.products, function() {
+						updateAddressId(this.id_product, this.id_product_attribute, '0', this.id_address_delivery);
+					});
+
 					updateCartSummary(json.summary);
 					updateAddressesDisplay(true);
 					updateCarrierList(json.carrier_data);
@@ -386,7 +392,7 @@ $(function() {
 			$('#opc_account_choice').show();
 			$('#opc_account_form').hide();
 			$('#opc_invoice_address').hide();
-			
+
 			$('#opc_createAccount').click(function() {
 				$('.is_customer_param').show();
 				$('#opc_account_form').slideDown('slow');
@@ -432,7 +438,7 @@ $(function() {
 			updateNeedIDNumber();
 			updateZipCode();
 		}
-		
+
 		// LOGIN FORM
 		$('#openLoginFormBlock').click(function() {
 			$('#openNewAccountBlock').show();
@@ -476,7 +482,7 @@ $(function() {
 			});
 			return false;
 		});
-		
+
 		// INVOICE ADDRESS
 		$('#invoice_address').click(function() {
 			if ($('#invoice_address:checked').length > 0)
@@ -491,16 +497,16 @@ $(function() {
 			else
 				$('#opc_invoice_address').slideUp('slow');
 		});
-		
+
 		// VALIDATION / CREATION AJAX
 		$('#submitAccount').click(function() {
 			$('#opc_new_account-overlay').fadeIn('slow');
 			$('#opc_delivery_methods-overlay').fadeIn('slow');
 			$('#opc_payment_methods-overlay').fadeIn('slow');
-			
+
 			// RESET ERROR(S) MESSAGE(S)
 			$('#opc_account_errors').html('').slideUp('slow');
-			
+
 			if ($('input#opc_id_customer').val() == 0)
 			{
 				var callingFile = authenticationUrl;
@@ -536,7 +542,7 @@ $(function() {
 			params += 'is_new_customer='+encodeURIComponent($('#is_new_customer').val())+'&';
 			// Clean the last &
 			params = params.substr(0, params.length-1);
-			
+
 			$.ajax({
 				type: 'POST',
 				url: callingFile,
@@ -564,35 +570,35 @@ $(function() {
 					}
 
 					isGuest = ($('#is_new_customer').val() == 1 ? 0 : 1);
-					
+
 					if (jsonData.id_customer != undefined && jsonData.id_customer != 0 && jsonData.isSaved)
 					{
 						// update token
 						static_token = jsonData.token;
-						
+
 						// update addresses id
 						$('input#opc_id_address_delivery').val(jsonData.id_address_delivery);
 						$('input#opc_id_address_invoice').val(jsonData.id_address_invoice);
-						
+
 						// It's not a new customer
 						if ($('input#opc_id_customer').val() != '0')
 						{
 							if (!saveAddress('delivery'))
 								return false;
 						}
-						
+
 						// update id_customer
 						$('input#opc_id_customer').val(jsonData.id_customer);
-						
+
 						if ($('#invoice_address:checked').length != 0)
 						{
 							if (!saveAddress('invoice'))
 								return false;
 						}
-						
+
 						// update id_customer
 						$('input#opc_id_customer').val(jsonData.id_customer);
-						
+
 						// force to refresh carrier list
 						if (isGuest)
 						{
@@ -619,9 +625,9 @@ $(function() {
 			return false;
 		});
 	}
-	
+
 	bindInputs();
-	
+
 	$('#opc_account_form input,select,textarea').change(function() {
 		if ($(this).is(':visible'))
 		{
@@ -629,7 +635,7 @@ $(function() {
 			$('#submitAccount').show();
 		}
 	});
-	
+
 });
 
 function bindInputs()
@@ -665,12 +671,12 @@ function bindInputs()
 			}
 		});
 	});
-	
+
 	// Recyclable checkbox
 	$('input#recyclable').click(function() {
 		updateCarrierSelectionAndGift();
 	});
-	
+
 	// Gift checkbox update
 	$('input#gift').click(function() {
 		if ($('input#gift').is(':checked'))
@@ -679,7 +685,7 @@ function bindInputs()
 			$('p#gift_div').hide();
 		updateCarrierSelectionAndGift();
 	});
-	
+
 	if ($('input#gift').is(':checked'))
 		$('p#gift_div').show();
 	else
@@ -689,14 +695,14 @@ function bindInputs()
 	$('textarea#gift_message').change(function() {
 		updateCarrierSelectionAndGift();
 	});
-	
+
 	// Term Of Service (TOS)
-	$('#cgv').live('click', function() {
+	$('#cgv').click(function() {
 		if ($('#cgv:checked').length != 0)
 			var checked = 1;
 		else
 			var checked = 0;
-		
+
 		$('#opc_payment_methods-overlay').fadeIn('slow');
 		$.ajax({
 			type: 'POST',
@@ -707,6 +713,7 @@ function bindInputs()
 			data: 'ajax=true&method=updateTOSStatusAndGetPayments&checked=' + checked + '&token=' + static_token,
 			success: function(json)
 			{
+				updateCarrierSelectionAndGift();
 				$('div#HOOK_TOP_PAYMENT').html(json.HOOK_TOP_PAYMENT);
 				$('#opc_payment_methods-content div#HOOK_PAYMENT').html(json.HOOK_PAYMENT);
 				$('#opc_payment_methods-overlay').fadeOut('slow');
@@ -724,10 +731,10 @@ function multishippingMode(it)
 		$('#multishipping_mode_box').addClass('on');
 		$('.addressesAreEquals').hide();
 		$('#address_invoice_form').show();
-		
+
 		$('#link_multishipping_form').click(function() {return false;});
 		$('.address_add a').attr('href', addressMultishippingUrl);
-		
+
 		$('#link_multishipping_form').fancybox({
 			'transitionIn': 'elastic',
 			'transitionOut': 'elastic',
@@ -742,6 +749,7 @@ function multishippingMode(it)
 					cache: false,
 					success: function(data) {
 						$('#cart_summary').replaceWith($(data).find('#cart_summary'));
+						$('.cart_quantity_input').typeWatch({ highlight: true, wait: 600, captureLength: 0, callback: function(val) { updateQty(val, true, this.el) } });
 					}
 				});
 				updateCarrierSelectionAndGift();
@@ -756,6 +764,7 @@ function multishippingMode(it)
 			},
 			'onComplete': function()
 			{
+				$('#fancybox-content .cart_quantity_input').typeWatch({ highlight: true, wait: 600, captureLength: 0, callback: function(val) { updateQty(val, false, this.el)} });
 				cleanSelectAddressDelivery();
 				$('#fancybox-content').append($('<div class="multishipping_close_container"><a id="multishipping-close" class="button_large" href="#">' + CloseTxt + '</a></div>'));
 				$('#multishipping-close').click(function() {
@@ -790,7 +799,7 @@ function multishippingMode(it)
 			$('#address_invoice_form').show();
 		}
 		$('.address_add a').attr('href', addressUrl);
-		
+
 		// Disable multi address shipping
 		$.ajax({
 			url: orderOpcUrl,
@@ -798,7 +807,7 @@ function multishippingMode(it)
 			cache: false,
 			data: 'ajax=true&method=noMultiAddressDelivery'
 		});
-		
+
 		// Reload the cart
 		$.ajax({
 			url: orderOpcUrl,
@@ -822,7 +831,7 @@ $(document).ready(function() {
 		$('.addressesAreEquals').hide();
 		$('.addressesAreEquals').find('input').attr('checked', false);
 	}
-	
+
 	if (typeof(open_multishipping_fancybox) != 'undefined' && open_multishipping_fancybox)
 		$('#link_multishipping_form').click();
 });

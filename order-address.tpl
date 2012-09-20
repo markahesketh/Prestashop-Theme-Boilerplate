@@ -56,7 +56,7 @@
 	var txtProduct = "{l s='product'}";
 	var txtProducts = "{l s='products'}";
 	{/if}
-	
+
 	var addressMultishippingUrl = "{$link->getPageLink('address', true, NULL, "back={$back_order_page}?step=1{'&multi-shipping=1'|urlencode}{if $back}&mod={$back|urlencode}{/if}")}";
 	var addressUrl = "{$link->getPageLink('address', true, NULL, "back={$back_order_page}?step=1{if $back}&mod={$back}{/if}")}";
 
@@ -129,7 +129,10 @@
 		var vals = new Array();
 
 		for (var field_item in items)
+		{
+			items[field_item] = items[field_item].replace(",", "");
 			vals.push(values[items[field_item]]);
+		}
 		return vals.join(" ");
 	}
 
@@ -147,7 +150,7 @@
 	{assign var='current_step' value='address'}
 	{include file="$tpl_dir./order-steps.tpl"}
 	{include file="$tpl_dir./errors.tpl"}
-	
+
 	{if !$multi_shipping && {Configuration::get('PS_ALLOW_MULTISHIPPING')} && !$cart->isVirtualCart()}
 		<div class="button_multishipping_mode" id="multishipping_mode_box">
 			<div class="title">{l s='Multi-shipping'}</div>
@@ -194,7 +197,7 @@
 			{foreach from=$addresses key=k item=address}
 				<option value="{$address.id_address|intval}" {if $address.id_address == $cart->id_address_delivery}selected="selected"{/if}>{$address.alias|escape:'htmlall':'UTF-8'}</option>
 			{/foreach}
-			
+
 			</select>
 		</p>
 		<p class="checkbox addressesAreEquals" {if $cart->isVirtualCart()}style="display:none;"{/if}>

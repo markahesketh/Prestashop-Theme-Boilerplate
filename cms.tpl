@@ -14,8 +14,8 @@
 		<div id="admin-action-cms">
 			<p>{l s='This CMS page is not visible to your customers.'}
 			<input type="hidden" id="admin-action-cms-id" value="{$cms->id}" />
-			<input type="submit" value="{l s='Publish'}" class="exclusive" onclick="submitPublishCMS('{$base_dir}{$smarty.get.ad}', 0)"/>			
-			<input type="submit" value="{l s='Back'}" class="exclusive" onclick="submitPublishCMS('{$base_dir}{$smarty.get.ad}', 1)"/>			
+			<input type="submit" value="{l s='Publish'}" class="exclusive" onclick="submitPublishCMS('{$base_dir}{$smarty.get.ad|escape:'htmlall':'UTF-8'}', 0, '{$smarty.get.adtoken|escape:'htmlall':'UTF-8'}')"/>
+			<input type="submit" value="{l s='Back'}" class="exclusive" onclick="submitPublishCMS('{$base_dir}{$smarty.get.ad|escape:'htmlall':'UTF-8'}', 1, '{$smarty.get.adtoken|escape:'htmlall':'UTF-8'}')"/>
 			</p>
 			<div class="clear" ></div>
 			<p id="admin-action-result"></p>
@@ -28,7 +28,7 @@
 {elseif isset($category)}
 	<div class="block-cms">
 		<h1><a href="{if $category->id eq 1}{$base_dir}{else}{$link->getCategoryLink($category->id, $category->link_rewrite)}{/if}">{$category->name|escape:'htmlall':'UTF-8'}</a></h1>
-		{if isset($sub_category) & !empty($sub_category)}	
+		{if isset($sub_category) & !empty($sub_category)}
 			<h4>{l s='List of sub categories in %s:' sprintf=$category->name}</h4>
 			<ul class="bullet">
 				{foreach from=$sub_category item=subcategory}

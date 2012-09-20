@@ -22,8 +22,8 @@
 	{$ignoreList.6 = "date_add"}
 	{$ignoreList.7 = "date_upd"}
 	{$ignoreList.8 = "active"}
-	{$ignoreList.9 = "deleted"}	
-	
+	{$ignoreList.9 = "deleted"}
+
 	{* PrestaShop 1.4.0.17 compatibility *}
 	{if isset($addresses)}
 		{foreach from=$addresses key=k item=address}
@@ -50,6 +50,7 @@
 	var currencyBlank = '{$currencyBlank|intval}';
 	var txtProduct = "{l s='product'}";
 	var txtProducts = "{l s='products'}";
+	var txtSelectAnAddressFirst = "{l s='Please start by selecting an address'}";
 	{/if}
 
 	var formatedAddressFieldsValuesList = new Array();
@@ -88,7 +89,7 @@
 
 		ordered_fields_name = ordered_fields_name.concat(formatedAddressFieldsValuesList[id_address]['ordered_fields']);
 		ordered_fields_name = ordered_fields_name.concat(['update']);
-		
+
 		dest_comp.html('');
 
 		li_content['title'] = adr_titles_vals[address_type];
@@ -150,7 +151,7 @@
 	<div class="addresses clearfix">
 		<input type="hidden" name="id_address_delivery" id="id_address_delivery" value="{$cart->id_address_delivery}" onchange="updateAddressesDisplay();{if $opc}updateAddressSelection();{/if}" />
 		<p id="address_invoice_form" class="select" {if $cart->id_address_invoice == $cart->id_address_delivery}style="display: none;"{/if}>
-		
+
 		{if $addresses|@count >= 1}
 			<label for="id_address_invoice" class="strong">{l s='Choose a billing address:'}</label>
 			<select name="id_address_invoice" id="id_address_invoice" class="address_select" onchange="updateAddressesDisplay();{if $opc}updateAddressSelection();{/if}">

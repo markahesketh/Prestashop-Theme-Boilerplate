@@ -30,7 +30,7 @@ function ps_round(value, precision)
 		roundMode = 2;
 	if (typeof(precision) == 'undefined')
 		precision = 2;
-	
+
 	method = roundMode;
 	if (method == 0)
 		return ceilf(value, precision);
@@ -95,6 +95,8 @@ function formatCurrency(price, currencyFormat, currencySign, currencyBlank)
 		return (currencySign + blank + formatNumber(price, priceDisplayPrecision, '.', ','));
 	if (currencyFormat == 4)
 		return (formatNumber(price, priceDisplayPrecision, ',', '.') + blank + currencySign);
+	if (currencyFormat == 5)
+		return (formatNumber(price, priceDisplayPrecision, ' ', '.') + blank + currencySign);
 	return price;
 }
 
@@ -179,7 +181,7 @@ function print_r(arr, level)
 		level_padding += "    ";
 
 	if (typeof(arr) == 'object')
-	{ //Array/Hashes/Objects 
+	{ //Array/Hashes/Objects
 		for (var item in arr)
 		{
 			var value = arr[item];
@@ -231,7 +233,7 @@ $(document).ready(function() {
 			fnChecked.call(this);
 		else if(fnUnchecked)
 			fnUnchecked.call(this);
-		
+
 		if (!$(this).attr('eventCheckboxChange'))
 		{
 			$(this).live('change', function() { $(this).checkboxChange(fnChecked, fnUnchecked) });

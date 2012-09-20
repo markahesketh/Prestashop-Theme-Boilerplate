@@ -4,7 +4,7 @@
  * Product rows to select in multi-shipping table.
  * ==============================================================
  *}
- 
+
 <div id="opc_new_account" class="opc-main-block">
 	<div id="opc_new_account-overlay" class="opc-overlay" style="display: none;"></div>
 	<h2><span>1</span> {l s='Account'}</h2>
@@ -71,7 +71,7 @@
 						{/if}
 						{if $country.need_identification_number}
 							countriesNeedIDNumber.push({$country.id_country|intval});
-						{/if}	
+						{/if}
 						{if isset($country.need_zip_code)}
 							countriesNeedZipCode[{$country.id_country|intval}] = {$country.need_zip_code};
 						{/if}
@@ -94,7 +94,7 @@
 						else
 							$('#vat_number_block_invoice').hide();
 					}
-					
+
 					$(document).ready(function() {
 						$('#company').blur(function(){
 							vat_number();
@@ -222,7 +222,7 @@
 				<p class="required text">
 					<label for="city">{l s='City'} <sup>*</sup></label>
 					<input type="text" class="text" name="city" id="city" value="{if isset($guestInformations) && $guestInformations.city}{$guestInformations.city}{/if}" />
-					
+
 				</p>
 				{elseif $field_name eq "country" || $field_name eq "Country:name"}
 				<p class="required select">
@@ -234,7 +234,7 @@
 						{/foreach}
 					</select>
 				</p>
-				{elseif $field_name eq "vat_number"}	
+				{elseif $field_name eq "vat_number"}
 				<div id="vat_number_block" style="display:none;">
 					<p class="text">
 						<label for="vat_number">{l s='VAT number'}</label>
@@ -382,7 +382,7 @@
 				<p class="submit">
 					<input type="submit" class="exclusive button" name="submitAccount" id="submitAccount" value="{l s='Save'}" />
 				</p>
-				<p style="float: right;color: green;display: none;" id="opc_account_saved">
+				<p style="display: none;" id="opc_account_saved">
 					{l s='Account informations saved successfully'}
 				</p>
 				<p class="required opc-required" style="clear: both;">

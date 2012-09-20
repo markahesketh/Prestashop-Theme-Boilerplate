@@ -18,11 +18,11 @@
 				{/if}
 			{/strip}
 		</h1>
-		
+
 		<div class="resumecat category-product-count">
 			{include file="$tpl_dir./category-count.tpl"}
 		</div>
-		
+
 		{if $scenes || $category->description || $category->id_image}
 		<div class="content_scene_cat">
 			{if $scenes}
@@ -79,9 +79,9 @@
 					{include file="./nbr-product-page.tpl"}
 				</div>
 			</div>
-			
+
 			{include file="./product-list.tpl" products=$products}
-			
+
 			<div class="content_sortPagiBar">
 				<div class="sortPagiBar clearfix">
 					{include file="./product-sort.tpl"}
@@ -90,8 +90,6 @@
 				</div>
 				{include file="./pagination.tpl"}
 			</div>
-		{elseif !isset($subcategories)}
-			<p class="warning">{l s='There are no products in this category.'}</p>
 		{/if}
 	{elseif $category->id}
 		<p class="warning">{l s='This category is currently unavailable.'}</p>
