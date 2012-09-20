@@ -356,7 +356,7 @@ ul,
 ol {
   font-size: 13px;
   font-size: 1.3rem;
-  line-height: 1.6em;
+  line-height: 1.4em;
 }
 img {
   display: block;
@@ -398,6 +398,9 @@ blockquote p {
 .sidebar p {
   font-size: 11px;
   font-size: 1.1rem;
+}
+.sidebar a {
+  text-decoration: none;
 }
 .sidebar ul,
 .sidebar ol {
