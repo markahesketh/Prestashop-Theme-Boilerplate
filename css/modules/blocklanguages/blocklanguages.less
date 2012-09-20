@@ -1,0 +1,27 @@
+// =|= Imported Styles / Frameworks etc ======================================
+@import "../../includes/grid.less";
+@import "../../includes/settings.less";
+
+// =|= Block Languages styles ================================================
+.blocklanguages{
+	background: url('../../../img/arrow-dropdown.png')  @heading 90% 5px no-repeat;
+	cursor:pointer;
+
+	&:hover ul {display: block;}
+
+	img {
+		padding: 0 20px 8px 5px;
+		display: block;
+	}
+
+	// -|- Language List ---------------------------------------------
+	ul {
+		.no-bullets;
+		z-index: 100;
+		display: none;
+		position: absolute;
+		background: @heading;
+		
+		a{display: block;}
+	}
+}

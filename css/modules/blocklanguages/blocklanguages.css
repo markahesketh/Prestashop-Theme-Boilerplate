@@ -1,0 +1,35 @@
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+.blocklanguages {
+  background: url('../../../img/arrow-dropdown.png') #2a2a2a 90% 5px no-repeat;
+  cursor: pointer;
+}
+.blocklanguages:hover ul {
+  display: block;
+}
+.blocklanguages img {
+  padding: 0 20px 8px 5px;
+  display: block;
+}
+.blocklanguages ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  z-index: 100;
+  display: none;
+  position: absolute;
+  background: #2a2a2a;
+}
+.blocklanguages ul a {
+  display: block;
+}
