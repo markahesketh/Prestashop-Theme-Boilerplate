@@ -75,24 +75,22 @@
 			<p>{l s='You cannot place a new order from your country.'} <span class="bold">{$geolocation_country}</span></p>
 		</div>
 		{/if}
-		<div id="page" class="container_9 clearfix">
 
-			{* Header *}
-			<div id="header" class="grid_9 alpha omega">
-				<a id="header_logo" href="{$base_dir}" title="{$shop_name|escape:'htmlall':'UTF-8'}">
-					<img class="logo" src="{$logo_url}" alt="{$shop_name|escape:'htmlall':'UTF-8'}" {if $logo_image_width}width="{$logo_image_width}"{/if} {if $logo_image_height}height="{$logo_image_height}" {/if} />
-				</a>
-				<div id="header_right" class="grid_6 omega">
-					{$HOOK_TOP}
-				</div>
+		{* Header *}
+		<header>
+			<a id="logo" href="{$base_dir}" title="{$shop_name|escape:'htmlall':'UTF-8'}">
+				<img class="logo" src="{$logo_url}" alt="{$shop_name|escape:'htmlall':'UTF-8'}" {if $logo_image_width}width="{$logo_image_width}"{/if} {if $logo_image_height}height="{$logo_image_height}" {/if} />
+			</a>
+			<div class="modules">
+				{$HOOK_TOP}
 			</div>
+		</header>
 
-			<div id="columns" class="grid_9 alpha omega clearfix">
-				{* Left sidebar *}
-				<div id="left_column" class="column grid_2 alpha">
-					{$HOOK_LEFT_COLUMN}
-				</div>
+		{* Left sidebar *}
+		<aside id="left_column" class="sidebar">
+			{$HOOK_LEFT_COLUMN}
+		</aside>
 
-				{* Center content *}
-				<div id="center_column" class=" grid_5">
+		{* Center content *}
+		<div id="center_column">
 	{/if}

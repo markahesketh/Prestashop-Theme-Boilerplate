@@ -1,0 +1,42 @@
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+.blockuserinfo {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  margin: 0;
+}
+.blockuserinfo p {
+  margin: 0;
+}
+.blockuserinfo-cart {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  font-size: 13px;
+  font-size: 1.3rem;
+  width: 185px;
+  background: #eaeaea;
+  color: #9a9a9a;
+  z-index: 50;
+}
+.blockuserinfo-cart .price {
+  font-weight: bold;
+  color: #2a2a2a;
+  float: right;
+}
+.blockuserinfo-cart a {
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+}

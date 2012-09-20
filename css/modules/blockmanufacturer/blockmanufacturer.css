@@ -1,0 +1,19 @@
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+.blockmanufacturer form {
+  margin-top: 10px;
+  text-align: center;
+}
+.blockmanufacturer form select {
+  width: 80%;
+}

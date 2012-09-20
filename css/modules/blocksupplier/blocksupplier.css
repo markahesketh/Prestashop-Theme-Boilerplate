@@ -1,0 +1,7 @@
+.blocksupplier form {
+  margin-top: 10px;
+  text-align: center;
+}
+.blocksupplier form select {
+  width: 80%;
+}

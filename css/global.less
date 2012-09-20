@@ -1,0 +1,98 @@
+// =|= Imported Styles / Frameworks etc =====================================
+@import "includes/normalize.less";
+@import "includes/grid.less";
+@import "includes/typography.less";
+@import "includes/settings.less";
+
+// =|= Structure ============================================================
+html {font-size: 62.5%;}
+
+body {
+	margin: 0 auto;
+	max-width: 1170px;
+}
+
+// =|= Block Elements ======================================================
+p, ul, ol, pre code, blockquote {
+  margin: 1em 0 1.5em 0;
+}
+
+// =|= Header ===============================================================
+body > header {
+	.clearfix;
+
+	// -|- HOOK_TOP Modules ---------------------------------------------
+	.modules {
+		position: relative;
+		.column(9);
+	}
+
+		.block {
+			float: right;
+			margin-left: 10px;
+			padding-top: 5px;
+		}
+
+}
+
+#logo {
+	.column(3);
+	img {
+		margin: 30px 0 0 0;
+	}
+}
+
+// =|= Center content =======================================================
+#center_column {
+	.column(8);
+
+	// -|- Center Block Modules -----------------------------------------
+	.block {
+		margin-bottom: 40px;
+	}
+}
+
+// =|= Sidebars =============================================================
+.sidebar {
+	.column(2);
+
+	// -|- Sidebar Block Modules ----------------------------------------
+	.block {
+		margin-bottom: 40px;
+
+		// -|- General Sidebar Tyopgraphy -------------------------------
+		p,ul,ol {
+		  .font-size(12);
+		}
+	}
+}
+
+// =|= Footer ===============================================================
+body > footer {
+	clear: both;
+	border-top: 1px solid #999;
+	padding: 20px 0;
+	.column(12);
+
+	.modules{
+		.row(12);
+	}
+	
+	// -|- Footer Block Modules -----------------------------------------
+	.block {
+		.column(2,12);
+
+		ul {
+			.no-bullets;
+
+			li {
+				padding: 0.5em 0 0.5em 0.4em;
+			}
+		}
+	}
+}
+
+// =|= Objects ==============================================================
+.hidden,
+.collapsed {display: none; visibility: hidden;}
+.expanded {display: block; visibility: visible;}

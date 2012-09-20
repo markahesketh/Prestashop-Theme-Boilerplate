@@ -1,0 +1,44 @@
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+.blockcurrencies {
+  background: url('../../../img/arrow-dropdown.png') #2a2a2a 88% 5px no-repeat;
+  cursor: pointer;
+  color: #cacaca;
+  font-weight: bold;
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+.blockcurrencies:hover ul {
+  display: block;
+}
+.blockcurrencies ul a,
+.blockcurrencies span {
+  padding: 0 20px 5px 5px;
+  display: block;
+}
+.blockcurrencies ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  display: none;
+  position: absolute;
+  z-index: 100;
+}
+.blockcurrencies ul a {
+  color: #cacaca;
+  text-decoration: none;
+  background: #2a2a2a;
+}
+.blockcurrencies ul a:hover {
+  color: #fff;
+}

@@ -1,0 +1,26 @@
+// =|= Imported Styles / Frameworks etc ======================================
+@import "../../includes/grid.less";
+@import "../../includes/settings.less";
+
+// =|= Block Permanent Links Header styles ===================================
+.blockpermanentlinks-header {
+	ul {
+		.no-bullets;
+		li {
+			float: left;
+			margin-left: 10px;
+			padding-left: 10px;
+			border-left: 1px solid @grey;
+
+			&:first-child {
+				border-left: none;
+				margin-left: 0;
+				padding-left: 0;
+			}
+
+			a {
+				display: block;
+			}
+		}
+	}
+} 

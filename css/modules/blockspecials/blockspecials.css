@@ -1,0 +1,58 @@
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+.blockspecials {
+  position: relative;
+  *zoom: 1;
+}
+.blockspecials:before,
+.blockspecials:after {
+  content: "";
+  display: table;
+}
+.blockspecials:after {
+  clear: both;
+}
+.blockspecials img {
+  float: left;
+  max-width: 50%;
+}
+.blockspecials h2 {
+  margin: 1.5em 0;
+}
+.blockspecials span {
+  display: block;
+}
+.blockspecials span.price {
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+.blockspecials span.reduction {
+  background: #990000;
+  display: inline;
+  padding: 3px 5px;
+  color: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  position: absolute;
+  left: 0;
+  top: 60%;
+}
+.blockspecials h2,
+.blockspecials span.price,
+.blockspecials span.price-discount {
+  padding-left: 55%;
+}

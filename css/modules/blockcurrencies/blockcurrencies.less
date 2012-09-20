@@ -1,0 +1,36 @@
+// =|= Imported Styles / Frameworks etc ======================================
+@import "../../includes/grid.less";
+@import "../../includes/settings.less";
+
+// =|= Block Currencies styles ===============================================
+.blockcurrencies {
+	background: url('../../../img/arrow-dropdown.png')  @heading 88% 5px no-repeat;
+	cursor:pointer;
+	color: @grey;
+	font-weight: bold;
+	.font-size(12);
+
+	&:hover ul {display: block;}
+
+	ul a,
+	span {
+		padding: 0 20px 5px 5px;
+		display: block;
+	}
+
+	// -|- Currency List ---------------------------------------------
+	ul {
+		.no-bullets;
+		display: none;
+		position: absolute;
+		z-index: 100;
+		
+		a {
+			color: @grey;
+			text-decoration: none;
+			background: @heading;
+
+			&:hover {color: #fff;}
+		}
+	}
+} 

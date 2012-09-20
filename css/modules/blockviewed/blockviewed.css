@@ -1,0 +1,34 @@
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+.blockviewed {
+  *zoom: 1;
+}
+.blockviewed:before,
+.blockviewed:after {
+  content: "";
+  display: table;
+}
+.blockviewed:after {
+  clear: both;
+}
+.blockviewed img {
+  float: left;
+  max-width: 35%;
+}
+.blockviewed h2 {
+  margin: 1em 0;
+}
+.blockviewed h2,
+.blockviewed p {
+  padding-left: 40%;
+}
