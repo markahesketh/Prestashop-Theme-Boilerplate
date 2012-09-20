@@ -4,7 +4,7 @@
 * ==============================================================
 *}
 
-<section class="block myaccount">
+<section class="block blockmyaccountfooter">
 	<h1><a href="{$link->getPageLink('my-account.php', true)}">{l s='My account' mod='blockmyaccountfooter'}</a></h1>
 	<ul>
 		<li><a href="{$link->getPageLink('history.php', true)}" title="">{l s='My orders' mod='blockmyaccountfooter'}</a></li>
