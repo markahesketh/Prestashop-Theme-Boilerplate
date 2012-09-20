@@ -12,7 +12,7 @@ body:after {
 }
 .blockuserinfo {
   position: absolute;
-  top: 10px;
+  top: 0;
   left: 0;
   margin: 0;
 }
@@ -21,7 +21,7 @@ body:after {
 }
 .blockuserinfo-cart {
   position: absolute;
-  top: 40px;
+  top: 30px;
   right: 0;
   font-size: 13px;
   font-size: 1.3rem;

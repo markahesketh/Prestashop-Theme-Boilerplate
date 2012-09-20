@@ -490,11 +490,11 @@ body > header .modules {
   float: left;
   width: 72.22222222222221%;
   margin: 0 1.3888888888888888%;
+  margin-top: 10px;
 }
 body > header .block {
   float: right;
   margin-left: 10px;
-  padding-top: 5px;
 }
 #logo {
   display: inline;

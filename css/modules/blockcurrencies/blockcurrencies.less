@@ -4,17 +4,28 @@
 
 // =|= Block Currencies styles ===============================================
 .blockcurrencies {
-	background: url('../../../img/arrow-dropdown.png')  @heading 88% 5px no-repeat;
 	cursor:pointer;
 	color: @grey;
 	font-weight: bold;
 	.font-size(12);
+	position: relative;
+	bottom: 20px;
 
 	&:hover ul {display: block;}
 
+	span {
+		background: url('../../../img/arrow-dropdown.png')  @heading 15px 24px no-repeat;
+		height: 40px;
+		line-height: 60px;
+	}
+	ul a {
+		height: 20px;
+		line-height: 20px;
+	}
 	ul a,
 	span {
-		padding: 0 20px 5px 5px;
+		width: 30px;
+		padding-left: 5px;
 		display: block;
 	}
 
@@ -24,7 +35,7 @@
 		display: none;
 		position: absolute;
 		z-index: 100;
-		
+
 		a {
 			color: @grey;
 			text-decoration: none;
@@ -33,4 +44,4 @@
 			&:hover {color: #fff;}
 		}
 	}
-} 
+}
