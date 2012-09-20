@@ -11,16 +11,26 @@ h1, h2, h3, h4, h5, h6 {
 	font: normal 300 1rem/1.2rem @header;
 	margin: 0;
 	color: @heading;
-	a, a:visited {text-decoration: none; border: none; color: @heading;}
+	
+  a, a:visited {
+    text-decoration: none;
+    border: none;
+    color: @heading;
+  }
 	a:hover {color: @link;}
 }
 
-h1 {font-size: 4.2em;}
-h2 {font-size: 3em;} 
-h3 {font-size: 2.3em;}
-h4 {font-size: 1.8em;} 
-h5 {font-size: 1.6em;}
-h6 {font-size: 1.4em;}
+h1 {
+  .font-size(28);
+  border-bottom: 1px solid #999;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.3em;
+}
+h2 {.font-size(24);} 
+h3 {.font-size(20);}
+h4 {.font-size(18);} 
+h5 {.font-size(16);}
+h6 {.font-size(14);}
 
 // =|= Body =================================================================
 a {
@@ -33,84 +43,98 @@ a {
 
   &:hover {color: @link;}
 }
-p a, ul a {}
 
-.content {
-  p,ul,ol {
-    font: normal 1.4em/1.7em @sans-serif;
-  }
-  article .single {
-    p:first-child{margin-top: 0;}
-    h1,h2,h3,h4,h5 {
-      margin-top: 1.5em;
-      margin-bottom: 0.3em;
-    }
-    h2 {border-bottom: @grey dashed 1px; padding-bottom: 0.2em;}
-    h4 {font-size: 1.4em;font-weight: bold;text-transform: uppercase;}
-    h5 {font-size: 1.4em;font-weight: bold;}
-  }
+p,ul,ol {
+  .font-size(13);
+  line-height: 1.6em;
+}
 
-  img {
-    -webkit-box-shadow: 0 1px 2px #999;
-    -moz-box-shadow: 0 1px 2px #999;
-    box-shadow: 0 1px 2px #999;
-    display: block;
-    margin: 0 auto;
-  }
+img {
+  display: block;
+  margin: 0 auto;
+}
 
-  blockquote {
+blockquote {
   border-left: 3px solid #EEE; 
   margin-left: 2em;
   padding-left: 2em;
+  
   p {
     font-style: italic;
     font-family: @serif;
     font-size: 1.5em;
   }
 }
+// =|= Center Columns =======================================================
+#center_column {
+
+  // -|- Center modules -----------------------------------------------
+  .block {    
+    h1 {
+      .font-size(22);
+      margin: 1em 0 0.8em 0;
+    }
+    h2 {
+      font-weight: bold;
+      .font-size(16);
+    }
+  }
 }
 
-// =|= Block Elements ======================================================
-p, ul, ol, pre code, blockquote {
-	margin: 1em 0 1.5em 0;
+// =|= Sidebars =============================================================
+.sidebar  {
+
+  // -|- Sidebar headers ----------------------------------------------
+  h1, > h4 {
+    .font-size(16);
+    border-bottom: 1px solid #999;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.3em;
+  }
+  h2 {
+    font-weight: bold;
+    .font-size(15);
+  }
+
+  // -|- Lists content such as categories and manufacturers -----------
+  p,ul,ol {
+    .font-size(12);
+  }
+  ol, ul {.no-bullets}
+  ul li {
+    border-bottom: 1px dotted #CCC;
+
+    a {
+      display:block;
+      padding:7px 5px;
+      &:hover {background: #fafafa;}
+    }
+  }
+  ul.products li a {
+    padding: 0;
+  }
 }
 
-code, pre {
-  padding: 0 3px 2px;
-  font-family: Menlo, Monaco, "Courier New", monospace;
-  font-size: 12px;
-  color: #333;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+// =|= Footer =============================================================
+footer  {
+
+  p,ul,ol {
+    .font-size(12);
+  }
+
+  h1, > h4 {
+    .font-size(16);
+    border-bottom: 1px solid #999;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.3em;
+  }
+  h2 {
+    font-weight: bold;
+    .font-size(15);
+  }
 }
 
-p > code {
-  padding: 2px 4px;
-  color: @link;
-  background-color: #F7F7F9;
-  border: 1px solid #E1E1E8;
-}
-
-pre {
-  display: block;
-  padding: 8.5px;
-  margin: 0 0 9px;
-  font-size: 12.025px;
-  line-height: 18px;
-  background-color: whiteSmoke;
-  border: 1px solid #CCC;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  white-space: pre;
-  white-space: pre-wrap;
-  word-break: break-all;
-  word-wrap: break-word;
-}
-
-// =|= Typography classes ==================================================
+// =|= Objects ==============================================================
 .price {
   font-weight: bold;
   color: #900;
