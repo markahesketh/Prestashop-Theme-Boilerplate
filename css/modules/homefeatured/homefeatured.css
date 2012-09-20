@@ -28,11 +28,15 @@ body:after {
 }
 .homefeatured ul li {
   float: left;
-  width: 21%;
-  padding: 2%;
+  width: 25%;
+  padding: 0 2%;
+  position: relative;
 }
 .homefeatured img {
   margin: 0 auto;
   display: block;
   max-width: 100%;
+}
+.homefeatured .label {
+  margin-left: 20px;
 }
