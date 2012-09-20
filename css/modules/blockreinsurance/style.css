@@ -16,10 +16,6 @@ body:after {
   float: left;
   width: 97.22222222222221%;
   margin: 0 1.3888888888888888%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
   font-size: 14px;
   font-size: 1.4rem;
   margin-bottom: 50px;
@@ -38,10 +34,6 @@ body:after {
   margin: 0;
 }
 .blockreinsurance ul li {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
   padding: 10px 10px 10px 60px;
   height: 50px;
   float: left;

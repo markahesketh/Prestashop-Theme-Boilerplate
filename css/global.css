@@ -267,6 +267,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
 body {
   width: 100%;
   *zoom: 1;
@@ -484,10 +490,6 @@ body > header .modules {
   float: left;
   width: 72.22222222222221%;
   margin: 0 1.3888888888888888%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
 }
 body > header .block {
   float: right;
@@ -499,10 +501,6 @@ body > header .block {
   float: left;
   width: 22.22222222222222%;
   margin: 0 1.3888888888888888%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
 }
 #logo img {
   margin: 30px 0 0 0;
@@ -512,10 +510,6 @@ body > header .block {
   float: left;
   width: 63.888888888888886%;
   margin: 0 1.3888888888888888%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
 }
 #center_column .block {
   margin-bottom: 40px;
@@ -525,10 +519,6 @@ body > header .block {
   float: left;
   width: 13.88888888888889%;
   margin: 0 1.3888888888888888%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
 }
 .sidebar .block {
   margin-bottom: 40px;
@@ -541,20 +531,12 @@ body > footer {
   float: left;
   width: 97.22222222222221%;
   margin: 0 1.3888888888888888%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
 }
 body > footer .modules {
   display: block;
   width: 102.77777777777777%;
   margin: 0 -1.3888888888888888%;
   *zoom: 1;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
 }
 body > footer .modules:before,
 body > footer .modules:after {
@@ -569,10 +551,6 @@ body > footer .block {
   float: left;
   width: 13.88888888888889%;
   margin: 0 1.3888888888888888%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
 }
 body > footer .block ul {
   list-style-type: none;

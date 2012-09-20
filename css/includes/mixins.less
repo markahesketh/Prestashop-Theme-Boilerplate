@@ -8,7 +8,7 @@
 
 // -|- The micro clearfix - http://bit.ly/MlCNAW --------------------
 .clearfix() {
-	*zoom:1;	
+	*zoom:1;
 	&:before,
 	&:after {
 	    content:"";
@@ -23,7 +23,7 @@
 .font-size(@sizeValue){
 	@remValue: (@sizeValue / 10);
 	@pxValue: @sizeValue;
-	font-size: ~"@{pxValue}px"; 
+	font-size: ~"@{pxValue}px";
 	font-size: ~"@{remValue}rem";
 }
 
@@ -101,7 +101,7 @@
 	-webkit-border-radius: @radius;
 	-moz-border-radius: @radius;
 	border-radius: @radius;
-	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
 // -|- CSS3 Border Radius -------------------------------------------
@@ -118,7 +118,7 @@
 	border-bottom-right-radius: @bottomright;
 	border-bottom-left-radius: @bottomleft;
 	border-top-left-radius: @topleft;
-	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
 // -|- Opacity ------------------------------------------------------
@@ -157,12 +157,4 @@
 	-o-transform: translate(@x, @y);
 	-ms-transform: translate(@x, @y);
 	transform: translate(@x, @y);
-}
-
-// -|- CSS3 Box Sizing ----------------------------------------------
-.box-sizing() {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: border-box;
 }

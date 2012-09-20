@@ -28,7 +28,6 @@ body {
 	// *width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width)-@correction;
 	// *margin: 0 @total-width*(((@gutter-width*.5)/@gridsystem-width)*-1)-@correction;
 	.clearfix;
-	.box-sizing;
 }
 .column(@x,@columns:@columns) {
 	display: inline;
@@ -37,7 +36,6 @@ body {
 	margin: 0 @total-width*((@gutter-width*.5)/@gridsystem-width);
 	// *width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width)-@correction;
 	// *margin: 0 @total-width*((@gutter-width*.5)/@gridsystem-width)-@correction;
-	.box-sizing;
 }
 
 .push(@offset:1) {
