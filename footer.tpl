@@ -7,23 +7,20 @@
  *}
 
 {if !$content_only}
-		{* End of center content *}
-		</div>
-
-		{* Right sidebar *}
-		<aside id="right_column" class="sidebar">
-			{$HOOK_RIGHT_COLUMN}
-		</aside>
-
-		{* Footer *}
-		<footer>
-			<div class="modules">
-				{$HOOK_FOOTER}
-			</div>
-		</footer>
-
-	{* End of #page *}
+	{* End of center content *}
 	</div>
+
+	{* Right sidebar *}
+	<aside id="right_column" class="sidebar">
+		{$HOOK_RIGHT_COLUMN}
+	</aside>
+
+	{* Footer *}
+	<footer>
+		<div class="modules">
+			{$HOOK_FOOTER}
+		</div>
+	</footer>
 {/if}
 </body>
 </html>

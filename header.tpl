@@ -74,23 +74,22 @@
 			<p>{l s='You cannot place a new order from your country.'} <span class="bold">{$geolocation_country}</span></p>
 		</div>
 		{/if}
-		<div id="page">
 
-			{* Header *}
-			<header>
-				<a id="header_logo" href="{$base_dir}" title="{$shop_name|escape:'htmlall':'UTF-8'}">
-					<img class="logo" src="{$logo_url}" alt="{$shop_name|escape:'htmlall':'UTF-8'}" {if $logo_image_width}width="{$logo_image_width}"{/if} {if $logo_image_height}height="{$logo_image_height}" {/if} />
-				</a>
-				<div id="header_right">
-					{$HOOK_TOP}
-				</div>
-			</header>
+		{* Header *}
+		<header>
+			<a id="logo" href="{$base_dir}" title="{$shop_name|escape:'htmlall':'UTF-8'}">
+				<img class="logo" src="{$logo_url}" alt="{$shop_name|escape:'htmlall':'UTF-8'}" {if $logo_image_width}width="{$logo_image_width}"{/if} {if $logo_image_height}height="{$logo_image_height}" {/if} />
+			</a>
+			<div class="modules">
+				{$HOOK_TOP}
+			</div>
+		</header>
 
-			{* Left sidebar *}
+		{* Left sidebar *}
 		<aside id="left_column" class="sidebar">
-				{$HOOK_LEFT_COLUMN}
-			</aside>
+			{$HOOK_LEFT_COLUMN}
+		</aside>
 
-			{* Center content *}
-			<div id="center_column">
+		{* Center content *}
+		<div id="center_column">
 	{/if}
