@@ -416,7 +416,7 @@ html {
 }
 body {
   margin: 0 auto;
-  width: 1170px;
+  width: 1080px;
   *zoom: 1;
 }
 body:before,
@@ -429,6 +429,7 @@ body:after {
 }
 body > header {
   *zoom: 1;
+  margin-bottom: 20px;
 }
 body > header:before,
 body > header:after {
