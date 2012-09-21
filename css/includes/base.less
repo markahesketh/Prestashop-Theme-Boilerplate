@@ -1,10 +1,12 @@
 // =|= Import Fonts ============================================================
 // eg @import "http://fonts.googleapis.com/css?family=Open+Sans:300,400";
 
+
 // =|= Block elements ==========================================================
 p, ul, ol, pre code, blockquote {
   margin: 1em 0 1.5em 0;
 }
+
 
 // =|= Headings ================================================================
 h1, h2, h3, h4, h5, h6 {
@@ -31,6 +33,7 @@ h3 {.font-size(20);}
 h4 {.font-size(18);}
 h5 {.font-size(16);}
 h6 {.font-size(14);}
+
 
 // =|= Body ====================================================================
 a {
@@ -66,11 +69,13 @@ blockquote {
   }
 }
 
-// =|= Objects =================================================================
 .hidden,
 .collapsed {display: none; visibility: hidden;}
 .expanded {display: block; visibility: visible;}
 
+
+
+// =|= Objects =================================================================
 // -|- Prices ------------------------------------------------------------------
 .price {
   font-weight: bold;
@@ -84,10 +89,11 @@ blockquote {
 // -|- Labels ------------------------------------------------------------------
 .label {
     .font-size(11);
-    background: @primary;
+    color: #fff;
+    .gradient(@secondary, darken(@secondary,5%), lighten(@secondary,5%));
+    border: 1px solid darken(@secondary,15%);
     display: inline;
     padding: 3px 5px;
-    color: #fff;
     .rounded(5px);
     position: absolute;
     left: 0;
@@ -96,4 +102,42 @@ blockquote {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     white-space: nowrap;
     vertical-align: baseline;
+}
+
+// -|- Buttons -----------------------------------------------------------------
+// -|- Standard button
+.btn {
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  *display: inline;
+  .rounded(4px);
+  padding: 6px 12px;
+  .font-size(12);
+  text-shadow: 0 1px 1px darken(@secondary,20%);
+  .gradient(@secondary, darken(@secondary,5%), lighten(@secondary,5%));
+  border: 1px solid darken(@secondary,15%);
+
+  &:hover {
+    color: #fff;
+    .gradient(@secondary, @secondary, lighten(@secondary,12%));
+  }
+  &:active {
+    .gradient(@secondary, @secondary, darken(@secondary,12%));
+  }
+}
+
+// -|- 'Exclusive' button
+.btn.exclusive {
+  text-shadow: 0 1px 1px darken(@primary,20%);
+  .gradient(@primary, darken(@primary,5%), lighten(@primary,5%));
+  border: 1px solid darken(@primary,15%);
+
+  &:hover {
+    .gradient(@primary, @primary, lighten(@primary,12%));
+  }
+  &:active {
+    .gradient(@primary, @primary, darken(@primary,12%));
+  }
 }
