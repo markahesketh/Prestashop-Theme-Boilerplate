@@ -538,6 +538,9 @@ body > header .block {
   font-size: 16px;
   font-size: 1.6rem;
 }
+.breadcrumb {
+  margin-bottom: 10px;
+}
 .sidebar {
   display: inline;
   float: left;
