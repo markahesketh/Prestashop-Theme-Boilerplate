@@ -1,0 +1,59 @@
+// =|= Imported Styles / Frameworks etc ========================================
+@import "../../../includes/mixins.less";
+
+// =|= Block Top Menu styles ===================================================
+.blocktopmenu {
+    .column(12);
+    .clearfix;
+    background: @heading;
+
+    a {
+        color: #fff;
+        display: block;
+        text-decoration: none;
+        padding: 10px;
+
+        &:hover {
+            background: @subheading;
+        }
+    }
+
+    // -|- 1st Level Menu ------------------------------------------------------
+    > ul {
+        > li {
+            float: left;
+            display: block;
+            border-right: @subheading 1px solid;
+            position: relative;
+
+            // -|- Display second menu, and retain hover -----------------------
+            &:hover {
+                background: @subheading;
+                ul {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // -|- 2nd Level Menu ------------------------------------------------------
+    ul ul {
+        position: absolute;
+        display: none;
+        background: @heading;
+
+        li {
+            border-top: 1px dotted @grey;
+
+            &:first-child {
+                border-top: none;
+            }
+        }
+    }
+
+    // -|- Search bar ----------------------------------------------------------
+    .search {
+        float: right;
+        padding: 8px;
+    }
+}

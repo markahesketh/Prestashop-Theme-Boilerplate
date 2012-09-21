@@ -1,0 +1,52 @@
+.blocktopmenu {
+  display: inline;
+  float: left;
+  width: 1050px;
+  margin: 0 15px;
+  *zoom: 1;
+  background: #2a2a2a;
+}
+.blocktopmenu:before,
+.blocktopmenu:after {
+  content: "";
+  display: table;
+}
+.blocktopmenu:after {
+  clear: both;
+}
+.blocktopmenu a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+}
+.blocktopmenu a:hover {
+  background: #6a6a6a;
+}
+.blocktopmenu > ul > li {
+  float: left;
+  display: block;
+  border-right: #6a6a6a 1px solid;
+  position: relative;
+}
+.blocktopmenu > ul > li:hover {
+  background: #6a6a6a;
+}
+.blocktopmenu > ul > li:hover ul {
+  display: block;
+}
+.blocktopmenu ul ul {
+  position: absolute;
+  display: none;
+  background: #2a2a2a;
+}
+.blocktopmenu ul ul li {
+  border-top: 1px dotted #cacaca;
+}
+.blocktopmenu ul ul li:first-child {
+  border-top: none;
+}
+.blocktopmenu .search {
+  float: right;
+  padding: 8px;
+}

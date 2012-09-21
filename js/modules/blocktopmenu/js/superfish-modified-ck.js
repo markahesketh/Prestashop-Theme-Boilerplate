@@ -1,0 +1,1 @@
+$(function(){$("nav.blocktopmenu").remove().insertAfter($("header .modules"))});
