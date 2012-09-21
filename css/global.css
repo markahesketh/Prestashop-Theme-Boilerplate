@@ -286,8 +286,9 @@ h3,
 h4,
 h5,
 h6 {
-  font: normal 300 1rem/1.4rem 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  margin: 0;
+  font: normal 300 1rem/1.4em 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 10px 0;
+  text-rendering: optimizelegibility;
   color: #2a2a2a;
 }
 h1 a,
@@ -318,8 +319,7 @@ h1 {
   font-size: 28px;
   font-size: 2.8rem;
   border-bottom: 1px solid #999;
-  padding-bottom: 0.5em;
-  margin-bottom: 0.3em;
+  padding-bottom: 0.2em;
 }
 h2 {
   font-size: 24px;
@@ -531,7 +531,6 @@ body > header .block {
 #center_column .block h1 {
   font-size: 22px;
   font-size: 2.2rem;
-  margin: 1em 0 0.8em 0;
 }
 #center_column .block h2 {
   font-weight: bold;
@@ -548,8 +547,7 @@ body > header .block {
 .sidebar > h4 {
   font-size: 16px;
   font-size: 1.6rem;
-  border-bottom: 1px solid #999;
-  padding-bottom: 0.5em;
+  border-bottom: 1px solid #9a9a9a;
   margin-bottom: 0.3em;
 }
 .sidebar h2 {
@@ -594,7 +592,7 @@ body > header .block {
 }
 body > footer {
   clear: both;
-  border-top: 1px solid #999;
+  border-top: 1px solid #9a9a9a;
   padding: 20px 0;
   display: inline;
   float: left;
@@ -605,9 +603,7 @@ body > footer h1,
 body > footer > h4 {
   font-size: 16px;
   font-size: 1.6rem;
-  border-bottom: 1px solid #999;
-  padding-bottom: 0.5em;
-  margin-bottom: 0.3em;
+  border-bottom: 1px solid #9a9a9a;
 }
 body > footer h2 {
   font-weight: bold;

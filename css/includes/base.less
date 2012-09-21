@@ -10,8 +10,9 @@ p, ul, ol, pre code, blockquote {
 
 // =|= Headings ================================================================
 h1, h2, h3, h4, h5, h6 {
-    font: normal 300 1rem/1.4rem @header;
-    margin: 0;
+    font: normal 300 1rem/1.4em @header;
+    margin: 10px 0;
+    text-rendering: optimizelegibility;
     color: @heading;
 
   a, a:visited {
@@ -25,8 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   .font-size(28);
   border-bottom: 1px solid #999;
-  padding-bottom: 0.5em;
-  margin-bottom: 0.3em;
+  padding-bottom: 0.2em;
 }
 h2 {.font-size(24);}
 h3 {.font-size(20);}
