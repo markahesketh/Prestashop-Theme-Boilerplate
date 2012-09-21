@@ -312,7 +312,7 @@ h3 a:hover,
 h4 a:hover,
 h5 a:hover,
 h6 a:hover {
-  color: #0088cc;
+  color: #2a2a2a;
 }
 h1 {
   font-size: 28px;
@@ -350,7 +350,7 @@ a {
   -webkit-transition: color 0.3s;
 }
 a:hover {
-  color: #0088cc;
+  color: #2a2a2a;
 }
 p,
 ul,
@@ -393,10 +393,14 @@ blockquote p {
 .label {
   font-size: 11px;
   font-size: 1.1rem;
-  background: #990000;
+  color: #fff;
+  background: #444444;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #373737), color-stop(1, #515151));
+  background: -ms-linear-gradient(bottom, #373737, #515151);
+  background: -moz-linear-gradient(center bottom, #373737 0%, #515151 100%);
+  border: 1px solid #1e1e1e;
   display: inline;
   padding: 3px 5px;
-  color: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -410,6 +414,61 @@ blockquote p {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   white-space: nowrap;
   vertical-align: baseline;
+}
+.btn {
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  *display: inline;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-size: 1.2rem;
+  text-shadow: 0 1px 1px #111111;
+  background: #444444;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #373737), color-stop(1, #515151));
+  background: -ms-linear-gradient(bottom, #373737, #515151);
+  background: -moz-linear-gradient(center bottom, #373737 0%, #515151 100%);
+  border: 1px solid #1e1e1e;
+}
+.btn:hover {
+  color: #fff;
+  background: #444444;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #444444), color-stop(1, #636363));
+  background: -ms-linear-gradient(bottom, #444444, #636363);
+  background: -moz-linear-gradient(center bottom, #444444 0%, #636363 100%);
+}
+.btn:active {
+  background: #444444;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #444444), color-stop(1, #252525));
+  background: -ms-linear-gradient(bottom, #444444, #252525);
+  background: -moz-linear-gradient(center bottom, #444444 0%, #252525 100%);
+}
+.btn.exclusive {
+  text-shadow: 0 1px 1px #330000;
+  background: #990000;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #800000), color-stop(1, #b30000));
+  background: -ms-linear-gradient(bottom, #800000, #b30000);
+  background: -moz-linear-gradient(center bottom, #800000 0%, #b30000 100%);
+  border: 1px solid #4d0000;
+}
+.btn.exclusive:hover {
+  background: #990000;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #990000), color-stop(1, #d60000));
+  background: -ms-linear-gradient(bottom, #990000, #d60000);
+  background: -moz-linear-gradient(center bottom, #990000 0%, #d60000 100%);
+}
+.btn.exclusive:active {
+  background: #990000;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #990000), color-stop(1, #5c0000));
+  background: -ms-linear-gradient(bottom, #990000, #5c0000);
+  background: -moz-linear-gradient(center bottom, #990000 0%, #5c0000 100%);
 }
 html {
   font-size: 62.5%;
@@ -528,6 +587,9 @@ body > header .block {
 }
 .sidebar .block {
   margin-bottom: 40px;
+}
+.sidebar .btn {
+  display: block;
 }
 body > footer {
   clear: both;
