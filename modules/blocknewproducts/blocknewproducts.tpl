@@ -22,6 +22,6 @@
 					</li>
 			{/foreach}
 		</ul>
-		<a href="{$link->getPageLink('new-products')}" title="{l s='All new products' mod='blocknewproducts'}" class="button_large">{l s='All new products' mod='blocknewproducts'}</a>
+		<a href="{$link->getPageLink('new-products')}" title="{l s='All new products' mod='blocknewproducts'}" class="btn">{l s='All new products' mod='blocknewproducts'}</a>
 	</section>
 {/if}
