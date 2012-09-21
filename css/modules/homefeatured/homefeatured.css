@@ -25,6 +25,14 @@
   display: block;
   max-width: 100%;
 }
+.homefeatured p {
+  height: 5.6em;
+  overflow: hidden;
+}
+.homefeatured .price {
+  display: block;
+  padding-bottom: 1em;
+}
 .homefeatured .label {
   margin-left: 20px;
 }
