@@ -32,6 +32,6 @@
 				{displayWtPrice p=$special.price_tax_exc}
 			{/if}
 		</span>
-		<a href="{$link->getPageLink('prices-drop')}" title="{l s='All specials' mod='blockspecials'}">{l s='All specials' mod='blockspecials'}</a>
+		<a href="{$link->getPageLink('prices-drop')}" title="{l s='All specials' mod='blockspecials'}" class="btn">{l s='All specials' mod='blockspecials'}</a>
 	</section>
 {/if}

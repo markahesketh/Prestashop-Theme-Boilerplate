@@ -11,6 +11,6 @@
 		<p class="tel">{l s='Phone:' mod='blockcontact'}{$telnumber}</p>
 	{/if}
 	{if $email != ''}
-		<a href="mailto:{$email}">{l s='Contact our hotline' mod='blockcontact'}</a>
+		<a href="mailto:{$email}" class="btn">{l s='Contact our hotline' mod='blockcontact'}</a>
 	{/if}
 </section>
