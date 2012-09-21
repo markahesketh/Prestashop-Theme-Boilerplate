@@ -416,7 +416,7 @@ html {
 }
 body {
   margin: 0 auto;
-  max-width: 1170px;
+  width: 1170px;
   *zoom: 1;
 }
 body:before,

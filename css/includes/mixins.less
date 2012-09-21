@@ -3,7 +3,10 @@
 @column-width: 60;
 @gutter-width: 30;
 @columns: 12;
-@total-width: 100%; // Comment out for a fix-widthed layout.
+
+// -|- Fixed or Fluid grid -----------------------------------------------------
+//@total-width: 100%; 			 	// Fluid width
+@total-width: @gridsystem-width;	// Fixed width
 
 // -|- Font Stacks -------------------------------------------------------------
 @header: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -194,12 +197,14 @@
 // =|===========================================================================
 
 @gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
-@total-width: @gridsystem-width;
+
 
 .row(@columns:@columns) {
 	display: block;
 	width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width);
 	margin: 0 @total-width*(((@gutter-width*.5)/@gridsystem-width)*-1);
+	// *width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width)-@correction;
+	// *margin: 0 @total-width*(((@gutter-width*.5)/@gridsystem-width)*-1)-@correction;
 	.clearfix;
 }
 .column(@x,@columns:@columns) {
@@ -207,8 +212,9 @@
 	float: left;
 	width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
 	margin: 0 @total-width*((@gutter-width*.5)/@gridsystem-width);
+	// *width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width)-@correction;
+	// *margin: 0 @total-width*((@gutter-width*.5)/@gridsystem-width)-@correction;
 }
-
 .push(@offset:1) {
 	margin-left: @total-width*(((@gutter-width+@column-width)*@offset) / @gridsystem-width) + @total-width*((@gutter-width*.5)/@gridsystem-width);
 }
