@@ -4,7 +4,7 @@
   width: 1050px;
   margin: 0 15px;
   *zoom: 1;
-  background: #4a4a4a;
+  background: #333333;
 }
 .blocktopmenu:before,
 .blocktopmenu:after {
@@ -26,7 +26,8 @@
 .blocktopmenu > ul > li {
   float: left;
   display: block;
-  border-right: #6a6a6a 1px solid;
+  border-right: #1a1a1a 1px solid;
+  border-left: #4d4d4d 1px solid;
   position: relative;
 }
 .blocktopmenu > ul > li:hover {

@@ -5,7 +5,7 @@
 .blocktopmenu {
     .column(12);
     .clearfix;
-    background: @body;
+    background: @primary;
 
     a {
         color: #fff;
@@ -23,7 +23,8 @@
         > li {
             float: left;
             display: block;
-            border-right: @subheading 1px solid;
+            border-right: darken(@primary, 10%) 1px solid;
+            border-left: lighten(@primary, 10%) 1px solid;
             position: relative;
 
             // -|- Display second menu, and retain hover -----------------------
