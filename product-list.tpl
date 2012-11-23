@@ -41,7 +41,7 @@
 						{if isset($static_token)}
 							<a class="button ajax_add_to_cart_button exclusive" rel="ajax_id_product_{$product.id_product|intval}" href="{$link->getPageLink('cart',false, NULL, "add&amp;id_product={$product.id_product|intval}&amp;token={$static_token}", true)}" title="{l s='Add to cart'}"><span></span>{l s='Add to cart'}</a>
 						{else}
-							<a class="button ajax_add_to_cart_button exclusive" rel="ajax_id_product_{$product.id_product|intval}" href="{$link->getPageLink('cart',false, NULL, "add&amp;id_product={$product.id_product|intval}", true)} title="{l s='Add to cart'}"><span></span>{l s='Add to cart'}</a>
+							<a class="button ajax_add_to_cart_button exclusive" rel="ajax_id_product_{$product.id_product|intval}" href="{$link->getPageLink('cart',false, NULL, "add&amp;id_product={$product.id_product|intval}", true)}" title="{l s='Add to cart'}"><span></span>{l s='Add to cart'}</a>
 						{/if}
 					{else}
 						<span class="exclusive"><span></span>{l s='Add to cart'}</span><br />
