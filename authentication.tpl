@@ -325,6 +325,7 @@ $(function(){ldelim}
 				<span class="form_info">{l s='DNI / NIF / NIE'}</span>
 			</p>
 		</fieldset>
+		{$HOOK_CREATE_ACCOUNT_FORM}
 		<p class="cart_navigation required submit">
 			<span><sup>*</sup>{l s='Required field'}</span>
 			<input type="submit" class="exclusive" name="submitGuestAccount" id="submitGuestAccount" value="{l s='Continue'}">
