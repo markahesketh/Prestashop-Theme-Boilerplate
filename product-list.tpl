@@ -49,6 +49,7 @@
 				{/if}
 				<a class="button lnk_view" href="{$product.link|escape:'htmlall':'UTF-8'}" title="{l s='View'}">{l s='View'}</a>
 			</div>
+			<div class="clear:both;"></div>
 		</li>
 	{/foreach}
 	</ul>
